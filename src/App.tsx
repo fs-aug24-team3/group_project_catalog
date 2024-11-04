@@ -3,8 +3,8 @@ import './main.scss';
 
 export const App: React.FC = () => {
   return (
-    <>
-      <h1>TEAM 3</h1>
-    </>
+    <div>
+      <h1>TEAM 3!!! Welcome to Nice Gadgets store!</h1>
+    </div>
   );
 };
