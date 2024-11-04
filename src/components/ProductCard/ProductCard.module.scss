@@ -1,7 +1,6 @@
 @import '../../styles/variables';
 
 .card {
-  box-sizing: border-box;
   height: 506px;
   width: 272px;
   padding: 32px;
@@ -19,10 +18,9 @@
 
   &__image {
     display: block;
-
     height: 208px;
     width: 196px;
-    margin: 0 auto 40px;
+    margin: 0 auto 24px;
   }
 
   &__name {
@@ -72,6 +70,7 @@
   &__description {
     display: flex;
     flex-direction: column;
+    padding: 8px 0 8px 0;
     gap: 8px;
 
     &--screen {
@@ -135,6 +134,6 @@
   &__button {
     display: flex;
     justify-content: space-between;
-    padding-top: 16px;
+    padding-top: 8px;
   }
 }

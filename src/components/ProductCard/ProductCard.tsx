@@ -1,8 +1,7 @@
 import { useState } from 'react';
 import { AddToCartButton } from '../AddToCartButton';
+import { AddToFavouritesButton } from '../AddToFavouritesButton';
 import styles from './ProductCard.module.scss';
-// eslint-disable-next-line max-len
-import { AddToFavouritesButton } from '../AddToFavouritesButton/AddToFavouritesButton';
 
 export const ProductCard = () => {
   const [isPressed, setIsPressed] = useState(false);

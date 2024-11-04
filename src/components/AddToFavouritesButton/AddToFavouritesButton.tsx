@@ -14,8 +14,7 @@ export const AddToFavouritesButton: FC<Props> = ({
     <a
       href="#favourite"
       className={styles['card__button--favourite']}
-      onClick={e => {
-        e.preventDefault();
+      onClick={() => {
         onFavourite();
       }}
     >
