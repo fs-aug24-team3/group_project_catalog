@@ -10,6 +10,10 @@ import { NotFoundPage } from './pages/NotFoundPage';
 import { AccessoriesPage } from './pages/AccessoriesPage/AccessoriesPage';
 import { TabletsPage } from './pages/TabletsPage';
 import { PhonePage } from './pages/PhonePage';
+import { FavouritesPage } from './pages/FavouritesPage';
+import { CartPage } from './pages/CartPage';
+import { ContactsPage } from './pages/ContactsPage';
+import { RightsPage } from './pages/RightsPage';
 
 export const Root = () => (
   <Router>
@@ -29,8 +33,10 @@ export const Root = () => (
           <Route index element={<AccessoriesPage />} />
           <Route path=":itemId" element={<AccessoriesPage />} />
         </Route>
-        <Route path="favourites" element={<HomePage />} />
-        <Route path="cart" element={<HomePage />} />
+        <Route path="favourites" element={<FavouritesPage />} />
+        <Route path="cart" element={<CartPage />} />
+        <Route path="contants" element={<ContactsPage />} />
+        <Route path="rights" element={<RightsPage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Route>
     </Routes>
