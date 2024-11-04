@@ -1,0 +1,19 @@
+@import '../../styles/variables';
+
+.card {
+  &__button {
+    &--favourite {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 40px;
+      height: 40px;
+      border: 1px solid $elements-color;
+      border-radius: 100%;
+
+      &:hover {
+        border-color: $primary-color;
+      }
+    }
+  }
+}
