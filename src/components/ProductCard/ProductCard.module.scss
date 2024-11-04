@@ -1,0 +1,139 @@
+@import '../../styles/variables';
+
+.card {
+  height: 506px;
+  width: 272px;
+  padding: 32px;
+  gap: 8px;
+  border: 1px;
+  border-radius: 8px;
+
+  font-family: Mont, sans-serif;
+
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+
+  &__image {
+    display: block;
+    height: 208px;
+    width: 196px;
+    margin: 0 auto 24px;
+  }
+
+  &__name {
+    font-size: 14px;
+    line-height: 21px;
+    font-weight: 600;
+    color: $primary-color;
+    text-decoration: none;
+  }
+
+  &__price {
+    display: flex;
+    margin-top: 8px;
+    gap: 8px;
+
+    &--value {
+      font-size: 22px;
+      font-weight: 800;
+      color: $primary-color;
+    }
+
+    &--old-value {
+      font-size: 22px;
+      font-weight: 500;
+      color: $secondary-color;
+      position: relative;
+
+      &::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 0;
+        right: 0;
+        height: 2px;
+        background-color: $secondary-color;
+        transform: translateY(-50%);
+      }
+    }
+  }
+
+  &__divider {
+    height: 1.5px;
+    background-color: $elements-color;
+    margin: 8px 0;
+  }
+
+  &__description {
+    display: flex;
+    flex-direction: column;
+    padding: 8px 0 8px 0;
+    gap: 8px;
+
+    &--screen {
+      display: flex;
+      justify-content: space-between;
+
+      &-title {
+        font-size: 12px;
+        font-weight: 600;
+        line-height: 15.34px;
+        color: $secondary-color;
+      }
+
+      &-value {
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 15.34px;
+        color: $primary-color;
+      }
+    }
+
+    &--capacity {
+      display: flex;
+      justify-content: space-between;
+
+      &-title {
+        font-size: 12px;
+        font-weight: 600;
+        line-height: 15.34px;
+        color: $secondary-color;
+      }
+
+      &-value {
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 15.34px;
+        color: $primary-color;
+      }
+    }
+
+    &--ram {
+      display: flex;
+      justify-content: space-between;
+
+      &-title {
+        font-size: 12px;
+        font-weight: 600;
+        line-height: 15.34px;
+        color: $secondary-color;
+      }
+
+      &-value {
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 15.34px;
+        color: $primary-color;
+      }
+    }
+  }
+
+  &__button {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 8px;
+  }
+}

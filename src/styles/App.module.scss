@@ -1,0 +1,16 @@
+@import './utils/mixins';
+@import './utils/variables';
+
+.container {
+  font-family: Mont, sans-serif;
+
+  padding-inline: 16px;
+
+  @include on-tablet {
+    padding-inline: 24px;
+  }
+
+  @include on-desktop {
+    padding-inline: 32px;
+  }
+}
