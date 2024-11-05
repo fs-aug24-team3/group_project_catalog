@@ -1,0 +1,41 @@
+@import '../../../../styles/utils/variables.scss';
+@import '../../../../styles/utils/mixins';
+
+.Menu {
+  position: fixed;
+  left: 100%;
+  top: 49px;
+  z-index: 1;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+
+  transition: 0.15s linear;
+  height: calc(100vh - 49px);
+
+  width: 100%;
+
+  background-color: $white-color;
+
+  &--is-open {
+    left: 0;
+  }
+
+  &__navigation {
+    margin-top: 24px;
+  }
+
+  &__actions {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+
+    height: 64px;
+    width: 100%;
+  }
+
+  @include on-tablet {
+    display: none;
+  }
+}
