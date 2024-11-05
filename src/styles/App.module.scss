@@ -2,8 +2,6 @@
 @import './utils/variables';
 
 .container {
-  font-family: Mont, sans-serif;
-
   padding-inline: 16px;
 
   @include on-tablet {
