@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 
 import { getCatalogPhones } from '../../api/api';
 import { Product } from '../../types/Product';
+import { ProductPage } from '../../components/ProductPage';
+import { Loader } from '../../components/Loader';
 
 export const PhonePage: React.FC = () => {
   const [phones, setPhones] = useState<Product[]>([]);
@@ -20,10 +22,15 @@ export const PhonePage: React.FC = () => {
 
   return (
     <>
-      <h1>Phone Page</h1>
-      {isLoading && <p>Loading</p>}
-      {error && <p>{error}</p>}
-      {!!phones.length && <p>phones catalog</p>}
+      {isLoading && <Loader />}
+
+      {!isLoading && !!phones.length && !error && (
+        <ProductPage
+          title="Mobile phones"
+          amount={phones.length}
+          items={phones}
+        />
+      )}
     </>
   );
 };

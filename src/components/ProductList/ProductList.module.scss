@@ -1,0 +1,24 @@
+@import '../../styles/utils/mixins';
+@import '../../styles/utils/variables';
+
+.list {
+  margin: 0 auto;
+  width: 100%;
+
+  margin-bottom: 24px;
+
+  @include page-grid;
+
+  @include on-tablet {
+    max-width: 592px;
+    margin-bottom: 40px;
+  }
+
+  @media (min-width: 768px) {
+    max-width: 720px;
+  }
+
+  @include on-desktop {
+    max-width: 1136px;
+  }
+}

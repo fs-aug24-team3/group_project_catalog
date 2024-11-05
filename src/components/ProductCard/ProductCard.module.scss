@@ -58,12 +58,17 @@
   &__name {
     padding-top: 16px;
     flex-grow: 0;
+    width: 220px;
 
     text-decoration: none;
     line-height: 21px;
     font-weight: 600;
     font-size: 14px;
     color: $primary-color;
+
+    @include on-tablet {
+      width: unset;
+    }
   }
 
   &__price {

@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 
 import { getCatalogTablets } from '../../api/api';
 import { Product } from '../../types/Product';
+import { ProductPage } from '../../components/ProductPage';
+import { Loader } from '../../components/Loader';
 
 export const TabletsPage: React.FC = () => {
   const [tablets, setTablets] = useState<Product[]>([]);
@@ -20,10 +22,11 @@ export const TabletsPage: React.FC = () => {
 
   return (
     <>
-      <h1>Tablets Page</h1>
-      {isLoading && <p>Loading</p>}
-      {error && <p>{error}</p>}
-      {!!tablets.length && <p>Tablets</p>}
+      {isLoading && <Loader />}
+
+      {!isLoading && !error && !!tablets.length && (
+        <ProductPage title="Tablets" amount={tablets.length} items={tablets} />
+      )}
     </>
   );
 };

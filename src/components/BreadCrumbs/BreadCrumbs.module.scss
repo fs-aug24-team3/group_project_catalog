@@ -1,0 +1,22 @@
+@import '../../styles/utils/variables';
+@import '../../styles/utils/mixins';
+
+.breadcrumbs {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+
+  margin-bottom: 24px;
+
+  @include on-tablet {
+    margin-bottom: 40px;
+  }
+
+  &__link {
+    text-decoration: none;
+    color: $secondary-color;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: normal;
+  }
+}
