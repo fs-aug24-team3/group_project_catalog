@@ -6,8 +6,8 @@ import { Header } from './components/Header';
 
 export const App: React.FC = () => {
   return (
-    <div className="container">
-      <Header/>
+    <div>
+      <Header />
       <div className={styles.container}>
         <Outlet />
       </div>
