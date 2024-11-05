@@ -4,6 +4,7 @@ import Main_logo from '../../images/main_logo/Logo.svg';
 import Button_icon from '../../images/Icons/stroke.svg';
 
 import styles from './Footer.module.scss';
+import { Link } from 'react-router-dom';
 
 export const Footer: FC = () => {
   return (
@@ -16,24 +17,25 @@ export const Footer: FC = () => {
 
       <div className={styles.footer__information}>
         <span>
-          <a
-            href="https://github.com/fs-aug24-team3/group_project_catalog/"
+          <Link
+            to={'https://github.com/fs-aug24-team3/group_project_catalog/'}
             className={styles.footer__link}
           >
             Github
-          </a>
+          </Link>
         </span>
 
         <span>
-          <a href="#" className={styles.footer__link}>
+          <Link to={'contants'} className={styles.footer__link}>
+            {/* contants */}
             Contacts
-          </a>
+          </Link>
         </span>
 
         <span>
-          <a href="#" className={styles.footer__link}>
+          <Link to={'rights'} className={styles.footer__link}>
             Rights
-          </a>
+          </Link>
         </span>
       </div>
       <div className={styles['footer__back-to-top']}>
