@@ -13,8 +13,8 @@ export const App: React.FC = () => {
         <div className={styles.outletWrapper}>
           <Outlet />
         </div>
-        <Footer />
       </div>
+      <Footer />
     </div>
   );
 };

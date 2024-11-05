@@ -30,7 +30,7 @@ export const Header: React.FC = () => {
         {!isMenuOpen && <img src={burgerMenu} alt="open menu" />}
         {isMenuOpen && <img src={closeMenu} alt="close menu" />}
       </button>
-      <Menu isOpen={isMenuOpen} onHideMenu={handleHideMenu}/>
+      <Menu isOpen={isMenuOpen} onHideMenu={handleHideMenu} />
     </header>
   );
 };
