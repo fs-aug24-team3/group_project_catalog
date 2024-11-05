@@ -11,9 +11,10 @@ const NavData = [
 
 interface Props {
   className?: string;
+  onHideMenu?: () => void;
 }
 
-export const Navigation: React.FC<Props> = ({ className }) => {
+export const Navigation: React.FC<Props> = ({ className, onHideMenu }) => {
   return (
     <ul className={`${styles.navigation__list} ${className}`}>
       {NavData.map(({ title, path }) => (
@@ -25,6 +26,7 @@ export const Navigation: React.FC<Props> = ({ className }) => {
               })
             }
             to={path}
+            onClick={onHideMenu}
           >
             {title}
           </NavLink>
