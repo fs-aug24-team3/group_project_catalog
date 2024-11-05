@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { AddToCartButton } from '../AddToCartButton';
 import { AddToFavouritesButton } from '../AddToFavouritesButton';
 import styles from './ProductCard.module.scss';
+import { Link } from 'react-router-dom';
 
 export const ProductCard = () => {
   const [isPressed, setIsPressed] = useState(false);
@@ -18,17 +19,17 @@ export const ProductCard = () => {
   return (
     <div className={styles.card}>
       <div className={styles.card__info}>
-        <a href="#magyar">
+        <Link to="#magyar">
           <img
             src="src/images/phones/iphone-xs-silver.png"
             alt="Apple iPhone Xs 64GB Silver (iMT9G2FS/A)"
             className={styles.card__image}
           />
-        </a>
+        </Link>
 
-        <a href="#magyar" className={styles.card__name}>
+        <Link to="#magyar" className={styles.card__name}>
           Apple iPhone Xs 64GB Silver (iMT9G2FS/A)
-        </a>
+        </Link>
 
         <div className={styles.card__price}>
           <p className={styles['card__price--value']}>$799</p>

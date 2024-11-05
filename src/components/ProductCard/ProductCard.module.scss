@@ -1,16 +1,27 @@
-@import '../../styles/variables';
+@import '../../styles/utils/mixins';
+@import '../../styles/utils/variables';
 
 .card {
-  height: 506px;
-  width: 272px;
+  height: 439px;
+  width: 212px;
   padding: 32px;
   gap: 8px;
-  border: 1px;
+  border: 1px solid $elements-color;
   border-radius: 8px;
 
   font-family: Mont, sans-serif;
 
   transition: transform 0.3s ease;
+
+  @include on-tablet {
+    height: 512px;
+    width: 237px;
+  }
+
+  @include on-desktop {
+    height: 506px;
+    width: 272px;
+  }
 
   &:hover {
     transform: scale(1.1);
@@ -18,9 +29,20 @@
 
   &__image {
     display: block;
-    height: 208px;
-    width: 196px;
+    height: 129px;
+    width: 148px;
+    object-fit: scale-down;
     margin: 0 auto 24px;
+
+    @include on-tablet {
+      height: 202px;
+      width: 173px;
+    }
+
+    @include on-desktop {
+      height: 208px;
+      width: 196px;
+    }
   }
 
   &__name {
@@ -55,6 +77,7 @@
         left: 0;
         right: 0;
         height: 2px;
+        mix-blend-mode: color-dodge;
         background-color: $secondary-color;
         transform: translateY(-50%);
       }
@@ -62,7 +85,7 @@
   }
 
   &__divider {
-    height: 1.5px;
+    height: 1px;
     background-color: $elements-color;
     margin: 8px 0;
   }
@@ -70,7 +93,7 @@
   &__description {
     display: flex;
     flex-direction: column;
-    padding: 8px 0 8px 0;
+    padding: 8px 0;
     gap: 8px;
 
     &--screen {
@@ -134,6 +157,7 @@
   &__button {
     display: flex;
     justify-content: space-between;
+    gap: 8px;
     padding-top: 8px;
   }
 }

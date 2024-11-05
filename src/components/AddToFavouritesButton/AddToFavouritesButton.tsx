@@ -1,5 +1,6 @@
 import { FC } from 'react';
 import styles from './AddToFavouritesButton.module.scss';
+import { Link } from 'react-router-dom';
 
 type Props = {
   favourited: boolean;
@@ -11,8 +12,8 @@ export const AddToFavouritesButton: FC<Props> = ({
   onFavourite,
 }) => {
   return (
-    <a
-      href="#favourite"
+    <Link
+      to="#favourite"
       className={styles['card__button--favourite']}
       onClick={() => {
         onFavourite();
@@ -26,6 +27,6 @@ export const AddToFavouritesButton: FC<Props> = ({
         }
         alt="favourites-icon"
       />
-    </a>
+    </Link>
   );
 };
