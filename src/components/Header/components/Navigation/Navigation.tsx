@@ -6,7 +6,7 @@ const NavData = [
   { title: 'Home', path: '/' },
   { title: 'Phones', path: '/phones' },
   { title: 'Tablets', path: '/tablets' },
-  { title: 'Accessories', path: '/accesories' },
+  { title: 'Accessories', path: '/accessories' },
 ];
 
 export const Navigation: React.FC = () => {

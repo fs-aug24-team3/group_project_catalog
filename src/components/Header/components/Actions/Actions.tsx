@@ -5,7 +5,6 @@ import classNames from 'classnames';
 import favourites from '../../../../images/Icons/favourites.svg';
 import cart from '../../../../images/Icons/cart.svg';
 
-
 export const Actions: React.FC = () => {
   return (
     <div className={styles.actions}>
