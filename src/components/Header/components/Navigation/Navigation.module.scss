@@ -1,0 +1,81 @@
+@import '../../../../styles/utils/variables';
+@import '../../../../styles/utils/mixins';
+
+.navigation {
+  display: none;
+  justify-content: space-between;
+  width: 100%;
+
+  letter-spacing: 0.04em;
+
+  @include on-tablet {
+    display: flex;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    align-items: center;
+
+    font-size: 12px;
+    font-weight: 800;
+    line-height: 27px;
+    text-transform: uppercase;
+
+    @include on-tablet {
+      flex-direction: row;
+      gap: 32px;
+    }
+
+    @include on-desktop {
+      gap: 64px;
+    }
+  }
+
+  &__item {
+    list-style: none;
+  }
+
+  &__link {
+    display: flex;
+    flex-wrap: wrap;
+    position: relative;
+    text-decoration: none;
+    color: $secondary-color;
+
+    @include on-tablet {
+      line-height: 48px;
+    }
+
+    @include on-desktop {
+      line-height: 64px;
+    }
+
+    &::after {
+      position: absolute;
+      content: '';
+      width: 100%;
+      height: 3px;
+      background-color: $primary-color;
+      bottom: 0;
+      left: 0;
+
+      transition: transform 0.4s;
+      transform: scale(0);
+      transform-origin: center;
+    }
+
+    &:hover {
+      &::after {
+        transform: scale(1);
+      }
+    }
+
+    &--active {
+      &::after {
+        transform: scale(1);
+      }
+    }
+  }
+}

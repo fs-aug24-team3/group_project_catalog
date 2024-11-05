@@ -1,26 +1,37 @@
-@import "../../styles/variables";
+@import "../../styles/utils/variables";
+@import "../../styles/utils/mixins";
 
 .notFound {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 80vh;
 
   &__image {
+    margin-top: 20px;
     display: block;
-    width: 380px;
-    height: auto;
+    width: auto;
+    height: 48vh;
     position: relative;
-    top: -100px;
+
+
+    @include only-mobile {
+      max-width: 320px;
+      max-height: 153px;
+    }
   }
 
   &__title {
     text-align: center;
+    margin-top: 40px;
+
+    @include only-mobile {
+      margin-top: 20px;
+    }
   }
 
   &__button {
-    margin-top: 50px;
+    margin-top: 40px;
     padding: 10px 20px;
 
     cursor: pointer;
@@ -29,7 +40,6 @@
     background-color: $accent-color;
     color: $white-color;
 
-    font-family: Mont, sans-serif;
     font-size: 14px;
     font-weight: 700;
     line-height: 21px;
@@ -38,6 +48,10 @@
     width: 220px;
     height: 40px;
     text-decoration: none;
+
+    @include only-mobile {
+      margin-top: 20px;
+    }
   }
 
   &__button:hover {

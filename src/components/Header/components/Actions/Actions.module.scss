@@ -1,0 +1,49 @@
+@import '../../../../styles/utils/variables';
+@import '../../../../styles/utils/mixins';
+
+.actions {
+  display: flex;
+  &__action {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    box-shadow: -1px 0 0 0 $elements-color;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    @include on-tablet {
+      width: 48px;
+    }
+
+    @include on-desktop {
+      width: 64px;
+    }
+
+    &::after {
+      position: absolute;
+      content: '';
+      width: 100%;
+      height: 2px;
+      background-color: $primary-color;
+      bottom: 0;
+      left: 0;
+
+      transition: transform 0.4s;
+      transform: scale(0);
+      transform-origin: center;
+    }
+
+    &:hover {
+      &::after {
+        transform: scale(1);
+      }
+    }
+
+    &--active {
+      &::after {
+        transform: scale(1);
+      }
+    }
+  }
+}
