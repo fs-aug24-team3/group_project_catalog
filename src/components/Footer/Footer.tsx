@@ -1,7 +1,7 @@
 import { FC } from 'react';
 
 import Main_logo from '../../images/main_logo/Logo.svg';
-import Button_icon from '../../images/Icons/stroke.svg';
+import Top_icon from '../../images/Icons/stroke.svg';
 
 import styles from './Footer.module.scss';
 import { Link } from 'react-router-dom';
@@ -41,7 +41,7 @@ export const Footer: FC = () => {
         <div className={styles['footer__back-to-top']}>
           Back to top
           <a className={styles['footer__top-icon']} href="#">
-            <img src={Button_icon} alt="Button_icon" />
+            <img src={Top_icon} alt="Top_icon" />
           </a>
         </div>
       </div>
