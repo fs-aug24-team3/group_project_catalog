@@ -8,6 +8,13 @@ import { Link } from 'react-router-dom';
 import mainStyles from '../../styles/App.module.scss';
 
 export const Footer: FC = () => {
+  function scrollToTop() {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  }
+
   return (
     <footer className={styles.footer}>
       <div className={mainStyles.container && styles.wrapper}>
@@ -41,9 +48,9 @@ export const Footer: FC = () => {
         </div>
         <div className={styles['footer__back-to-top']}>
           Back to top
-          <a className={styles['footer__top-icon']} href="#">
+          <button className={styles['footer__top-icon']} onClick={scrollToTop}>
             <img src={Top_icon} alt="Top_icon" />
-          </a>
+          </button>
         </div>
       </div>
     </footer>
