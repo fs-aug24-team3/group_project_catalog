@@ -12,6 +12,8 @@ import { Menu } from './components/Menu';
 export const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
+  const handleHideMenu = () => setIsMenuOpen(false);
+
   return (
     <header className={styles.header}>
       <NavLink to="/" className={styles.header__logolink}>
@@ -28,7 +30,7 @@ export const Header: React.FC = () => {
         {!isMenuOpen && <img src={burgerMenu} alt="open menu" />}
         {isMenuOpen && <img src={closeMenu} alt="close menu" />}
       </button>
-      <Menu isOpen={isMenuOpen} />
+      <Menu isOpen={isMenuOpen} onHideMenu={handleHideMenu}/>
     </header>
   );
 };
