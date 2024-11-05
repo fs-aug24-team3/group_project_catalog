@@ -11,9 +11,9 @@ export const Footer: FC = () => {
     <footer className={styles.footer}>
       <div className={styles.wrapper}>
         <div className={styles.footer__icon}>
-          <a href="#" className={styles['footer__icon-main']}>
+          <Link to="/" className={styles['footer__icon-main']}>
             <img src={Main_logo} alt="Main-logo" />
-          </a>
+          </Link>
         </div>
 
         <div className={styles.footer__information}>
