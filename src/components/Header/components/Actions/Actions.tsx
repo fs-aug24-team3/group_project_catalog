@@ -5,10 +5,13 @@ import classNames from 'classnames';
 import favourites from '../../../../images/Icons/favourites.svg';
 import cart from '../../../../images/Icons/cart.svg';
 
+interface Props {
+  className?: string;
+}
 
-export const Actions: React.FC = () => {
+export const Actions: React.FC<Props> = ({ className }) => {
   return (
-    <div className={styles.actions}>
+    <div className={`${styles.actions} ${className}`}>
       <NavLink
         className={({ isActive }) =>
           classNames(styles.actions__action, {

@@ -9,9 +9,13 @@ const NavData = [
   { title: 'Accessories', path: '/accesories' },
 ];
 
-export const Navigation: React.FC = () => {
+interface Props {
+  className?: string;
+}
+
+export const Navigation: React.FC<Props> = ({ className }) => {
   return (
-    <ul className={styles.navigation__list}>
+    <ul className={`${styles.navigation__list} ${className}`}>
       {NavData.map(({ title, path }) => (
         <li className={styles.navigation__item} key={title}>
           <NavLink
