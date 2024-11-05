@@ -27,8 +27,7 @@ export const Footer: FC = () => {
           </span>
 
           <span>
-            <Link to={'contants'} className={styles.footer__link}>
-              {/* contants */}
+            <Link to={'contacts'} className={styles.footer__link}>
               Contacts
             </Link>
           </span>
