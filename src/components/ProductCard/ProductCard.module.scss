@@ -2,55 +2,73 @@
 @import '../../styles/utils/variables';
 
 .card {
-  height: 439px;
-  width: 212px;
+  display: flex;
+  flex-direction: column;
+
+  // width: 272px;
+
   padding: 32px;
   gap: 8px;
   border: 1px solid $elements-color;
   border-radius: 8px;
 
+  background-color: $white-color;
+
+  list-style: none;
   font-family: Mont, sans-serif;
 
-  transition: transform 0.3s ease;
-
-  @include on-tablet {
-    height: 512px;
-    width: 237px;
-  }
-
-  @include on-desktop {
-    height: 506px;
-    width: 272px;
-  }
+  transition:
+    transform 0.3s,
+    box-shadow 0.3s;
 
   &:hover {
+    box-shadow: 0 2px 16px 0 #0000001a;
     transform: scale(1.1);
+    z-index: 1;
+  }
+
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+
+    gap: 8px;
+    height: 262px;
+    max-height: 262px;
+    overflow: hidden;
   }
 
   &__image {
-    display: block;
-    height: 129px;
-    width: 148px;
-    object-fit: scale-down;
-    margin: 0 auto 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
-    @include on-tablet {
-      height: 202px;
-      width: 173px;
-    }
+    height: 175px;
+    width: 166px;
+    object-fit: contain;
+    flex-grow: 1;
 
-    @include on-desktop {
-      height: 208px;
-      width: 196px;
+    &--img {
+      display: block;
+      height: 100%;
     }
   }
 
   &__name {
-    font-size: 14px;
+    padding-top: 16px;
+    flex-grow: 0;
+    width: 220px;
+
+    text-decoration: none;
     line-height: 21px;
     font-weight: 600;
+    font-size: 14px;
     color: $primary-color;
-    text-decoration: none;
+
+    @include on-tablet {
+      width: unset;
+    }
   }
 
   &__price {
@@ -65,10 +83,12 @@
     }
 
     &--old-value {
+      position: relative;
+      isolation: isolate;
+
       font-size: 22px;
       font-weight: 500;
       color: $secondary-color;
-      position: relative;
 
       &::after {
         content: '';
@@ -96,49 +116,11 @@
     padding: 8px 0;
     gap: 8px;
 
-    &--screen {
+    &--container {
       display: flex;
       justify-content: space-between;
 
-      &-title {
-        font-size: 12px;
-        font-weight: 600;
-        line-height: 15.34px;
-        color: $secondary-color;
-      }
-
-      &-value {
-        font-size: 12px;
-        font-weight: 700;
-        line-height: 15.34px;
-        color: $primary-color;
-      }
-    }
-
-    &--capacity {
-      display: flex;
-      justify-content: space-between;
-
-      &-title {
-        font-size: 12px;
-        font-weight: 600;
-        line-height: 15.34px;
-        color: $secondary-color;
-      }
-
-      &-value {
-        font-size: 12px;
-        font-weight: 700;
-        line-height: 15.34px;
-        color: $primary-color;
-      }
-    }
-
-    &--ram {
-      display: flex;
-      justify-content: space-between;
-
-      &-title {
+      &-name {
         font-size: 12px;
         font-weight: 600;
         line-height: 15.34px;

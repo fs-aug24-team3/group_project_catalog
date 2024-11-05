@@ -29,13 +29,13 @@ export const Root = () => (
           <Route index element={<TabletsPage />} />
           <Route path=":itemId" element={<TabletsPage />} />
         </Route>
-        <Route path="accesories">
+        <Route path="accessories">
           <Route index element={<AccessoriesPage />} />
           <Route path=":itemId" element={<AccessoriesPage />} />
         </Route>
         <Route path="favourites" element={<FavouritesPage />} />
         <Route path="cart" element={<CartPage />} />
-        <Route path="contants" element={<ContactsPage />} />
+        <Route path="contacts" element={<ContactsPage />} />
         <Route path="rights" element={<RightsPage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Route>

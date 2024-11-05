@@ -1,12 +1,19 @@
-import { useState } from 'react';
+import { FC, useState } from 'react';
 import { AddToCartButton } from '../AddToCartButton';
 import { AddToFavouritesButton } from '../AddToFavouritesButton';
 import styles from './ProductCard.module.scss';
 import { Link } from 'react-router-dom';
+import { Product } from '../../types/Product';
 
-export const ProductCard = () => {
+interface Props {
+  item: Product;
+}
+
+export const ProductCard: FC<Props> = ({ item }) => {
   const [isPressed, setIsPressed] = useState(false);
   const [favourited, setFavourited] = useState(false);
+
+  const { image, name, price, fullPrice, screen, capacity, ram } = item;
 
   const handleAddToCart = () => {
     setIsPressed(prev => !prev);
@@ -17,44 +24,44 @@ export const ProductCard = () => {
   };
 
   return (
-    <div className={styles.card}>
-      <div className={styles.card__info}>
-        <Link to="#magyar">
-          <img
-            src="src/images/phones/iphone-xs-silver.png"
-            alt="Apple iPhone Xs 64GB Silver (iMT9G2FS/A)"
-            className={styles.card__image}
-          />
+    <li className={styles.card}>
+      <div className={styles.card__wrapper}>
+        <Link to="#magyar" className={styles.card__image}>
+          <img src={image} alt={name} className={styles['card__image--img']} />
         </Link>
 
         <Link to="#magyar" className={styles.card__name}>
-          Apple iPhone Xs 64GB Silver (iMT9G2FS/A)
+          {name}
         </Link>
+      </div>
 
-        <div className={styles.card__price}>
-          <p className={styles['card__price--value']}>$799</p>
-          <p className={styles['card__price--old-value']}>$899</p>
-        </div>
+      <div className={styles.card__price}>
+        <p className={styles['card__price--value']}>{price}</p>
+        <p className={styles['card__price--old-value']}>{fullPrice}</p>
       </div>
 
       <div className={styles.card__divider}></div>
 
       <div className={styles.card__description}>
-        <div className={styles['card__description--screen']}>
-          <p className={styles['card__description--screen-title']}>Screen</p>
-          <p className={styles['card__description--screen-value']}>5.8” OLED</p>
+        <div className={styles['card__description--container']}>
+          <p className={styles['card__description--container-name']}>Screen</p>
+          <p className={styles['card__description--container-value']}>
+            {screen}
+          </p>
         </div>
 
-        <div className={styles['card__description--capacity']}>
-          <p className={styles['card__description--capacity-title']}>
+        <div className={styles['card__description--container']}>
+          <p className={styles['card__description--container-name']}>
             Capacity
           </p>
-          <p className={styles['card__description--capacity-value']}>64 GB</p>
+          <p className={styles['card__description--container-value']}>
+            {capacity}
+          </p>
         </div>
 
-        <div className={styles['card__description--ram']}>
-          <p className={styles['card__description--ram-title']}>RAM</p>
-          <p className={styles['card__description--ram-value']}>4 GB</p>
+        <div className={styles['card__description--container']}>
+          <p className={styles['card__description--container-name']}>RAM</p>
+          <p className={styles['card__description--container-value']}>{ram}</p>
         </div>
       </div>
 
@@ -65,6 +72,6 @@ export const ProductCard = () => {
           onFavourite={handleFavourite}
         />
       </div>
-    </div>
+    </li>
   );
 };

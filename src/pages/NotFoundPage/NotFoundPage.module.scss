@@ -1,4 +1,5 @@
 @import "../../styles/utils/variables";
+@import "../../styles/utils/mixins";
 
 .notFound {
   display: flex;
@@ -12,15 +13,24 @@
     width: auto;
     height: 48vh;
     position: relative;
+
+    @include only-mobile {
+      max-width: 320px;
+      max-height: 153px;
+    }
   }
 
   &__title {
     text-align: center;
-    margin-top: 70px;
+    margin-top: 40px;
+
+    @include only-mobile {
+      margin-top: 20px;
+    }
   }
 
   &__button {
-    margin-top: 70px;
+    margin-top: 40px;
     padding: 10px 20px;
 
     cursor: pointer;
@@ -29,7 +39,6 @@
     background-color: $accent-color;
     color: $white-color;
 
-    font-family: Mont, sans-serif;
     font-size: 14px;
     font-weight: 700;
     line-height: 21px;
@@ -38,6 +47,10 @@
     width: 220px;
     height: 40px;
     text-decoration: none;
+
+    @include only-mobile {
+      margin-top: 20px;
+    }
   }
 
   &__button:hover {
