@@ -1,49 +1,47 @@
 import { FC } from 'react';
 
 import Main_logo from '../../images/main_logo/Logo.svg';
-import Button_icon from '../../images/Icons/stroke.svg';
+import Top_icon from '../../images/Icons/stroke.svg';
 
 import styles from './Footer.module.scss';
+import { Link } from 'react-router-dom';
 
 export const Footer: FC = () => {
   return (
     <footer className={styles.footer}>
       <div className={styles.wrapper}>
         <div className={styles.footer__icon}>
-          <a href="#">
-            <img
-              src={Main_logo}
-              alt="Main-logo"
-              className={styles['footer__icon-main']}
-            />
+          <a href="#" className={styles['footer__icon-main']}>
+            <img src={Main_logo} alt="Main-logo" />
           </a>
         </div>
+
         <div className={styles.footer__information}>
           <span>
-            <a
-              href="https://github.com/fs-aug24-team3/group_project_catalog/"
+            <Link
+              to={'https://github.com/fs-aug24-team3/group_project_catalog/'}
               className={styles.footer__link}
             >
               Github
-            </a>
+            </Link>
           </span>
 
           <span>
-            <a href="#" className={styles.footer__link}>
+            <Link to={'contacts'} className={styles.footer__link}>
               Contacts
-            </a>
+            </Link>
           </span>
 
           <span>
-            <a href="#" className={styles.footer__link}>
+            <Link to={'rights'} className={styles.footer__link}>
               Rights
-            </a>
+            </Link>
           </span>
         </div>
         <div className={styles['footer__back-to-top']}>
           Back to top
           <a className={styles['footer__top-icon']} href="#">
-            <img src={Button_icon} alt="Button_icon" />
+            <img src={Top_icon} alt="Top_icon" />
           </a>
         </div>
       </div>
