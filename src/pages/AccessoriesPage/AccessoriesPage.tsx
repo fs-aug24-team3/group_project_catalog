@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 
 import { getCatalogAccessories } from '../../api/api';
 import { Product } from '../../types/Product';
+import { ProductPage } from '../../components/ProductPage';
+import { Loader } from '../../components/Loader';
 
 export const AccessoriesPage: React.FC = () => {
   const [accessories, setAccessories] = useState<Product[]>([]);
@@ -20,10 +22,15 @@ export const AccessoriesPage: React.FC = () => {
 
   return (
     <>
-      <h1>Accessories Page</h1>
-      {isLoading && <p>Loading</p>}
-      {error && <p>{error}</p>}
-      {!!accessories.length && <p>Accessories</p>}
+      {isLoading && <Loader />}
+
+      {!isLoading && !error && !!accessories.length && (
+        <ProductPage
+          title="Accessories"
+          amount={accessories.length}
+          items={accessories}
+        />
+      )}
     </>
   );
 };

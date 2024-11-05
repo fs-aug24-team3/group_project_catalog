@@ -1,0 +1,57 @@
+@import '../../styles//utils/mixins';
+@import '../../styles//utils/variables';
+
+.products-page {
+  &__wrapper {
+    padding-top: 24px;
+    padding-bottom: 64px;
+
+    @include on-desktop {
+      padding-bottom: 80px;
+    }
+  }
+
+  &__amount {
+    color: $secondary-color;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 21px;
+
+    margin-bottom: 32px;
+
+    @include on-tablet {
+      margin-bottom: 40px;
+    }
+  }
+
+  // /////////////////*********************
+
+  // &__dropdowns {
+  //   display: flex;
+
+  //   gap: 16px;
+  //   margin-bottom: 24px;
+  // }
+
+  // &__select {
+  //   width: 100%;
+  //   padding: 10px;
+  //   border: 1px solid #ccc;
+  //   border-radius: 5px;
+  //   appearance: none; /* Вимикає стандартний вигляд браузера */
+  //   background-color: #fff;
+  //   font-size: 16px;
+  //   cursor: pointer;
+  // }
+
+  // &__label {
+  //   color: $secondary-color;
+  //   font-size: 12px;
+  //   font-weight: 700;
+  //   line-height: normal;
+
+  //   margin-bottom: 4px;
+  // }
+
+  // //////////////////*****************
+}
