@@ -9,9 +9,14 @@ const NavData = [
   { title: 'Accessories', path: '/accessories' },
 ];
 
-export const Navigation: React.FC = () => {
+interface Props {
+  className?: string;
+  onHideMenu?: () => void;
+}
+
+export const Navigation: React.FC<Props> = ({ className, onHideMenu }) => {
   return (
-    <ul className={styles.navigation__list}>
+    <ul className={`${styles.navigation__list} ${className}`}>
       {NavData.map(({ title, path }) => (
         <li className={styles.navigation__item} key={title}>
           <NavLink
@@ -21,6 +26,7 @@ export const Navigation: React.FC = () => {
               })
             }
             to={path}
+            onClick={onHideMenu}
           >
             {title}
           </NavLink>

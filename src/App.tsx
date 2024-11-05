@@ -10,9 +10,11 @@ export const App: React.FC = () => {
     <div>
       <Header />
       <div className={styles.container}>
-        <Outlet />
-        <Footer />
+        <div className={styles.outletWrapper}>
+          <Outlet />
+        </div>
       </div>
+      <Footer />
     </div>
   );
 };

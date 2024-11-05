@@ -14,3 +14,16 @@
     margin: 0 auto;
   }
 }
+
+.outletWrapper {
+  box-sizing: border-box;
+  min-height: calc(100vh - 96px - 257px);
+
+  @include on-tablet {
+    min-height: calc(100vh - 96px - 96px);
+  }
+
+  @include on-desktop {
+    min-height: calc(100vh - 128px - 96px);
+  }
+}

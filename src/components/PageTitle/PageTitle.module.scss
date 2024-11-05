@@ -1,0 +1,17 @@
+@import '../../styles//utils/variables.scss';
+@import '../../styles//utils/mixins';
+
+.page-title {
+  color: $primary-color;
+  font-size: 32px;
+  line-height: 41px;
+  letter-spacing: -0.32px;
+
+  margin-bottom: 8px;
+
+  @include on-tablet {
+    font-size: 48px;
+    line-height: 56px;
+    letter-spacing: -0.48px;
+  }
+}

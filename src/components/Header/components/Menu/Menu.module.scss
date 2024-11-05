@@ -1,0 +1,48 @@
+@import '../../../../styles/utils/variables';
+@import '../../../../styles/utils/mixins';
+
+.Menu {
+  position: fixed;
+  left: 100%;
+  top: 48px;
+  z-index: 2;
+
+  font-size: 12px;
+  font-weight: 800;
+  line-height: 11px;
+  letter-spacing: 0.04em;
+  text-align: left;
+
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow-y: hidden;
+
+  transition: 0.2s linear;
+  height: calc(100vh - 47px);
+
+  width: 100%;
+
+  background-color: $white-color;
+
+  &--is-open {
+    left: 0;
+  }
+
+  &__navigation {
+    margin-top: 24px;
+  }
+
+  &__actions {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+
+    height: 64px;
+    width: 100%;
+  }
+
+  @include on-tablet {
+    display: none;
+  }
+}
