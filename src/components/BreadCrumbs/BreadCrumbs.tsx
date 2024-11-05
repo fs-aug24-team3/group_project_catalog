@@ -10,9 +10,11 @@ export const BreadCrumbs = () => {
       <Link to="" className={styles.breadcrumbs__link}>
         <img src={backToHome} alt="back to home page" />
       </Link>
+
       <Link to="" className={styles.breadcrumbs__link}>
         <img src={backToPage} alt="back to page" />
       </Link>
+
       <Link to="" className={styles.breadcrumbs__link}>
         Phones
       </Link>

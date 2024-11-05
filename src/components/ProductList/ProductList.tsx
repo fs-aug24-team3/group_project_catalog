@@ -12,7 +12,7 @@ export const ProductList: FC<Props> = ({ items }) => {
   return (
     <ul className={styles.list}>
       {items.map(item => (
-        <ProductCard key={item.id} />
+        <ProductCard key={item.id} item={item} />
       ))}
     </ul>
   );
