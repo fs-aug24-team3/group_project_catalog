@@ -1,5 +1,6 @@
 import { FC } from 'react';
 import styles from './AddToCartButton.module.scss';
+import { Link } from 'react-router-dom';
 
 type Props = {
   isPressed: boolean;
@@ -8,8 +9,8 @@ type Props = {
 
 export const AddToCartButton: FC<Props> = ({ isPressed, onAddToCart }) => {
   return (
-    <a
-      href="#buy"
+    <Link
+      to="#buy"
       className={`${styles['card__button--buy']} ${
         isPressed ? styles['card__button--active'] : ''
       }`}
@@ -18,6 +19,6 @@ export const AddToCartButton: FC<Props> = ({ isPressed, onAddToCart }) => {
       }}
     >
       {isPressed ? 'Added' : 'Add to cart'}
-    </a>
+    </Link>
   );
 };
