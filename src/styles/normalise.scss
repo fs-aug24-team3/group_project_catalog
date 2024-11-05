@@ -4,7 +4,12 @@
   font-family: Mont, sans-serif;
  }
 
- @font-face {
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+@font-face {
   font-family: Mont;
   src: url(../fonts/Mont-Regular.otf);
 }

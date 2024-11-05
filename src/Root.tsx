@@ -35,7 +35,7 @@ export const Root = () => (
         </Route>
         <Route path="favourites" element={<FavouritesPage />} />
         <Route path="cart" element={<CartPage />} />
-        <Route path="contants" element={<ContactsPage />} />
+        <Route path="contacts" element={<ContactsPage />} />
         <Route path="rights" element={<RightsPage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Route>

@@ -1,1 +1,37 @@
-// write your code here
+@import '../../styles/utils/mixins';
+@import '../../styles/utils/variables';
+
+.homePage {
+  &__box {
+    margin-top: 24px;
+
+    @include on-tablet {
+      margin-top: 32px;
+    }
+
+    @include on-desktop {
+      margin-top: 56px;
+    }
+  }
+
+  &__title {
+    font-size: 48px;
+    line-height: 56px;
+    letter-spacing: -0.01em;
+    text-align: left;
+  }
+
+  &__swiperBox {
+    margin-top: 24px;
+
+    @include on-tablet {
+      margin-top: 32px;
+    }
+
+    @include on-desktop {
+      margin-top: 56px;
+    }
+  }
+}
+
+
