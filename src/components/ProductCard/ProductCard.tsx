@@ -7,20 +7,16 @@ import { Product } from '../../types/Product';
 
 interface Props {
   item: Product;
+  onRemoveFromFavourites?: (id: number) => void;
 }
 
-export const ProductCard: FC<Props> = ({ item }) => {
+export const ProductCard: FC<Props> = ({ item, onRemoveFromFavourites }) => {
   const [isPressed, setIsPressed] = useState(false);
-  const [favourited, setFavourited] = useState(false);
 
   const { image, name, price, fullPrice, screen, capacity, ram } = item;
 
   const handleAddToCart = () => {
     setIsPressed(prev => !prev);
-  };
-
-  const handleFavourite = () => {
-    setFavourited(prev => !prev);
   };
 
   return (
@@ -68,8 +64,8 @@ export const ProductCard: FC<Props> = ({ item }) => {
       <div className={styles.card__button}>
         <AddToCartButton isPressed={isPressed} onAddToCart={handleAddToCart} />
         <AddToFavouritesButton
-          favourited={favourited}
-          onFavourite={handleFavourite}
+          item={item}
+          onRemoveFromFavourites={onRemoveFromFavourites}
         />
       </div>
     </li>

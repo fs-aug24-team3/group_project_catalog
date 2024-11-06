@@ -4,6 +4,8 @@ import styles from './Actions.module.scss';
 import classNames from 'classnames';
 import favourites from '../../../../images/Icons/favourites.svg';
 import cart from '../../../../images/Icons/cart.svg';
+import { useEffect, useState } from 'react';
+import { Product } from '../../../../types/Product';
 
 interface Props {
   className?: string;
@@ -11,6 +13,21 @@ interface Props {
 }
 
 export const Actions: React.FC<Props> = ({ className, onHideMenu }) => {
+  const [favorites, setFavorites] = useState<Product[]>([]);
+
+  const onFavouriteUpdate = () => {
+    const savedFavorites = JSON.parse(
+      localStorage.getItem('favourites') || '[]',
+    );
+
+    setFavorites(savedFavorites);
+  };
+
+  useEffect(() => {
+    onFavouriteUpdate();
+    document.addEventListener('onFavouriteUpdate', onFavouriteUpdate);
+  }, []);
+
   return (
     <div className={`${styles.actions} ${className}`}>
       <NavLink
@@ -23,6 +40,7 @@ export const Actions: React.FC<Props> = ({ className, onHideMenu }) => {
         onClick={onHideMenu}
       >
         <img className={styles.logo} src={favourites} alt="favourites" />
+        <p className={styles.bubble}>{favorites.length}</p>
       </NavLink>
       <NavLink
         to="/cart"
