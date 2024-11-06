@@ -3,7 +3,6 @@
 
 .footer {
   display: flex;
-  position: fixed;
   bottom: 0;
   left: 0;
   width: 100%;
@@ -88,6 +87,7 @@
 
     border: 1px solid $icons-color;
     border-radius: 90%;
+    background-color: $white-color;
 
     &:hover {
       border: 1px solid $primary-color;
@@ -115,11 +115,10 @@
 
 .wrapper {
   display: flex;
-
   width: 100%;
-
   font-size: 12px;
   line-height: 12px;
+  padding-inline: 16px;
 
   @include only-mobile {
     flex-direction: column;

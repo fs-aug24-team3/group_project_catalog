@@ -3,7 +3,6 @@
 
 .container {
   padding-inline: 16px;
-  min-height: 100vh;
 
   @include on-tablet {
     padding-inline: 24px;
@@ -13,5 +12,18 @@
     padding-inline: 0;
     max-width: 1136px;
     margin: 0 auto;
+  }
+}
+
+.outletWrapper {
+  box-sizing: border-box;
+  min-height: calc(100vh - 96px - 257px);
+
+  @include on-tablet {
+    min-height: calc(100vh - 96px - 96px);
+  }
+
+  @include on-desktop {
+    min-height: calc(100vh - 128px - 96px);
   }
 }

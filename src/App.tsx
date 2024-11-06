@@ -7,14 +7,14 @@ import { Footer } from './components/Footer';
 
 export const App: React.FC = () => {
   return (
-    <div>
+    <div id="page-top">
       <Header />
       <div className={styles.container}>
         <div className={styles.outletWrapper}>
           <Outlet />
         </div>
-        <Footer />
       </div>
+      <Footer />
     </div>
   );
 };

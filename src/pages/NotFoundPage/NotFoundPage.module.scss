@@ -2,6 +2,8 @@
 @import "../../styles/utils/mixins";
 
 .notFound {
+  @include top-margin;
+
   display: flex;
   flex-direction: column;
   justify-content: center;
