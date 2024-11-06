@@ -5,7 +5,6 @@ import classNames from 'classnames';
 import favourites from '../../../../images/Icons/favourites.svg';
 import cart from '../../../../images/Icons/cart.svg';
 
-
 interface Props {
   className?: string;
 }
