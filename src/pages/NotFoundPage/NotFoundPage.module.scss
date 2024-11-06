@@ -2,15 +2,7 @@
 @import "../../styles/utils/mixins";
 
 .notFound {
-  margin-top: 72px;
-
-  @include on-tablet {
-    margin-top: 80px;
-  }
-
-  @include on-desktop {
-    margin-top: 120px;
-  }
+  @include top-margin;
 
   display: flex;
   flex-direction: column;
