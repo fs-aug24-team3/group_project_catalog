@@ -68,7 +68,11 @@ export const BrandNewModels: React.FC<Props> = ({ phonesForSlider }) => {
         >
           {sortedPhonesByPrice.map(visiblePhone => (
             <SwiperSlide key={visiblePhone.id}>
-              <ProductCard item={visiblePhone} onSale={false} />
+              <ProductCard
+                item={visiblePhone}
+                onSale={false}
+                posibilityToScale={false}
+              />
             </SwiperSlide>
           ))}
         </Swiper>

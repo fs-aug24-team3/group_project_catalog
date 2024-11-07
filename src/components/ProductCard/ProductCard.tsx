@@ -14,12 +14,14 @@ import { CardPrices } from '../CardPrices/CardPrices';
 interface Props {
   item: Product;
   onSale?: boolean;
+  posibilityToScale?: boolean;
   onRemoveFromFavourites?: (id: number) => void;
 }
 
 export const ProductCard: FC<Props> = ({
   item,
   onSale = true,
+  posibilityToScale = true,
   onRemoveFromFavourites,
 }) => {
   const [isPressed, setIsPressed] = useState(false);
@@ -50,7 +52,13 @@ export const ProductCard: FC<Props> = ({
   }, [items, itemId]);
 
   return (
-    <li className={styles.card}>
+    <li
+      className={
+        posibilityToScale
+          ? `${styles.card} ${styles.abilityToScale}`
+          : `${styles.card}`
+      }
+    >
       <div className={styles.card__wrapper}>
         <Link to="#magyar" className={styles.card__image}>
           <img src={image} alt={name} className={styles['card__image--img']} />
