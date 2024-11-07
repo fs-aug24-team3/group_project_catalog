@@ -32,9 +32,11 @@ export const Favourites: FC<Props> = ({ title }) => {
       <BreadCrumbs />
       <PageTitle>{title}</PageTitle>
 
-      <p className={styles['favourites-page__amount']}>
-        {favourites.length} items
-      </p>
+      {favourites.length > 0 && (
+        <p className={styles['favourites-page__amount']}>
+          {favourites.length} {favourites.length === 1 ? 'item' : 'items'}
+        </p>
+      )}
 
       <ProductList
         items={favourites}
