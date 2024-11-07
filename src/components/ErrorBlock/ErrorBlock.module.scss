@@ -1,0 +1,74 @@
+@import '../../styles/utils/variables';
+@import '../../styles/utils/mixins';
+
+.error {
+  display: flex;
+  flex-direction: column;
+
+  width: 280px;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  margin: 0 auto;
+
+  @include on-tablet {
+    width: 420px;
+  }
+
+  @include on-desktop {
+    width: 500px;
+  }
+
+  &__text {
+    max-width: 250px;
+    text-align: center;
+    margin: 0 auto 30px;
+
+    font-size: 18px;
+    font-weight: 600;
+    color: $primary-color;
+
+    @include on-tablet {
+      max-width: unset;
+      font-size: 22px;
+      font-weight: 600;
+      margin-bottom: 20px;
+    }
+  }
+
+  &__button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+
+    width: 160px;
+    height: 40px;
+    margin: 0 auto;
+
+    font-size: 18px;
+    color: $elements-color;
+
+    background-color: $accent-color;
+    border: 1px solid $accent-color;
+    border-radius: 30px;
+
+    @include on-tablet {
+      width: 200px;
+      height: 50px;
+      font-size: 22px;
+    }
+
+    &:hover {
+      background-color: #2e1683;
+    }
+  }
+
+  &__image {
+    display: block;
+    margin-bottom: 50px;
+
+    @include on-tablet {
+      // width: 100%;
+    }
+  }
+}

@@ -77,6 +77,7 @@ export const Pagination: FC<Props> = ({ total }) => {
   return (
     <div className={styles.pagination}>
       <button
+        type="button"
         className={cn(styles['pagination__item--arrows'], {
           [styles.disabled]: isFirstPage,
         })}
@@ -104,6 +105,7 @@ export const Pagination: FC<Props> = ({ total }) => {
       </ul>
 
       <button
+        type="button"
         className={cn(styles['pagination__item--arrows'], {
           [styles.disabled]: isLastPage,
         })}

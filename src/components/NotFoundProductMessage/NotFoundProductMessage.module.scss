@@ -1,0 +1,26 @@
+@import '../../styles/utils/variables';
+@import '../../styles/utils/mixins';
+
+.message {
+  text-align: center;
+  margin-bottom: 30px;
+
+  @include on-tablet {
+    font-size: 18px;
+  }
+}
+
+.box {
+  width: 280px;
+  margin: 0 auto;
+
+  @include on-tablet {
+    padding-top: 30px;
+    width: 420px;
+  }
+}
+
+.image {
+  display: block;
+  width: 100%;
+}
