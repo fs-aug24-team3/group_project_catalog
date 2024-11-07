@@ -1,27 +1,47 @@
-import { FC, useState } from 'react';
+import { FC, useEffect, useState } from 'react';
 import { AddToCartButton } from '../AddToCartButton';
 import { AddToFavouritesButton } from '../AddToFavouritesButton';
 import styles from './ProductCard.module.scss';
 import { Link } from 'react-router-dom';
 import { Product } from '../../types/Product';
+import { CartProduct } from '../../types/CartProduct';
+
+import { useDispatch, useSelector } from 'react-redux';
+import { addItemToCart } from '../../redux/slices/cartSlice';
+import { RootState } from '../../redux/store';
 
 interface Props {
   item: Product;
+  onRemoveFromFavourites?: (id: number) => void;
 }
 
-export const ProductCard: FC<Props> = ({ item }) => {
+export const ProductCard: FC<Props> = ({ item, onRemoveFromFavourites }) => {
   const [isPressed, setIsPressed] = useState(false);
-  const [favourited, setFavourited] = useState(false);
 
-  const { image, name, price, fullPrice, screen, capacity, ram } = item;
+  const { image, name, price, fullPrice, screen, capacity, ram, itemId } = item;
+
+  const dispatch = useDispatch();
+
+  const items = useSelector((state: RootState) => state.cart.cartItems);
 
   const handleAddToCart = () => {
-    setIsPressed(prev => !prev);
+    if (!isPressed) {
+      const cartProduct: CartProduct = {
+        id: itemId,
+        quantity: 1,
+        product: item,
+      };
+
+      dispatch(addItemToCart(cartProduct));
+      setIsPressed(true);
+    }
   };
 
-  const handleFavourite = () => {
-    setFavourited(prev => !prev);
-  };
+  useEffect(() => {
+    const isItemInCart = items.some(itm => itm.id === itemId);
+
+    setIsPressed(isItemInCart);
+  }, [items, itemId]);
 
   return (
     <li className={styles.card}>
@@ -68,8 +88,8 @@ export const ProductCard: FC<Props> = ({ item }) => {
       <div className={styles.card__button}>
         <AddToCartButton isPressed={isPressed} onAddToCart={handleAddToCart} />
         <AddToFavouritesButton
-          favourited={favourited}
-          onFavourite={handleFavourite}
+          item={item}
+          onRemoveFromFavourites={onRemoveFromFavourites}
         />
       </div>
     </li>

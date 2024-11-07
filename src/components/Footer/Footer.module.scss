@@ -37,6 +37,8 @@
     text-transform: uppercase;
     letter-spacing: 0.04em;
 
+    background-color: $white-color;
+
     @include only-mobile {
       flex-direction: column;
       gap: 16px;
@@ -119,6 +121,8 @@
   font-size: 12px;
   line-height: 12px;
   padding-inline: 16px;
+
+  background-color: $white-color;
 
   @include only-mobile {
     flex-direction: column;
