@@ -36,8 +36,8 @@ export const ProductCard: FC<Props> = ({ item }) => {
       </div>
 
       <div className={styles.card__price}>
-        <p className={styles['card__price--value']}>{price}</p>
-        <p className={styles['card__price--old-value']}>{fullPrice}</p>
+        <p className={styles['card__price--value']}>${price}</p>
+        <p className={styles['card__price--old-value']}>${fullPrice}</p>
       </div>
 
       <div className={styles.card__divider}></div>
