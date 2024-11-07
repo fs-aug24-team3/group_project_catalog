@@ -16,12 +16,40 @@
   &__swiperBox {
     margin-top: 24px;
 
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    position: relative;
+
+    @include only-mobile {
+      margin-right: -16px;
+      margin-left: -16px;
+    }
+
     @include on-tablet {
-      margin-top: 32px;
+      margin: 32px auto 0;
+
+      width: calc(100% - 102px);
     }
 
     @include on-desktop {
       margin-top: 56px;
+      margin-left: 48px;
+
+      width: 1040px;
     }
+  }
+}
+
+.newModels {
+  margin-top: 56px;
+
+  &__title {
+    font-size: 22px;
+    font-weight: 800;
+    line-height: 30.8px;
+    text-align: left;
   }
 }
