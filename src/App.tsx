@@ -7,7 +7,7 @@ import { Footer } from './components/Footer';
 
 export const App: React.FC = () => {
   return (
-    <div id="page-top">
+    <div id="page-top" className={styles.page}>
       <Header />
       <div className={styles.container}>
         <div className={styles.outletWrapper}>
