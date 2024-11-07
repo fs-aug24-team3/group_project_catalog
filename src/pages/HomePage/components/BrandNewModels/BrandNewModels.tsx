@@ -8,8 +8,14 @@ import 'swiper/scss';
 import 'swiper/scss/autoplay';
 import 'swiper/scss/pagination';
 import 'swiper/scss/navigation';
+import { ProductCard } from '../../../../components/ProductCard';
+import { Product } from '../../../../types/Product';
 
-export const BrandNewModels: React.FC = () => {
+interface Props {
+  phonesForSlider: Product[];
+}
+
+export const BrandNewModels: React.FC<Props> = ({ phonesForSlider }) => {
   const swiper = useSwiper();
 
   const goToNextSlide = () => {
@@ -19,6 +25,14 @@ export const BrandNewModels: React.FC = () => {
   const goToPrevSlide = () => {
     swiper.slidePrev();
   };
+
+  const allphones = phonesForSlider;
+
+  const visiblePhones = allphones.filter(phone => phone.year === 2022);
+
+  const sortedPhonesByPrice = [...visiblePhones].sort((phone1, phone2) => {
+    return phone2.price - phone1.price;
+  });
 
   return (
     <div className={styles.brandNewModels}>
@@ -54,60 +68,11 @@ export const BrandNewModels: React.FC = () => {
             prevEl: `.${styles.brandNewModels__buttonPrev}`,
           }}
         >
-          <SwiperSlide>
-            <p>ANATOLII</p>
-          </SwiperSlide>
-          <SwiperSlide>
-            <p>YURII</p>
-          </SwiperSlide>
-          <SwiperSlide>
-            <p>VIKA</p>
-          </SwiperSlide>
-          <SwiperSlide>
-            <p>YULIA</p>
-          </SwiperSlide>
-          <SwiperSlide>
-            <p>VITALII</p>
-          </SwiperSlide>
-          <SwiperSlide>
-            <p>MYKOLA</p>
-          </SwiperSlide>
-          <SwiperSlide>
-            <p>ANATOLII</p>
-          </SwiperSlide>
-          <SwiperSlide>
-            <p>YURII</p>
-          </SwiperSlide>
-          <SwiperSlide>
-            <p>VIKA</p>
-          </SwiperSlide>
-          <SwiperSlide>
-            <p>YULIA</p>
-          </SwiperSlide>
-          <SwiperSlide>
-            <p>VITALII</p>
-          </SwiperSlide>
-          <SwiperSlide>
-            <p>MYKOLA</p>
-          </SwiperSlide>
-          <SwiperSlide>
-            <p>ANATOLII</p>
-          </SwiperSlide>
-          <SwiperSlide>
-            <p>YURII</p>
-          </SwiperSlide>
-          <SwiperSlide>
-            <p>VIKA</p>
-          </SwiperSlide>
-          <SwiperSlide>
-            <p>YULIA</p>
-          </SwiperSlide>
-          <SwiperSlide>
-            <p>VITALII</p>
-          </SwiperSlide>
-          <SwiperSlide>
-            <p>MYKOLA</p>
-          </SwiperSlide>
+          {sortedPhonesByPrice.map(visiblePhone => (
+            <SwiperSlide key={visiblePhone.id}>
+              <ProductCard item={visiblePhone} />
+            </SwiperSlide>
+          ))}
         </Swiper>
       </div>
     </div>
