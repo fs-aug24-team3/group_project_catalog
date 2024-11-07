@@ -1,7 +1,7 @@
 import { Description } from './Description';
 
 export interface Phone {
-  id: number;
+  id: string;
   category: 'phones';
   namespaceId: string;
   name: string;
