@@ -14,6 +14,16 @@ export const HomePage: React.FC = () => {
       <div className={styles.homePage__swiperBox}>
         <MainImageSlider />
       </div>
+
+      <div className={styles.newModels}>
+        <div>
+          <h2 className={styles.newModels__title}>
+            Brand new
+            <br />
+            models
+          </h2>
+        </div>
+      </div>
     </div>
   );
 };
