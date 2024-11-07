@@ -13,12 +13,21 @@ export const BackLink: React.FC<Props> = ({ className }) => {
 
   const onClickHandler = (event: MouseEvent<HTMLAnchorElement>) => {
     event.preventDefault();
-    navigate(-1);
+
+    const isExternal = !window.document.referrer.includes(
+      window.location.hostname,
+    );
+
+    if (isExternal) {
+      navigate('/');
+    } else {
+      navigate(-1);
+    }
   };
 
   return (
     <Link
-      to={''}
+      to={'/'}
       className={classNames(styles['back-link'], className)}
       onClick={onClickHandler}
     >
