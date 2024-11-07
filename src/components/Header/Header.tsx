@@ -18,10 +18,10 @@ export const Header: React.FC = () => {
     <header className={styles.header}>
       <NavLink
         to="/"
-        className={styles.headerlogolink}
+        className={styles.header__logolink}
         onClick={handleHideMenu}
       >
-        <img className={styles.headerlogo} src={mainLogo} alt="logo" />
+        <img className={styles.header__logo} src={mainLogo} alt="logo" />
       </NavLink>
       <nav className={styles.nav_bar}>
         <Navigation />
