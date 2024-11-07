@@ -1,0 +1,138 @@
+@import '../../styles/utils/variables';
+@import '../../styles/utils/mixins';
+
+.cart-item {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 16px;
+  border: 1px solid $elements-color;
+  border-radius: 16px;
+  background-color: $white-color;
+
+  @include on-tablet {
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 24px;
+    padding: 24px;
+  }
+
+  &__container {
+    display: flex;
+    align-items: center;
+
+    gap: 16px;
+
+    @include on-tablet {
+      gap: 24px;
+    }
+  }
+
+  &__remove-button {
+    width: 16px;
+    height: 16px;
+    border: none;
+    background-color: inherit;
+    padding: 0;
+    cursor: pointer;
+
+    background-image: url('../../images/Icons/removeFromCart.svg');
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    transition: transform 0.4s;
+
+    &:hover {
+      transform: scale(1.2);
+    }
+  }
+
+  &__image {
+    width: 80px;
+    object-fit: contain;
+    aspect-ratio: 1 / 1;
+  }
+
+  &__link {
+    font-size: 14px;
+    transition: transform 0.4s;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+
+  &__count-block {
+    display: flex;
+  }
+
+  &__count-button {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    cursor: pointer;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 1px solid $icons-color;
+    background-color: $white-color;
+
+    &::before,
+    &::after {
+      position: absolute;
+      content: '';
+      width: 11px;
+      height: 1px;
+      background-color: $primary-color;
+      border-radius: 1px;
+      top: 50%;
+      left: 50%;
+    }
+
+    &--minus::before,
+    &--minus::after {
+      transform: translate(-50%);
+    }
+
+    &--plus::after {
+      transform: translate(-50%);
+    }
+    &--plus::before {
+      transform: translate(-50%) rotate(90deg);
+    }
+
+    transition: border-color 0.3s;
+
+    &:hover {
+      border-color: $primary-color;
+    }
+
+    &:disabled {
+      border-color: $elements-color;
+
+      &::before,
+      &::after {
+        background-color: $elements-color;
+      }
+    }
+  }
+
+  &__quantity {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 32px;
+    height: 32px;
+  }
+
+  &__price {
+    width: 80px;
+
+    font-size: 22px;
+    font-weight: 800;
+    line-height: 30.8px;
+    text-align: right;
+  }
+}
