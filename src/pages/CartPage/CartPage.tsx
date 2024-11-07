@@ -1,13 +1,17 @@
 import styles from './CartPage.module.scss';
+import { useState } from 'react';
 import { CartItem } from '../../components/CartItem/CartItem';
 import { PageTitle } from '../../components/PageTitle';
 import { BackLink } from '../../components/NavigateBack';
+import { CheckoutModal } from '../../components/CheckoutModal';
+import { EmptyCart } from '../../components/EmptyCart';
 
 import { RootState } from '../../redux/store';
 import { useSelector } from 'react-redux';
-import { EmptyCart } from '../../components/EmptyCart';
 
 export const CartPage: React.FC = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   const cart = useSelector((state: RootState) => state.cart.cartItems);
 
   const totalQuantity = cart.reduce((count, p) => count + p.quantity, 0);
@@ -38,7 +42,12 @@ export const CartPage: React.FC = () => {
               <p className={styles['cart-page__items-counter']}>
                 Total for {totalQuantity} item{cart.length > 1 && 's'}
               </p>
-              <button className={styles['cart-page__checkout-button']}>
+              <button
+                onClick={() => {
+                  setIsModalOpen(true);
+                }}
+                className={styles['cart-page__checkout-button']}
+              >
                 Checkout
               </button>
             </div>
@@ -46,6 +55,14 @@ export const CartPage: React.FC = () => {
         </>
       ) : (
         <EmptyCart />
+      )}
+
+      {isModalOpen && (
+        <CheckoutModal
+          hide={() => {
+            setIsModalOpen(false);
+          }}
+        />
       )}
     </section>
   );
