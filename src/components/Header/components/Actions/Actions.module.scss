@@ -47,3 +47,36 @@
     }
   }
 }
+
+.bubble {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  left: 50%;
+  top: 50%;
+
+  border-radius: 50%;
+  border: 1px solid $white-color;
+  background-color: $accent-color;
+
+  font-family: Mont;
+  font-size: 9px;
+  font-weight: 700;
+  line-height: 11.5px;
+  text-align: center;
+  color: $white-color;
+
+  transform: translate(calc(-50% + 10px), -100%);
+
+  @include only-mobile {
+    transform: translate(calc(-50% + 10px), -100%);
+  }
+
+  @include on-desktop {
+    bottom: 32px;
+    left: 32px;
+  }
+}

@@ -6,13 +6,18 @@ import styles from './ProductList.module.scss';
 
 interface Props {
   items: Product[];
+  onRemoveFromFavourites?: (id: number) => void;
 }
 
-export const ProductList: FC<Props> = ({ items }) => {
+export const ProductList: FC<Props> = ({ items, onRemoveFromFavourites }) => {
   return (
     <ul className={styles.list}>
       {items.map(item => (
-        <ProductCard key={item.id} item={item} />
+        <ProductCard
+          key={item.id}
+          item={item}
+          onRemoveFromFavourites={onRemoveFromFavourites}
+        />
       ))}
     </ul>
   );
