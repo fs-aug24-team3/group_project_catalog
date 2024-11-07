@@ -3,12 +3,12 @@ import cartReducer, { CartState } from './slices/cartSlice';
 import { persistStore, persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 
-const PersistConfig = {
+const cartPersistConfig = {
   key: 'cart',
   storage,
 };
 
-const persistedCartReducer = persistReducer(PersistConfig, cartReducer);
+const persistedCartReducer = persistReducer(cartPersistConfig, cartReducer);
 
 export const store = configureStore({
   reducer: {
