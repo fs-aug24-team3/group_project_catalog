@@ -15,9 +15,9 @@ export const usePagination = (items: Product[], amount: number) => {
     value: perPage,
   });
 
-  const currentPage = searchParams.get('page') || '1';
-
   let itemsToShow = [...items];
+
+  const currentPage = searchParams.get('page') || '1';
 
   if (selectedPerPage.value !== 'All') {
     const indexOfLastItem = +currentPage * +selectedPerPage.value;
