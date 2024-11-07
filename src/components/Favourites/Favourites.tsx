@@ -5,6 +5,7 @@ import { ProductList } from '../ProductList';
 import styles from './Favourites.module.scss';
 import { PageTitle } from '../PageTitle';
 import { BreadCrumbs } from '../BreadCrumbs';
+import { EmptyFavourites } from '../EmptyFavourites';
 
 interface Props {
   title: string;
@@ -32,10 +33,12 @@ export const Favourites: FC<Props> = ({ title }) => {
       <BreadCrumbs />
       <PageTitle>{title}</PageTitle>
 
-      {favourites.length > 0 && (
+      {favourites.length > 0 ? (
         <p className={styles['favourites-page__amount']}>
           {favourites.length} {favourites.length === 1 ? 'item' : 'items'}
         </p>
+      ) : (
+        <EmptyFavourites />
       )}
 
       <ProductList
