@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from './HomePage.module.scss';
 import { MainImageSlider } from './components/MainImageSlider/MainImageSlider';
+import { BrandNewModels } from './components/BrandNewModels/BrandNewModels';
 
 export const HomePage: React.FC = () => {
   return (
@@ -16,13 +17,7 @@ export const HomePage: React.FC = () => {
       </div>
 
       <div className={styles.newModels}>
-        <div>
-          <h2 className={styles.newModels__title}>
-            Brand new
-            <br />
-            models
-          </h2>
-        </div>
+        <BrandNewModels />
       </div>
     </div>
   );
