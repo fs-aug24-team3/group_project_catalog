@@ -19,14 +19,14 @@ export const CartPage: React.FC = () => {
 
   return (
     <section className={`${styles['cart-page']}, ${styles.container}`}>
-      <BackLink className={styles['cart-page__back-link']}/>
+      <BackLink className={styles['cart-page__back-link']} />
       <PageTitle>Cart</PageTitle>
       {!!cart.length && (
         <div className={styles['cart-page__container']}>
           <ul className={styles['cart-page__list']}>
             {cart.map(item => (
-              <li>
-                <CartItem key={item.id} cartProduct={item}></CartItem>
+              <li key={item.id}>
+                <CartItem cartProduct={item}></CartItem>
               </li>
             ))}
           </ul>

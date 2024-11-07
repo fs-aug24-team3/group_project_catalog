@@ -1,1 +1,1 @@
-export * from './NavigateBack'
+export * from './NavigateBack';

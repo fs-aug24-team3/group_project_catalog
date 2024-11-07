@@ -5,7 +5,7 @@
   display: flex;
   flex-direction: column;
 
-  // width: 272px;
+  width: 288px;
 
   padding: 32px;
   gap: 8px;
@@ -20,6 +20,18 @@
   transition:
     transform 0.3s,
     box-shadow 0.3s;
+
+  @include on-tablet {
+    width: 288px;
+  }
+
+  @media (min-width: 768px) {
+    width: 230px;
+  }
+
+  @include on-desktop {
+    width: 272px;
+  }
 
   &:hover {
     box-shadow: 0 2px 16px 0 #0000001a;
