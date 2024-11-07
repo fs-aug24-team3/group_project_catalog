@@ -46,6 +46,14 @@
 .newModels {
   margin-top: 56px;
 
+  @include on-tablet {
+    margin-top: 64px;
+  }
+
+  @include on-desktop {
+    margin-top: 80px;
+  }
+
   &__title {
     font-size: 22px;
     font-weight: 800;
