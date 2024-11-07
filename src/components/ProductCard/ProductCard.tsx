@@ -9,13 +9,19 @@ import { CartProduct } from '../../types/CartProduct';
 import { useDispatch, useSelector } from 'react-redux';
 import { addItemToCart } from '../../redux/slices/cartSlice';
 import { RootState } from '../../redux/store';
+import { CardPrices } from '../CardPrices/CardPrices';
 
 interface Props {
   item: Product;
+  onSale?: boolean;
   onRemoveFromFavourites?: (id: number) => void;
 }
 
-export const ProductCard: FC<Props> = ({ item, onRemoveFromFavourites }) => {
+export const ProductCard: FC<Props> = ({
+  item,
+  onSale = true,
+  onRemoveFromFavourites,
+}) => {
   const [isPressed, setIsPressed] = useState(false);
 
   const { image, name, price, fullPrice, screen, capacity, ram, itemId } = item;
@@ -55,10 +61,7 @@ export const ProductCard: FC<Props> = ({ item, onRemoveFromFavourites }) => {
         </Link>
       </div>
 
-      <div className={styles.card__price}>
-        <p className={styles['card__price--value']}>${price}</p>
-        <p className={styles['card__price--old-value']}>${fullPrice}</p>
-      </div>
+      <CardPrices price={price} fullPrice={fullPrice} onSale={onSale} />
 
       <div className={styles.card__divider}></div>
 

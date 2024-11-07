@@ -83,39 +83,6 @@
     }
   }
 
-  &__price {
-    display: flex;
-    margin-top: 8px;
-    gap: 8px;
-
-    &--value {
-      font-size: 22px;
-      font-weight: 800;
-      color: $primary-color;
-    }
-
-    &--old-value {
-      position: relative;
-      isolation: isolate;
-
-      font-size: 22px;
-      font-weight: 500;
-      color: $secondary-color;
-
-      &::after {
-        content: '';
-        position: absolute;
-        top: 50%;
-        left: 0;
-        right: 0;
-        height: 2px;
-        mix-blend-mode: color-dodge;
-        background-color: $secondary-color;
-        transform: translateY(-50%);
-      }
-    }
-  }
-
   &__divider {
     height: 1px;
     background-color: $elements-color;

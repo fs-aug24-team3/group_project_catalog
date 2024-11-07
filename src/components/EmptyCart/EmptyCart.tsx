@@ -1,4 +1,4 @@
-import styles from './EmptyCart.module.scss'
+import styles from './EmptyCart.module.scss';
 import emptyCart from '../../../public/img/cart-is-empty.png';
 import { Link } from 'react-router-dom';
 
