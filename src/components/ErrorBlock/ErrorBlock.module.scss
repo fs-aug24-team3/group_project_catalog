@@ -66,9 +66,5 @@
   &__image {
     display: block;
     margin-bottom: 50px;
-
-    @include on-tablet {
-      // width: 100%;
-    }
   }
 }
