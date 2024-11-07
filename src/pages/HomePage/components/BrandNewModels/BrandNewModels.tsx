@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from './BrandNewModels.module.scss';
 
-import { Swiper, SwiperSlide, useSwiper } from 'swiper/react';
+import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
 
 import 'swiper/scss';
@@ -10,22 +10,13 @@ import 'swiper/scss/pagination';
 import 'swiper/scss/navigation';
 import { ProductCard } from '../../../../components/ProductCard';
 import { Product } from '../../../../types/Product';
+import { calculateWidth } from './calculateWidth';
 
 interface Props {
   phonesForSlider: Product[];
 }
 
 export const BrandNewModels: React.FC<Props> = ({ phonesForSlider }) => {
-  const swiper = useSwiper();
-
-  const goToNextSlide = () => {
-    swiper.slideNext();
-  };
-
-  const goToPrevSlide = () => {
-    swiper.slidePrev();
-  };
-
   const allphones = phonesForSlider;
 
   const visiblePhones = allphones.filter(phone => phone.year === 2022);
@@ -34,6 +25,22 @@ export const BrandNewModels: React.FC<Props> = ({ phonesForSlider }) => {
     return phone2.price - phone1.price;
   });
 
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
+  const itemsForScreen = calculateWidth(windowWidth);
+
   return (
     <div className={styles.brandNewModels}>
       <div className={styles.brandNewModels__TextAndButtons}>
@@ -41,25 +48,15 @@ export const BrandNewModels: React.FC<Props> = ({ phonesForSlider }) => {
           <h2 className={styles.brandNewModels__title}>Brand new models</h2>
         </div>
         <div className={styles.brandNewModels__buttonsWrapper}>
-          <button
-            className={styles.brandNewModels__buttonPrev}
-            onClick={goToPrevSlide}
-          >
-            {'<'}
-          </button>
-          <button
-            className={styles.brandNewModels__buttonNext}
-            onClick={goToNextSlide}
-          >
-            {'>'}
-          </button>
+          <button className={styles.brandNewModels__buttonPrev}>{'<'}</button>
+          <button className={styles.brandNewModels__buttonNext}>{'>'}</button>
         </div>
       </div>
-      <div>
+      <div className={styles.swiperNoHover}>
         <Swiper
           modules={[Navigation]}
           spaceBetween={16}
-          slidesPerView={4}
+          slidesPerView={itemsForScreen}
           loop={false}
           speed={1400}
           style={{ width: '100%', maxWidth: '100%' }}
@@ -67,10 +64,11 @@ export const BrandNewModels: React.FC<Props> = ({ phonesForSlider }) => {
             nextEl: `.${styles.brandNewModels__buttonNext}`,
             prevEl: `.${styles.brandNewModels__buttonPrev}`,
           }}
+          className={styles['swiper-slide']}
         >
           {sortedPhonesByPrice.map(visiblePhone => (
             <SwiperSlide key={visiblePhone.id}>
-              <ProductCard item={visiblePhone} />
+              <ProductCard item={visiblePhone} onSale={false} />
             </SwiperSlide>
           ))}
         </Swiper>

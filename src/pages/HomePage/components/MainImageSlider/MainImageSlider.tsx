@@ -9,7 +9,7 @@ import phoneImageDesktop from '../../../../images/mainSlider/bigNewPhone.png';
 import tabletImgTablet from '../../../../images/mainSlider/tabletImgTablet.png';
 import watchFotTablets from '../../../../images/mainSlider/bigNewWatch.png';
 
-import { Swiper, SwiperSlide, useSwiper } from 'swiper/react';
+import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination, Autoplay, Navigation } from 'swiper/modules';
 import 'swiper/scss';
 import 'swiper/scss/autoplay';
@@ -20,21 +20,9 @@ import styles from './MainImageSlider.module.scss';
 import './stylesForSwiper.css';
 
 export const MainImageSlider: React.FC = () => {
-  const swiper = useSwiper();
-
-  const goToNextSlide = () => {
-    swiper.slideNext();
-  };
-
-  const goToPrevSlide = () => {
-    swiper.slidePrev();
-  };
-
   return (
     <>
-      <button className={styles.swiperButtonPrev} onClick={goToPrevSlide}>
-        {'<'}
-      </button>
+      <button className={styles.swiperButtonPrev}>{'<'}</button>
       <Swiper
         modules={[Pagination, Autoplay, Navigation]}
         pagination={{
@@ -101,9 +89,7 @@ export const MainImageSlider: React.FC = () => {
 
         <div className={styles.swiperPagination}></div>
       </Swiper>
-      <button className={styles.swiperButtonNext} onClick={goToNextSlide}>
-        {'>'}
-      </button>
+      <button className={styles.swiperButtonNext}>{'>'}</button>
     </>
   );
 };
