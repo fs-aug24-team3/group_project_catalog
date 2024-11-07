@@ -5,12 +5,36 @@ import classNames from 'classnames';
 import favourites from '../../../../images/Icons/favourites.svg';
 import cart from '../../../../images/Icons/cart.svg';
 
+import { useSelector } from 'react-redux';
+import { RootState } from '../../../../redux/store';
+
+import { useEffect, useState } from 'react';
+import { Product } from '../../../../types/Product';
+
 interface Props {
   className?: string;
   onHideMenu?: () => void;
 }
 
 export const Actions: React.FC<Props> = ({ className, onHideMenu }) => {
+  const items = useSelector((state: RootState) => state.cart.cartItems);
+  const count = items.length;
+
+  const [favorites, setFavorites] = useState<Product[]>([]);
+
+  const onFavouriteUpdate = () => {
+    const savedFavorites = JSON.parse(
+      localStorage.getItem('favourites') || '[]',
+    );
+
+    setFavorites(savedFavorites);
+  };
+
+  useEffect(() => {
+    onFavouriteUpdate();
+    document.addEventListener('onFavouriteUpdate', onFavouriteUpdate);
+  }, []);
+
   return (
     <div className={`${styles.actions} ${className}`}>
       <NavLink
@@ -23,6 +47,7 @@ export const Actions: React.FC<Props> = ({ className, onHideMenu }) => {
         onClick={onHideMenu}
       >
         <img className={styles.logo} src={favourites} alt="favourites" />
+        <p className={styles.bubble}>{favorites.length}</p>
       </NavLink>
       <NavLink
         to="/cart"
@@ -33,7 +58,8 @@ export const Actions: React.FC<Props> = ({ className, onHideMenu }) => {
         }
         onClick={onHideMenu}
       >
-        <img className={styles.logo} src={cart} alt="cart" />
+        {count > 0 && <div className={styles.actions__counter}>{count}</div>}
+        <img className={styles.logo} src={cart} alt="cart"></img>
       </NavLink>
     </div>
   );

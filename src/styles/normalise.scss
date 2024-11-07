@@ -1,9 +1,13 @@
+@import './utils/mixins';
+@import './utils/variables';
+
 * {
   margin: 0;
   box-sizing: border-box;
   font-family: Mont, sans-serif;
   scroll-behavior: smooth;
- }
+  background-color: $hover-background-color;
+}
 
 a {
   color: inherit;
@@ -33,5 +37,6 @@ h1 {
 }
 
 ul {
+  list-style: none;
   padding: 0;
 }
