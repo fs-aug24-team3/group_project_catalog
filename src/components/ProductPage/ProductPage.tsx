@@ -30,7 +30,6 @@ export const ProductPage: FC<Props> = ({ title, fetchProduct }) => {
   const [error, setError] = useState('');
 
   const amount = product.length;
-  // const amount = 0;
 
   const [searchParams] = useSearchParams();
 
