@@ -13,6 +13,7 @@ export const BackLink: React.FC<Props> = ({ className }) => {
 
   const onClickHandler = (event: MouseEvent<HTMLAnchorElement>) => {
     event.preventDefault();
+
     navigate(-1);
   };
 
