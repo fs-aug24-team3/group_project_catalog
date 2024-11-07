@@ -2,6 +2,14 @@
 @import '../../styles/utils/variables';
 
 .homePage {
+  @include on-tablet {
+    padding-top: 8px;
+  }
+
+  @include on-desktop {
+    padding-top: 32px;
+  }
+
   &__title {
     font-size: 48px;
     line-height: 56px;
