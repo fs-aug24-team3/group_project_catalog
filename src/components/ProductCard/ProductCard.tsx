@@ -25,21 +25,21 @@ export const ProductCard: FC<Props> = ({ item, onRemoveFromFavourites }) => {
   const items = useSelector((state: RootState) => state.cart.cartItems);
 
   const handleAddToCart = () => {
-
     if (!isPressed) {
       const cartProduct: CartProduct = {
         id: itemId,
         quantity: 1,
         product: item,
       };
-      
+
       dispatch(addItemToCart(cartProduct));
       setIsPressed(true);
     }
   };
 
   useEffect(() => {
-    const isItemInCart = items.some(item => item.id === itemId);
+    const isItemInCart = items.some(itm => itm.id === itemId);
+
     setIsPressed(isItemInCart);
   }, [items, itemId]);
 
@@ -56,8 +56,8 @@ export const ProductCard: FC<Props> = ({ item, onRemoveFromFavourites }) => {
       </div>
 
       <div className={styles.card__price}>
-        <p className={styles['card__price--value']}>{price}</p>
-        <p className={styles['card__price--old-value']}>{fullPrice}</p>
+        <p className={styles['card__price--value']}>${price}</p>
+        <p className={styles['card__price--old-value']}>${fullPrice}</p>
       </div>
 
       <div className={styles.card__divider}></div>

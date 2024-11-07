@@ -45,3 +45,21 @@
   }
 }
 
+@mixin pagination-buttons-style {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 32px;
+  height: 32px;
+  border-radius: 48px;
+
+  text-decoration: none;
+  color: $primary-color;
+
+  background-color: transparent;
+
+  &:hover {
+    border-color: $primary-color;
+  }
+}
