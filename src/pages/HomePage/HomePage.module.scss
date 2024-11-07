@@ -2,8 +2,12 @@
 @import '../../styles/utils/variables';
 
 .homePage {
-  &__box {
-    @include top-margin;
+  @include on-tablet {
+    padding-top: 8px;
+  }
+
+  @include on-desktop {
+    padding-top: 32px;
   }
 
   &__title {
@@ -45,6 +49,14 @@
 
 .newModels {
   margin-top: 56px;
+
+  @include on-tablet {
+    margin-top: 64px;
+  }
+
+  @include on-desktop {
+    margin-top: 80px;
+  }
 
   &__title {
     font-size: 22px;

@@ -2,9 +2,9 @@ import { NavLink } from 'react-router-dom';
 
 import React, { useState } from 'react';
 import styles from './Header.module.scss';
-import mainLogo from '../../images/main_logo/Logo.svg';
 import burgerMenu from '../../images/Icons/burger-menu.svg';
 import closeMenu from '../../images/Icons/close.svg';
+import mainLogo from '../../images/main_logo/Logo.svg';
 import { Actions } from './components/Actions/Actions';
 import { Navigation } from './components/Navigation';
 import { Menu } from './components/Menu';

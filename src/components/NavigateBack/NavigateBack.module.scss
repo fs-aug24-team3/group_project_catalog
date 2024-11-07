@@ -1,0 +1,22 @@
+@import '../../styles/utils/variables';
+@import '../../styles/utils/mixins';
+
+.back-link {
+  display: flex;
+  width: 66px;
+  height: 16px;
+  gap: 4px;
+
+  &__icon {
+    width: 12px;
+    height: 12px;
+    display: flex;
+  }
+
+  &__text {
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 15px;
+    color: $secondary-color;
+  }
+}

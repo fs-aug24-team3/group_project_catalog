@@ -1,0 +1,44 @@
+@import '../../styles/utils/variables';
+@import '../../styles/utils/mixins';
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+
+  &__list {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    list-style: none;
+  }
+
+  &__item {
+    @include pagination-buttons-style;
+
+    border: 1px solid $elements-color;
+
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 21px;
+
+    &--arrows {
+      @include pagination-buttons-style;
+
+      border: 1px solid $icons-color;
+
+      &.disabled {
+        border-color: $elements-color;
+        cursor: none;
+        opacity: 0.5;
+      }
+    }
+  }
+
+  &__active {
+    background-color: $primary-color;
+    color: $white-color;
+  }
+}

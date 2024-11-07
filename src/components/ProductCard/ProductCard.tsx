@@ -1,9 +1,14 @@
-import { FC, useState } from 'react';
+import { FC, useEffect, useState } from 'react';
 import { AddToCartButton } from '../AddToCartButton';
 import { AddToFavouritesButton } from '../AddToFavouritesButton';
 import styles from './ProductCard.module.scss';
 import { Link } from 'react-router-dom';
 import { Product } from '../../types/Product';
+import { CartProduct } from '../../types/CartProduct';
+
+import { useDispatch, useSelector } from 'react-redux';
+import { addItemToCart } from '../../redux/slices/cartSlice';
+import { RootState } from '../../redux/store';
 
 interface Props {
   item: Product;
@@ -13,11 +18,30 @@ interface Props {
 export const ProductCard: FC<Props> = ({ item, onRemoveFromFavourites }) => {
   const [isPressed, setIsPressed] = useState(false);
 
-  const { image, name, price, fullPrice, screen, capacity, ram } = item;
+  const { image, name, price, fullPrice, screen, capacity, ram, itemId } = item;
+
+  const dispatch = useDispatch();
+
+  const items = useSelector((state: RootState) => state.cart.cartItems);
 
   const handleAddToCart = () => {
-    setIsPressed(prev => !prev);
+    if (!isPressed) {
+      const cartProduct: CartProduct = {
+        id: itemId,
+        quantity: 1,
+        product: item,
+      };
+
+      dispatch(addItemToCart(cartProduct));
+      setIsPressed(true);
+    }
   };
+
+  useEffect(() => {
+    const isItemInCart = items.some(itm => itm.id === itemId);
+
+    setIsPressed(isItemInCart);
+  }, [items, itemId]);
 
   return (
     <li className={styles.card}>
@@ -32,8 +56,8 @@ export const ProductCard: FC<Props> = ({ item, onRemoveFromFavourites }) => {
       </div>
 
       <div className={styles.card__price}>
-        <p className={styles['card__price--value']}>{price}</p>
-        <p className={styles['card__price--old-value']}>{fullPrice}</p>
+        <p className={styles['card__price--value']}>${price}</p>
+        <p className={styles['card__price--old-value']}>${fullPrice}</p>
       </div>
 
       <div className={styles.card__divider}></div>
