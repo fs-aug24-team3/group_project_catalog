@@ -4,8 +4,8 @@
   "private": true,
   "version": "0.0.0",
   "scripts": {
-    "start": "vite",
-    "build": "tsc -b && vite build",
+    "start": "mate-scripts start -l",
+    "build": "mate-scripts build",
     "style-format": "npx stylelint 'src/**/*.scss' --fix --allow-empty-input",
     "lint-js": "mate-scripts lint -j",
     "lint-css": "mate-scripts lint -s",
