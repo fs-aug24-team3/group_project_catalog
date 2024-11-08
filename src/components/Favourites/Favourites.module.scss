@@ -2,14 +2,6 @@
 @import '../../styles//utils/variables';
 
 .favourites-page {
-  &__wrapper {
-    @include on-desktop {
-      padding-bottom: 80px;
-    }
-
-    @include top-margin;
-  }
-
   &__amount {
     color: $secondary-color;
     font-size: 14px;
@@ -20,6 +12,10 @@
 
     @include on-tablet {
       margin-bottom: 40px;
+    }
+
+    @include on-tablet {
+      margin-bottom: 80px;
     }
   }
 }

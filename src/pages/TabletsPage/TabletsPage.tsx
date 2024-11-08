@@ -1,32 +1,10 @@
-import React, { useEffect, useState } from 'react';
+/* eslint-disable import/no-extraneous-dependencies */
+import React from 'react';
 
 import { getCatalogTablets } from '../../api/api';
-import { Product } from '../../types/Product';
-import { ProductPage } from '../../components/ProductPage';
-import { Loader } from '../../components/Loader';
+
+import { ProductPage } from '../../components/ProductPage/ProductPage';
 
 export const TabletsPage: React.FC = () => {
-  const [tablets, setTablets] = useState<Product[]>([]);
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState('');
-
-  useEffect(() => {
-    setError('');
-    setIsLoading(true);
-
-    getCatalogTablets()
-      .then(setTablets)
-      .catch(() => 'Unable to load tablets catalog')
-      .finally(() => setIsLoading(false));
-  }, []);
-
-  return (
-    <>
-      {isLoading && <Loader />}
-
-      {!isLoading && !error && !!tablets.length && (
-        <ProductPage title="Tablets" amount={tablets.length} items={tablets} />
-      )}
-    </>
-  );
+  return <ProductPage title="Tablets" fetchProduct={getCatalogTablets} />;
 };

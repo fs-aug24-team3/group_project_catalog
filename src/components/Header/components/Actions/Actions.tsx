@@ -2,7 +2,7 @@ import { NavLink } from 'react-router-dom';
 import styles from './Actions.module.scss';
 
 import classNames from 'classnames';
-import favourites from '../../../../images/Icons/favourites.svg';
+import favouritesIcon from '../../../../images/Icons/favourites.svg';
 import cart from '../../../../images/Icons/cart.svg';
 
 import { useSelector } from 'react-redux';
@@ -46,8 +46,12 @@ export const Actions: React.FC<Props> = ({ className, onHideMenu }) => {
         }
         onClick={onHideMenu}
       >
-        <img className={styles.logo} src={favourites} alt="favourites" />
-        <p className={styles.bubble}>{favorites.length}</p>
+        {favorites.length > 0 && (
+          <div className={styles.actions__counter}>{favorites.length}</div>
+        )}
+        {favorites && (
+          <img className={styles.logo} src={favouritesIcon} alt="favourites" />
+        )}
       </NavLink>
       <NavLink
         to="/cart"

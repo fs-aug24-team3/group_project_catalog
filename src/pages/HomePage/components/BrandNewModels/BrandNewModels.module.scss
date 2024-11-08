@@ -1,0 +1,88 @@
+@import '../../../../styles/utils/mixins';
+@import '../../../../styles/utils/variables';
+
+.brandNewModels {
+  &__TextAndButtons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    margin-bottom: 24px;
+  }
+
+  &__textWrapper {
+    @include only-mobile {
+      width: 136px;
+      height: 62px;
+    }
+  }
+
+  &__title {
+    font-size: 22px;
+    font-weight: 800;
+    line-height: 30.8px;
+    text-align: left;
+    color: $primary-color;
+
+    @include on-tablet {
+      font-size: 32px;
+      font-weight: 800;
+      line-height: 41px;
+      letter-spacing: -0.01em;
+    }
+  }
+
+  &__buttonsWrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    width: 80px;
+    height: 32px;
+  }
+
+  &__buttonPrev, &__buttonNext {
+    width: 32px;
+    height: 32px;
+
+    border: 1px solid;
+    border-radius: 48px;
+    border-color: $icons-color;
+    background-color: $hover-background-color;
+
+    color: $primary-color;
+  }
+
+  &__buttonPrev:disabled {
+    border-color: $elements-color;
+    color: $icons-color;
+    cursor: not-allowed;
+  }
+
+  &__buttonNext:disabled {
+    border-color: $elements-color;
+    color: $icons-color;
+    cursor: not-allowed;
+  }
+
+  &__buttonPrev:hover {
+    border-color: $primary-color;
+  }
+
+  &__buttonNext:hover {
+    border-color: $primary-color;
+  }
+
+  &__buttonPrev:disabled:hover {
+    border-color: $elements-color;
+    color: $icons-color;
+    cursor: not-allowed;
+  }
+
+  &__buttonNext:disabled:hover {
+    border-color: $elements-color;
+    color: $icons-color;
+    cursor: not-allowed;
+  }
+}

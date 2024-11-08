@@ -5,7 +5,7 @@
   display: flex;
   flex-direction: column;
 
-  // width: 272px;
+  width: 288px;
 
   padding: 32px;
   gap: 8px;
@@ -21,10 +21,16 @@
     transform 0.3s,
     box-shadow 0.3s;
 
-  &:hover {
-    box-shadow: 0 2px 16px 0 #0000001a;
-    transform: scale(1.1);
-    z-index: 1;
+  @include on-tablet {
+    width: 288px;
+  }
+
+  @media (min-width: 768px) {
+    width: 230px;
+  }
+
+  @include on-desktop {
+    width: 272px;
   }
 
   &__wrapper {
@@ -69,38 +75,9 @@
     @include on-tablet {
       width: unset;
     }
-  }
 
-  &__price {
-    display: flex;
-    margin-top: 8px;
-    gap: 8px;
-
-    &--value {
-      font-size: 22px;
-      font-weight: 800;
-      color: $primary-color;
-    }
-
-    &--old-value {
-      position: relative;
-      isolation: isolate;
-
-      font-size: 22px;
-      font-weight: 500;
-      color: $secondary-color;
-
-      &::after {
-        content: '';
-        position: absolute;
-        top: 50%;
-        left: 0;
-        right: 0;
-        height: 2px;
-        mix-blend-mode: color-dodge;
-        background-color: $secondary-color;
-        transform: translateY(-50%);
-      }
+    &:hover {
+      color: $accent-color;
     }
   }
 
@@ -141,5 +118,13 @@
     justify-content: space-between;
     gap: 8px;
     padding-top: 8px;
+  }
+}
+
+.abilityToScale {
+  &:hover {
+    box-shadow: 0 2px 16px 0 #0000001a;
+    transform: scale(1.1);
+    z-index: 1;
   }
 }

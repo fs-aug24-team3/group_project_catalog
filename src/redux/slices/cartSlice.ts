@@ -17,23 +17,32 @@ const cartSlice = createSlice({
       const existingItem = state.cartItems.find(
         item => item.id === action.payload.id,
       );
+
       if (!existingItem) {
         state.cartItems.push(action.payload);
       }
     },
     removeItemFromCart: (state, action: PayloadAction<string>) => {
+      // eslint-disable-next-line no-param-reassign
       state.cartItems = state.cartItems.filter(
         item => item.id !== action.payload,
       );
     },
+
+    clearAllItemsFromCart: state => {
+      // eslint-disable-next-line no-param-reassign
+      state.cartItems = [];
+    },
     incrementQuantity: (state, action: PayloadAction<string>) => {
-      const item = state.cartItems.find(item => item.id === action.payload);
+      const item = state.cartItems.find(itm => itm.id === action.payload);
+
       if (item && item.quantity <= 999) {
         item.quantity += 1;
       }
     },
     decrementQuantity: (state, action: PayloadAction<string>) => {
-      const item = state.cartItems.find(item => item.id === action.payload);
+      const item = state.cartItems.find(itm => itm.id === action.payload);
+
       if (item && item.quantity > 1) {
         item.quantity -= 1;
       }
@@ -46,7 +55,9 @@ export const {
   removeItemFromCart,
   incrementQuantity,
   decrementQuantity,
+  clearAllItemsFromCart,
 } = cartSlice.actions;
+
 export default cartSlice.reducer;
 
 export type { CartState };

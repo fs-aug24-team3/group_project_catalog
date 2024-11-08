@@ -97,3 +97,11 @@
 .swiperButtonNext {
   right: -48px;
 }
+
+.swiperButtonPrev:hover {
+  border-color: $primary-color;
+}
+
+.swiperButtonNext:hover {
+  border-color: $primary-color;
+}

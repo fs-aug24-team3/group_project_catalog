@@ -1,36 +1,12 @@
-import React, { useEffect, useState } from 'react';
+/* eslint-disable import/no-extraneous-dependencies */
+import React from 'react';
 
 import { getCatalogAccessories } from '../../api/api';
-import { Product } from '../../types/Product';
-import { ProductPage } from '../../components/ProductPage';
-import { Loader } from '../../components/Loader';
+
+import { ProductPage } from '../../components/ProductPage/ProductPage';
 
 export const AccessoriesPage: React.FC = () => {
-  const [accessories, setAccessories] = useState<Product[]>([]);
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState('');
-
-  useEffect(() => {
-    setError('');
-    setIsLoading(true);
-
-    getCatalogAccessories()
-      .then(setAccessories)
-      .catch(() => 'Unable to load accessories catalog')
-      .finally(() => setIsLoading(false));
-  }, []);
-
   return (
-    <>
-      {isLoading && <Loader />}
-
-      {!isLoading && !error && !!accessories.length && (
-        <ProductPage
-          title="Accessories"
-          amount={accessories.length}
-          items={accessories}
-        />
-      )}
-    </>
+    <ProductPage title="Accessories" fetchProduct={getCatalogAccessories} />
   );
 };
