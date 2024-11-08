@@ -1,1 +1,229 @@
-// write your code here
+@import '../../styles/utils/mixins';
+@import '../../styles/utils/variables';
+
+.contacts {
+  line-height: 21px;
+  color: $primary-color;
+
+  &__top {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    gap: 8px;
+    margin-bottom: 24px;
+
+    @include on-tablet {
+      margin-bottom: 40px;
+    }
+
+    &-link {
+      display: flex;
+      align-items: center;
+      height: 100%;
+      line-height: 0;
+    }
+  }
+
+  &__main-title {
+    margin-bottom: 30px;
+    text-align: center;
+    font-size: 48px;
+    line-height: 56px;
+    letter-spacing: -0.01em;
+
+    @include only-mobile {
+      font-size: 32px;
+      line-height: 41px;
+    }
+  }
+
+  &__icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 40px;
+    margin-bottom: 10px;
+
+    &-element {
+      width: 32px;
+      height: 32px;
+
+      @include on-tablet {
+        width: 48px;
+        height: 48px;
+      }
+
+      @include on-desktop {
+        width: 60px;
+        height: 60px;
+      }
+    }
+  }
+
+  &__store {
+    display: flex;
+
+    @include on-desktop {
+      flex-direction: row;
+      margin-bottom: 50px;
+    }
+
+    &-img {
+      display: none;
+    }
+
+    @include on-tablet {
+      &-img {
+        display: flex;
+
+        width: 40%;
+        height: 40%;
+        padding: 10px;
+        border-radius: 30px;
+      }
+      &-text {
+        padding-top: 30px;
+        margin-right: 30px;
+      }
+    }
+
+    @include on-desktop {
+      &-img {
+        display: flex;
+        width: 750px;
+        height: 550px;
+        padding: 10px;
+        border-radius: 30px;
+      }
+
+      &-text {
+        padding-top: 50px;
+      }
+    }
+
+
+  }
+
+  &__block-contacts {
+    padding-inline: 10px;
+  }
+
+  &__contact-item {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+  }
+
+  &__title {
+    display: flex;
+    margin-bottom: 15px;
+
+    font-size: 32px;
+    line-height: 41px;
+
+    @include only-mobile {
+      font-size: 22px;
+      line-height: 31px;
+      letter-spacing: 0;
+    }
+  }
+
+  &_list {
+    display: flex;
+
+    @include only-mobile {
+      flex-direction: column;
+    }
+
+    @include on-tablet {
+      flex-wrap: wrap;
+      gap: 5px;
+    }
+
+    @include on-desktop {
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+  }
+
+  &__row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+
+    &-icon {
+      width: 20px;
+      height: 20px;
+      margin-inline: 10px;
+      
+      @include on-tablet {
+        width: 28px;
+        height: 28px;
+      }
+
+      @include on-desktop {
+        width: 32px;
+        height: 32px;
+      }
+    }
+
+    &-contact {
+      display: flex;
+
+      &:hover {
+        color: #116062;
+        text-decoration: underline;
+      }
+    }
+  }
+  &__store-item {
+    margin-bottom: 15px;
+    padding-inline: 10px;
+  }
+
+  &__store-name {
+    margin-bottom: 5px;
+    padding-right: 5px;
+    font-size: 18px;
+    font-weight: 600;
+  }
+
+  &__store-description {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.5;
+    color: $secondary-color;
+  }
+
+  &__store-map {
+    margin-bottom: 50px;
+
+    @include on-desktop {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+
+  &__map-container {
+    display: flex;
+    justify-content: space-evenly;
+
+    height: 300px;
+    width: 100%;
+    border: 2px solid $primary-color;
+    border-radius: 20px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+
+    @include on-tablet {
+      height: 350px;
+      width: 100%;
+    }
+
+    @include on-desktop {
+      height: 500px;
+      width: 95%;
+    }
+  }
+}
