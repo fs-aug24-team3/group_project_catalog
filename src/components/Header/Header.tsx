@@ -16,7 +16,11 @@ export const Header: React.FC = () => {
 
   return (
     <header className={styles.header}>
-      <NavLink to="/" className={styles.header__logolink} onClick={handleHideMenu}>
+      <NavLink
+        to="/"
+        className={styles.header__logolink}
+        onClick={handleHideMenu}
+      >
         <img className={styles.header__logo} src={mainLogo} alt="logo" />
       </NavLink>
       <nav className={styles.nav_bar}>
