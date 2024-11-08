@@ -10,7 +10,7 @@ export const HomePage: React.FC = () => {
   const [phonesForSlider, setPhonesForSlider] = useState<Product[]>([]);
   const [isLoading, setIsLoading] = useState(false);
 
-  const brandNewModelsTitle = 'Brand new models';
+  const brandNewModelsTitl = 'Brand new models';
 
   const hotPricesTitle = 'Hot prices';
 
@@ -41,7 +41,7 @@ export const HomePage: React.FC = () => {
         <div className={styles.homePage__newModels}>
           <CardsSlider
             productsForSlider={phonesForSlider}
-            sliderTitle={brandNewModelsTitle}
+            sliderTitle={brandNewModelsTitl}
             productYear={2022}
             onSale={false}
           />

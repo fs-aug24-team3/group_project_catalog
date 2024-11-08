@@ -3,6 +3,9 @@ import styles from './AddToFavouritesButton.module.scss';
 import { Link } from 'react-router-dom';
 import { Product } from '../../types/Product';
 
+import FavouritesIcon from '../../images/Icons/favourites.svg';
+import FavouritesIconActive from '../../images/Icons/favourites-active.svg';
+
 type Props = {
   item: Product;
   onRemoveFromFavourites?: (id: number) => void;
@@ -55,11 +58,7 @@ export const AddToFavouritesButton: FC<Props> = ({
       onClick={handleFavourite}
     >
       <img
-        src={
-          isFavourited
-            ? '../../../src/images/Icons/favourites-active.svg'
-            : '../../../src/images/Icons/favourites.svg'
-        }
+        src={isFavourited ? FavouritesIconActive : FavouritesIcon}
         alt="favourites-icon"
       />
     </Link>
