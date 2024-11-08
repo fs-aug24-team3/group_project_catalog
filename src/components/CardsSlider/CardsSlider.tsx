@@ -17,6 +17,7 @@ interface Props {
   sliderTitle: string;
   productYear?: number;
   onSale?: boolean;
+  sortingOrder?: 'asc' | 'desc';
 }
 
 export const CardsSlider: React.FC<Props> = ({
@@ -24,6 +25,7 @@ export const CardsSlider: React.FC<Props> = ({
   sliderTitle,
   productYear = 2022,
   onSale = true,
+  sortingOrder = 'desc',
 }) => {
   const allProducts = productsForSlider;
 
@@ -33,6 +35,10 @@ export const CardsSlider: React.FC<Props> = ({
 
   const sortedProductsByPrice = [...visibleProducts].sort(
     (product1, product2) => {
+      if (sortingOrder === 'asc') {
+        return product1.price - product2.price;
+      }
+
       return product2.price - product1.price;
     },
   );

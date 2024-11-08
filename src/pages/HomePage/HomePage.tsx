@@ -12,6 +12,8 @@ export const HomePage: React.FC = () => {
 
   const brandNewModelsTitle = 'Brand new models';
 
+  const hotPricesTitle = 'Hot prices';
+
   useEffect(() => {
     setIsLoading(true);
 
@@ -49,6 +51,18 @@ export const HomePage: React.FC = () => {
       <div className={styles.homePage__categories}>
         <Categories />
       </div>
+
+      {!isLoading && (
+        <div className={styles.homePage__newModels}>
+          <CardsSlider
+            productsForSlider={phonesForSlider}
+            sliderTitle={hotPricesTitle}
+            productYear={2020}
+            onSale={true}
+            sortingOrder="asc"
+          />
+        </div>
+      )}
     </div>
   );
 };
