@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import styles from './BrandNewModels.module.scss';
+import styles from './CardsSlider.module.scss';
 
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
@@ -8,22 +8,34 @@ import 'swiper/scss';
 import 'swiper/scss/autoplay';
 import 'swiper/scss/pagination';
 import 'swiper/scss/navigation';
-import { ProductCard } from '../../../../components/ProductCard';
-import { Product } from '../../../../types/Product';
+import { Product } from '../../types/Product';
+import { ProductCard } from '../ProductCard';
 import { calculateWidth } from './calculateWidth';
 
 interface Props {
-  phonesForSlider: Product[];
+  productsForSlider: Product[];
+  sliderTitle: string;
+  productYear?: number;
+  onSale?: boolean;
 }
 
-export const BrandNewModels: React.FC<Props> = ({ phonesForSlider }) => {
-  const allphones = phonesForSlider;
+export const CardsSlider: React.FC<Props> = ({
+  productsForSlider,
+  sliderTitle,
+  productYear = 2022,
+  onSale = true,
+}) => {
+  const allProducts = productsForSlider;
 
-  const visiblePhones = allphones.filter(phone => phone.year === 2022);
+  const visibleProducts = allProducts.filter(
+    product => product.year === productYear,
+  );
 
-  const sortedPhonesByPrice = [...visiblePhones].sort((phone1, phone2) => {
-    return phone2.price - phone1.price;
-  });
+  const sortedProductsByPrice = [...visibleProducts].sort(
+    (product1, product2) => {
+      return product2.price - product1.price;
+    },
+  );
 
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
@@ -45,7 +57,7 @@ export const BrandNewModels: React.FC<Props> = ({ phonesForSlider }) => {
     <div className={styles.brandNewModels}>
       <div className={styles.brandNewModels__TextAndButtons}>
         <div className={styles.brandNewModels__textWrapper}>
-          <h2 className={styles.brandNewModels__title}>Brand new models</h2>
+          <h2 className={styles.brandNewModels__title}>{sliderTitle}</h2>
         </div>
         <div className={styles.brandNewModels__buttonsWrapper}>
           <button className={styles.brandNewModels__buttonPrev}>{'<'}</button>
@@ -66,11 +78,11 @@ export const BrandNewModels: React.FC<Props> = ({ phonesForSlider }) => {
           }}
           className={styles['swiper-slide']}
         >
-          {sortedPhonesByPrice.map(visiblePhone => (
+          {sortedProductsByPrice.map(visiblePhone => (
             <SwiperSlide key={visiblePhone.id}>
               <ProductCard
                 item={visiblePhone}
-                onSale={false}
+                onSale={onSale}
                 posibilityToScale={false}
               />
             </SwiperSlide>

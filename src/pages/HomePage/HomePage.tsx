@@ -1,13 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import styles from './HomePage.module.scss';
-import { MainImageSlider } from './components/MainImageSlider/MainImageSlider';
-import { BrandNewModels } from './components/BrandNewModels/BrandNewModels';
+import { MainImageSlider } from './components/MainImageSlider';
 import { Product } from '../../types/Product';
 import { getCatalogPhones } from '../../api/api';
+import { CardsSlider } from '../../components/CardsSlider';
+import { Categories } from './components/Categories';
 
 export const HomePage: React.FC = () => {
   const [phonesForSlider, setPhonesForSlider] = useState<Product[]>([]);
   const [isLoading, setIsLoading] = useState(false);
+
+  const brandNewModelsTitle = 'Brand new models';
 
   useEffect(() => {
     setIsLoading(true);
@@ -33,10 +36,19 @@ export const HomePage: React.FC = () => {
       </div>
 
       {!isLoading && (
-        <div className={styles.newModels}>
-          <BrandNewModels phonesForSlider={phonesForSlider} />
+        <div className={styles.homePage__newModels}>
+          <CardsSlider
+            productsForSlider={phonesForSlider}
+            sliderTitle={brandNewModelsTitle}
+            productYear={2022}
+            onSale={false}
+          />
         </div>
       )}
+
+      <div className={styles.homePage__categories}>
+        <Categories />
+      </div>
     </div>
   );
 };
