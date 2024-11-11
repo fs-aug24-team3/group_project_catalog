@@ -3,6 +3,7 @@ import { Actions } from '../Actions/Actions';
 import { Navigation } from '../Navigation/Navigation';
 import styles from './Menu.module.scss';
 import { useEffect } from 'react';
+import { ThemeSwitch } from '../../../ThemeSwitch';
 
 interface Props {
   isOpen: boolean;
@@ -27,7 +28,13 @@ export const Menu: React.FC<Props> = ({ isOpen, onHideMenu }) => {
       className={classNames(styles.Menu, { [styles['Menu--is-open']]: isOpen })}
     >
       <Navigation className={styles.Menu__navigation} onHideMenu={onHideMenu} />
-      <Actions className={styles.Menu__actions} onHideMenu={onHideMenu} />
+      <div>
+        <div className={styles['Menu__switch-container']}>
+          <span>Dark Mode</span>
+          <ThemeSwitch />
+        </div>
+        <Actions className={styles.Menu__actions} onHideMenu={onHideMenu} />
+      </div>
     </aside>
   );
 };
