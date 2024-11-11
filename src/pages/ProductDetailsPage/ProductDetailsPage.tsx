@@ -64,6 +64,7 @@ export const ProductDetailsPage = () => {
     if (selectedColor && selectedCapacity) {
       const newProduct = products.find(
         product =>
+          product.id === itemId &&
           product.color === selectedColor &&
           product.capacity === selectedCapacity,
       );
@@ -72,7 +73,7 @@ export const ProductDetailsPage = () => {
         setProductWithDetails(newProduct);
       }
     }
-  }, [selectedCapacity, selectedColor, products]);
+  }, [selectedCapacity, selectedColor, products, itemId]);
 
   return (
     <div className={styles.details}>
