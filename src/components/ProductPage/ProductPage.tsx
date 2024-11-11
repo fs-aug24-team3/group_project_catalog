@@ -33,7 +33,7 @@ export const ProductPage: FC<Props> = ({ title, fetchProduct }) => {
 
   const [searchParams] = useSearchParams();
 
-  const sort = searchParams.get('sort') || 'Newest';
+  const sort = searchParams.get('sort') || 'newest';
 
   const filteredProducts = useMemo(
     () => getFilteredProducts(product, sort),
@@ -80,7 +80,7 @@ export const ProductPage: FC<Props> = ({ title, fetchProduct }) => {
 
       {!isLoading && !error && !!amount && (
         <div className={styles['products-page__wrapper']}>
-          <BreadCrumbs />
+          <BreadCrumbs title={title} />
 
           <PageTitle>{title}</PageTitle>
 

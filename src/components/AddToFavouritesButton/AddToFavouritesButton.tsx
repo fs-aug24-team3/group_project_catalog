@@ -5,10 +5,11 @@ import { Product } from '../../types/Product';
 
 import FavouritesIcon from '../../images/Icons/favourites.svg';
 import FavouritesIconActive from '../../images/Icons/favourites-active.svg';
+import { DeatailedProduct } from '../../types/DetailedProduct';
 
 type Props = {
-  item: Product;
-  onRemoveFromFavourites?: (id: number) => void;
+  item: Product | DeatailedProduct;
+  onRemoveFromFavourites?: (id: number | string) => void;
 };
 
 export const AddToFavouritesButton: FC<Props> = ({

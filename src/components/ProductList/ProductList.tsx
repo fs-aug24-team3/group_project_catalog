@@ -6,7 +6,7 @@ import styles from './ProductList.module.scss';
 
 interface Props {
   items: Product[];
-  onRemoveFromFavourites?: (id: number) => void;
+  onRemoveFromFavourites?: (id: number | string) => void;
 }
 
 export const ProductList: FC<Props> = ({ items, onRemoveFromFavourites }) => {
