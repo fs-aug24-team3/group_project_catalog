@@ -16,15 +16,25 @@
   letter-spacing: 0.04em;
   text-align: left;
   height: calc(100vh - 47px);
-  background-color: $white-color;
+  background-color: var(--surface-color);
 
   transition: 0.2s linear;
+
   &--is-open {
     left: 0;
   }
 
   &__navigation {
     margin-top: 24px;
+  }
+
+  &__switch-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 24px;
+    gap: 18px;
+    color: var(--secondary-color);
   }
 
   &__actions {

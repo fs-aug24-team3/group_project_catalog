@@ -23,7 +23,7 @@
     font-weight: 800;
     line-height: 30.8px;
     text-align: left;
-    color: $primary-color;
+    color: var(--primary-color);
 
     @include on-tablet {
       font-size: 32px;
@@ -42,59 +42,40 @@
     height: 32px;
   }
 
-  &__buttonPrev, &__buttonNext {
+  &__buttonPrev,
+  &__buttonNext {
     width: 32px;
     height: 32px;
 
     border: 1px solid;
     border-radius: 48px;
-    border-color: $icons-color;
-    background-color: $hover-background-color;
 
-    color: $primary-color;
-  }
+    border-color: var(--icons-color);
+    background-color: var(--hover-background-color);
 
-  &__buttonPrev:disabled {
-    border-color: $elements-color;
-    color: $icons-color;
-    cursor: not-allowed;
-  }
+    color: var(--primary-color);
 
-  &__buttonNext:disabled {
-    border-color: $elements-color;
-    color: $icons-color;
-    cursor: not-allowed;
-  }
+    &:hover {
+      border-color: var(--primary-color);
+      cursor: pointer;
+    }
 
-  &__buttonPrev:hover {
-    border-color: $primary-color;
-    cursor: pointer;
-  }
+    &:active {
+      border-color: var(--primary-color);
+      cursor: pointer;
+    }
 
-  &__buttonNext:hover {
-    border-color: $primary-color;
-    cursor: pointer;
-  }
+    &:disabled {
+      border-color: var(--elements-color);
+      color: var(--icons-color);
 
-  &__buttonPrev:active {
-    background-color: $icons-color;
-    cursor: pointer;
-  }
+      cursor: not-allowed;
 
-  &__buttonNext:active {
-    background-color: $icons-color;
-    cursor: pointer;
-  }
-
-  &__buttonPrev:disabled:hover {
-    border-color: $elements-color;
-    color: $icons-color;
-    cursor: not-allowed;
-  }
-
-  &__buttonNext:disabled:hover {
-    border-color: $elements-color;
-    color: $icons-color;
-    cursor: not-allowed;
+      &:hover {
+        border-color: var(--elements-color);
+        color: var(--icons-color);
+        cursor: not-allowed;
+      }
+    }
   }
 }

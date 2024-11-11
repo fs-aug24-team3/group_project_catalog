@@ -1,9 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import styles from './ContactUsModal.module.scss';
+import { RootState } from '../../redux/store';
+import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 import closeIcon from '../../images/Icons/close.svg';
+import closeIconDark from '../../images/Icons/close-dark.svg';
 import contactIcon from '../../images/Icons/phone-call.svg';
+import contactIconDark from '../../images/Icons/phone-call-dark.svg';
 
 export const ContactUsModal: React.FC = () => {
   const [isModalOpen, setModalOpen] = useState(false);
@@ -11,6 +15,7 @@ export const ContactUsModal: React.FC = () => {
   const [isRequestSent, setRequestSent] = useState(false);
   const [timer, setTimer] = useState(30);
   const [showTimer, setShowTimer] = useState(true);
+  const theme = useSelector((state: RootState) => state.theme.theme);
 
   useEffect(() => {
     const lastRequest = localStorage.getItem('lastRequest');
@@ -90,7 +95,10 @@ export const ContactUsModal: React.FC = () => {
         className={styles['contact-us__button']}
         onClick={handleOpenModal}
       >
-        <img src={contactIcon} alt="Contact Us" />
+        <img
+          src={theme === 'light' ? contactIcon : contactIconDark}
+          alt="Contact Us"
+        />
         Contact Us
       </Link>
       {isModalOpen && (
@@ -101,7 +109,10 @@ export const ContactUsModal: React.FC = () => {
               className={styles['modal__close-button']}
               onClick={handleCloseModal}
             >
-              <img src={closeIcon} alt="Close" />
+              <img
+                src={theme === 'light' ? closeIcon : closeIconDark}
+                alt="Close"
+              />
             </Link>
             {!isRequestSent ? (
               <>

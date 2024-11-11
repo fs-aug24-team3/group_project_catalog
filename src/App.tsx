@@ -10,12 +10,12 @@ export const App: React.FC = () => {
   return (
     <div id="page-top" className={styles.page}>
       <Header />
-      <div className={styles.container}>
+      <main className={styles.container}>
         <div className={styles.outletWrapper}>
           <Outlet />
         </div>
         <ContactUsModal />
-      </div>
+      </main>
       <Footer />
     </div>
   );

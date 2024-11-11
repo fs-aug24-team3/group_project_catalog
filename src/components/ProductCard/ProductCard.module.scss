@@ -9,10 +9,10 @@
 
   padding: 32px;
   gap: 8px;
-  border: 1px solid $elements-color;
+  border: 1px solid var(--elements-color);
   border-radius: 8px;
 
-  background-color: $white-color;
+  background-color: var(--surface-color);
 
   list-style: none;
   font-family: Mont, sans-serif;
@@ -70,20 +70,20 @@
     line-height: 21px;
     font-weight: 600;
     font-size: 14px;
-    color: $primary-color;
+    color: var(--primary-color);
 
     @include on-tablet {
       width: unset;
     }
 
     &:hover {
-      color: $accent-color;
+      color: var(--accent-color);
     }
   }
 
   &__divider {
     height: 1px;
-    background-color: $elements-color;
+    background-color: var(--elements-color);
     margin: 8px 0;
   }
 
@@ -101,14 +101,14 @@
         font-size: 12px;
         font-weight: 600;
         line-height: 15.34px;
-        color: $secondary-color;
+        color: var(--secondary-color);
       }
 
       &-value {
         font-size: 12px;
         font-weight: 700;
         line-height: 15.34px;
-        color: $primary-color;
+        color: var(--primary-color);
       }
     }
   }

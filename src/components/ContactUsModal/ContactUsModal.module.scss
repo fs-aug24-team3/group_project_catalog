@@ -14,16 +14,17 @@
     gap: 4px;
 
     border-radius: 18px;
-    border: 1px solid $primary-color;
-    background-color: $primary-color;
+    border: 1px solid var(--primary-color);
+    background-color: var(--primary-color);
     overflow: hidden;
     z-index: 999;
 
     white-space: nowrap;
     font-size: 13px;
-    color: $white-color;
+    color: var(--surface-color);
 
     transition: width 0.3s ease;
+    user-select: none;
 
     @include on-tablet {
       bottom: 90px;
@@ -41,7 +42,7 @@
 
     &:hover {
       width: 136px;
-      box-shadow: 0 3px 13px $shadow-color;
+      box-shadow: 0 3px 13px var(--shadow-color);
     }
   }
 }
@@ -58,7 +59,7 @@
   width: 100vw;
   height: 100vh;
 
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: var(--shadow-color);
   z-index: 1000;
 
   &__content {
@@ -74,7 +75,7 @@
     width: 90%;
 
     border-radius: 8px;
-    background-color: #fff;
+    background-color: var(--surface-color);
   }
 
   &__title {
@@ -103,14 +104,16 @@
       height: 54px;
       width: 275px;
       padding: 13px 20px;
-      border: 1px solid $secondary-color;
+      border: 1px solid var(--secondary-color);
 
+      color: #000000;
       font-size: 16px;
 
       @include only-mobile {
         height: 54px;
         width: 100%;
       }
+
       &::placeholder {
         opacity: 0.4;
       }
@@ -122,11 +125,11 @@
       justify-content: center;
       height: 54px;
       width: 250px;
-      border: 1px solid $accent-color;
+      border: 1px solid var(--accent-color);
       border: none;
 
-      background-color: $accent-color;
-      color: $white-color;
+      background-color: var(--accent-color);
+      color: var(--white-color);
 
       @include only-mobile {
         height: 54px;
@@ -134,7 +137,7 @@
       }
 
       &:hover {
-        box-shadow: 0 3px 13px $shadow-color;
+        box-shadow: 0 3px 13px var(--shadow-color);
       }
     }
 

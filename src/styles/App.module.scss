@@ -1,8 +1,8 @@
 @import './utils/mixins';
 @import './utils/variables';
 
-.page{
-  background-color: $hover-background-color;
+.page {
+  background-color: var(--hover-background-color);
 }
 
 .container {
