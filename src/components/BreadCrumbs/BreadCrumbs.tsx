@@ -2,6 +2,7 @@ import backToHome from '../../images/Icons/home.svg';
 import backToHomeDark from '../../images/Icons/homeDark.svg';
 import backToPage from '../../images/Icons/arrow_right.svg';
 import { Link, NavLink, useLocation } from 'react-router-dom';
+import { Link, NavLink, useLocation } from 'react-router-dom';
 
 import styles from './BreadCrumbs.module.scss';
 import cn from 'classnames';
@@ -48,7 +49,37 @@ export const BreadCrumbs: React.FC<Props> = ({
       </Link>
 
       <div className={styles.breadcrumbs__arrow}>
+      <div className={styles.breadcrumbs__arrow}>
         <img src={backToPage} alt="back to page" />
+      </div>
+
+      <NavLink
+        className={cn(styles.breadcrumbs__link, {
+          [styles['breadcrumbs__link--active']]: !showThirdPart,
+        })}
+        to={`/${breadCrumbsLink}`}
+      >
+        {breadCrumbsTitle}
+      </NavLink>
+
+      {showThirdPart && (
+        <>
+          <div className={styles.breadcrumbs__arrow}>
+            <img src={backToPage} alt="back to page" />
+          </div>
+
+          <NavLink
+            className={({ isActive }) =>
+              cn(styles.breadcrumbs__link, {
+                [styles['breadcrumbs__link--active']]: isActive,
+              })
+            }
+            to=""
+          >
+            {theThirdPart}
+          </NavLink>
+        </>
+      )}
       </div>
 
       <NavLink
