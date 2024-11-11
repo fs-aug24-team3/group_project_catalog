@@ -107,12 +107,12 @@
     }
 
     &:active {
-      background-color: $icons-color;
+      background-color: var(--icons-color);
       cursor: pointer;
     }
 
     &:active {
-      background-color: $icons-color;
+      background-color: var(--icons-color);
       cursor: pointer;
     }
   }
