@@ -1,10 +1,12 @@
 import backToHome from '../../images/Icons/home.svg';
+import backToHomeDark from '../../images/Icons/homeDark.svg';
 import backToPage from '../../images/Icons/arrow_right.svg';
 import { Link, NavLink, useLocation } from 'react-router-dom';
-
 import styles from './BreadCrumbs.module.scss';
 import cn from 'classnames';
 import React from 'react';
+import { RootState } from '../../redux/store';
+import { useSelector } from 'react-redux';
 
 interface Props {
   title?: string;
@@ -15,6 +17,7 @@ export const BreadCrumbs: React.FC<Props> = ({
   title = 'Phones',
   theThirdPart = '',
 }) => {
+  const theme = useSelector((state: RootState) => state.theme.theme);
   let breadCrumbsTitle = 'Phones';
 
   if (title !== 'Mobile phones') {
@@ -40,7 +43,10 @@ export const BreadCrumbs: React.FC<Props> = ({
   return (
     <div className={styles.breadcrumbs}>
       <Link to="/" className={styles.breadcrumbs__link}>
-        <img src={backToHome} alt="back to home page" />
+        <img
+          src={theme === 'light' ? backToHome : backToHomeDark}
+          alt="back to home page"
+        />
       </Link>
 
       <div className={styles.breadcrumbs__arrow}>
@@ -61,7 +67,6 @@ export const BreadCrumbs: React.FC<Props> = ({
           <div className={styles.breadcrumbs__arrow}>
             <img src={backToPage} alt="back to page" />
           </div>
-
           <NavLink
             className={({ isActive }) =>
               cn(styles.breadcrumbs__link, {
