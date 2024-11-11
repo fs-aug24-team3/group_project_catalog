@@ -22,7 +22,7 @@ export const Favourites: FC<Props> = ({ title }) => {
     setFavourites(savedFavourites);
   }, []);
 
-  const removeFromFavourites = (id: number) => {
+  const removeFromFavourites = (id: number | string) => {
     setFavourites(prevFavourites =>
       prevFavourites.filter(item => item.id !== id),
     );
