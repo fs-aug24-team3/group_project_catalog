@@ -30,6 +30,16 @@ export const ProductDetailsPage = () => {
   const { pathname } = useLocation();
   const catalog = pathname.split('/')[1];
 
+  let breadCrumbsTitle = '';
+
+  for (let i = 0; i < catalog.length; i++) {
+    if (i === 0) {
+      breadCrumbsTitle += catalog[i].toUpperCase();
+    } else {
+      breadCrumbsTitle += catalog[i];
+    }
+  }
+
   const toShowDetails =
     productsForSlider.length !== 0 &&
     productWithDetails &&
@@ -77,7 +87,10 @@ export const ProductDetailsPage = () => {
 
   return (
     <div className={styles.details}>
-      <BreadCrumbs />
+      <BreadCrumbs
+        title={breadCrumbsTitle}
+        theThirdPart={productWithDetails?.name}
+      />
 
       <BackLink />
 
