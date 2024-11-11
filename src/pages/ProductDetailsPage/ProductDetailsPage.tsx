@@ -73,7 +73,7 @@ export const ProductDetailsPage = () => {
         setProductWithDetails(newProduct);
       }
     }
-  }, [selectedCapacity, selectedColor]);
+  }, [selectedCapacity, selectedColor, products, itemId]);
 
   return (
     <div className={styles.details}>
