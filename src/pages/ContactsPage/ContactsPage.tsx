@@ -91,7 +91,7 @@ export const ContactsPage = () => {
                       className={styles['contacts__row-icon']}
                     />
                     <a
-                      href={contact}
+                      href={`tel:${contact.replace(' ', '')}`}
                       className={styles['contacts__row-contact']}
                     >
                       {contact}

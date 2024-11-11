@@ -55,9 +55,3 @@ export const RightsPage = () => {
     </div>
   );
 };
-
-{
-  /* // export const RightsPage = () => {
-//   return <div>RightsPage</div>;
-// }; */
-}
