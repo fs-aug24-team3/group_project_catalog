@@ -44,5 +44,7 @@ export const getCatalogAccessories = () => {
 };
 
 export const getAllProducts = (catalog: string) => {
-  return get<Product[]>(`/${catalog}`);
+  return get<Product[]>('/products').then(products =>
+    products.filter(product => product.category === catalog),
+  );
 };

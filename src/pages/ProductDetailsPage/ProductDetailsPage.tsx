@@ -30,6 +30,12 @@ export const ProductDetailsPage = () => {
   const { pathname } = useLocation();
   const catalog = pathname.split('/')[1];
 
+  const toShowDetails =
+    productsForSlider.length !== 0 &&
+    productWithDetails &&
+    !isLoading &&
+    !error;
+
   useEffect(() => {
     getAllProducts(catalog).then(setProductsForSlider);
   }, [catalog]);
@@ -74,7 +80,7 @@ export const ProductDetailsPage = () => {
 
       <BackLink />
 
-      {productWithDetails && !isLoading && !error && (
+      {toShowDetails && (
         <div className={styles.details__wrap}>
           <h2 className={styles.details__title}>{productWithDetails?.name}</h2>
 
@@ -95,6 +101,7 @@ export const ProductDetailsPage = () => {
           <CardsSlider
             productsForSlider={productsForSlider}
             sliderTitle={'You may also like'}
+            productYear={2020}
           />
         </div>
       )}
