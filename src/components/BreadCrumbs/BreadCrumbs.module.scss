@@ -12,7 +12,8 @@
     margin-bottom: 40px;
   }
 
-  &__link, &__arrow {
+  &__link,
+  &__arrow {
     text-decoration: none;
     color: var(--secondary-color);
     font-size: 12px;
@@ -30,10 +31,10 @@
   }
 
   &__link {
-    color: $primary-color;
+    color: var(--primary-color);
 
     &--active {
-      color: $secondary-color;
+      color: var(--secondary-color);
       cursor: default;
     }
   }

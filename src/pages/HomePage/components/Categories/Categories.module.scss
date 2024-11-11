@@ -20,7 +20,7 @@
     font-weight: 800;
     line-height: 30.8px;
     text-align: left;
-    color: $primary-color;
+    color: var(--primary-color);
 
     @include on-tablet {
       font-size: 32px;
@@ -37,8 +37,8 @@
   border-radius: 8px;
 
   transition:
-  transform 0.3s,
-  box-shadow 0.3s;
+    transform 0.3s,
+    box-shadow 0.3s;
 
   &:hover {
     box-shadow: 0 2px 16px 0 #0000001a;
@@ -58,7 +58,7 @@
   text-align: left;
   text-underline-position: from-font;
   text-decoration-skip-ink: none;
-  color: $primary-color;
+  color: var(--primary-color);
 
   margin-top: 24px;
 
@@ -68,7 +68,7 @@
 }
 
 .categoryTitle:hover {
-  color: $accent-color;
+  color: var(--accent-color);
 }
 
 .amountOfModels {
@@ -78,7 +78,7 @@
   text-align: left;
   text-underline-position: from-font;
   text-decoration-skip-ink: none;
-  color: $secondary-color;
+  color: var(--secondary-color);
 
   @include on-desktop {
     font-weight: 500;

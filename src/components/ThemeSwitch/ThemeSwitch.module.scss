@@ -36,7 +36,7 @@
   }
 
   &__input:checked + &__slider {
-    background-color: #e3e5e8;
+    background-color: var(--elements-color);
 
     &::before {
       transform: translateX(25px);

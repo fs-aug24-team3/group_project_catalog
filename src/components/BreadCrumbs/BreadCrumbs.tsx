@@ -6,6 +6,8 @@ import { Link, NavLink, useLocation } from 'react-router-dom';
 import styles from './BreadCrumbs.module.scss';
 import cn from 'classnames';
 import React from 'react';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../redux/store';
 
 interface Props {
   title?: string;
@@ -16,6 +18,7 @@ export const BreadCrumbs: React.FC<Props> = ({
   title = 'Phones',
   theThirdPart = '',
 }) => {
+  const theme = useSelector((state: RootState) => state.theme.theme);
   let breadCrumbsTitle = 'Phones';
 
   if (title !== 'Mobile phones') {
@@ -41,7 +44,7 @@ export const BreadCrumbs: React.FC<Props> = ({
   return (
     <div className={styles.breadcrumbs}>
       <Link to="/" className={styles.breadcrumbs__link}>
-        <img src={backToHome} alt="back to home page" />
+        <img src={theme === 'light' ? backToHome : backToHomeDark} alt="back to home page" />
       </Link>
 
       <div className={styles.breadcrumbs__arrow}>
