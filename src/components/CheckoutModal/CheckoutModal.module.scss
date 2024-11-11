@@ -18,6 +18,7 @@
   padding: 64px 46px 46px;
   border-radius: 16px;
   border: 1px solid var(--elements-color);
+  background-color: var(--surface-color);
   gap: 24px;
   text-align: center;
 
@@ -36,7 +37,7 @@
     height: 40px;
     border-radius: 50%;
     border: none;
-    background-color: var(--surface-color);
+    background-color: transparent;
   }
 
   &__title {
@@ -51,9 +52,9 @@
     width: 100%;
     border: none;
     background-color: var(--accent-color);
-    color: var(--surface-color);
     border-radius: 48px;
     font-size: 14px;
+    color: var(--white-color);
 
     &:hover {
       box-shadow: 0 3px 13px #17203166;
