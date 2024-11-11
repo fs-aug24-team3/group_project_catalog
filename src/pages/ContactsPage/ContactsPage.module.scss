@@ -3,6 +3,7 @@
 
 .contacts {
   line-height: 21px;
+
   color: var(--primary-color);
 
   &__top {
@@ -193,7 +194,9 @@
     font-size: 16px;
     font-weight: 400;
     line-height: 1.5;
+
     color: var(--secondary-color);
+
   }
 
   &__store-map {
@@ -213,6 +216,7 @@
     height: 300px;
     width: 100%;
     border: 2px solid var(--primary-color);
+
     border-radius: 20px;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 

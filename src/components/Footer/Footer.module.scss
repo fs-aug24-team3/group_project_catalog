@@ -95,12 +95,19 @@
 
     cursor: pointer;
 
+    cursor: pointer;
+
     &:hover {
       border: 1px solid var(--primary-color);
     }
 
     &:active {
       background-color: var(--icons-color);
+      cursor: pointer;
+    }
+
+    &:active {
+      background-color: $icons-color;
       cursor: pointer;
     }
 

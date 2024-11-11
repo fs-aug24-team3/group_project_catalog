@@ -12,10 +12,12 @@
     margin-bottom: 40px;
   }
 
+
   &__link,
   &__arrow {
     text-decoration: none;
     color: var(--secondary-color);
+
     font-size: 12px;
     font-weight: 600;
     line-height: 15.34px;
@@ -35,6 +37,7 @@
 
     &--active {
       color: var(--secondary-color);
+
       cursor: default;
     }
   }

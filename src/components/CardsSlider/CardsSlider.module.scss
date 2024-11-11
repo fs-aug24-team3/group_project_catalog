@@ -25,6 +25,7 @@
     text-align: left;
     color: var(--primary-color);
 
+
     @include on-tablet {
       font-size: 32px;
       font-weight: 800;
@@ -42,13 +43,16 @@
     height: 32px;
   }
 
+
   &__buttonPrev,
   &__buttonNext {
+
     width: 32px;
     height: 32px;
 
     border: 1px solid;
     border-radius: 48px;
+
     border-color: var(--icons-color);
     background-color: var(--hover-background-color);
 
@@ -58,16 +62,19 @@
   &__buttonPrev:disabled {
     border-color: var(--elements-color);
     color: var(--icons-color);
+
     cursor: not-allowed;
   }
 
   &__buttonNext:disabled {
     border-color: var(--elements-color);
     color: var(--icons-color);
+
     cursor: not-allowed;
   }
 
   &__buttonPrev:hover {
+
     border-color: var(--primary-color);
   }
 
@@ -77,7 +84,9 @@
   }
 
   &__buttonNext:hover {
+
     border-color: var(--primary-color);
+
     cursor: pointer;
   }
 
@@ -92,6 +101,7 @@
   }
 
   &__buttonPrev:disabled:hover {
+
     border-color: var(--elements-color);
     color: var(--icons-color);
     cursor: not-allowed;
@@ -100,6 +110,7 @@
   &__buttonNext:disabled:hover {
     border-color: var(--elements-color);
     color: var(--icons-color);
+
     cursor: not-allowed;
   }
 }

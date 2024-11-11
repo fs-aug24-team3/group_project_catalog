@@ -128,7 +128,9 @@
     &--new {
       font-size: 32px;
       font-weight: 800;
+
       color: var(--primary-color);
+
 
       @include on-tablet {
         line-height: 41px;
@@ -153,6 +155,7 @@
         height: 2px;
         mix-blend-mode: color-dodge;
         background-color: var(--secondary-color);
+
         transform: translateY(-50%);
       }
     }
@@ -178,13 +181,17 @@
   }
 
   &__tech-name {
+
     color: var(--secondary-color);
+
     font-size: 12px;
     font-weight: 600;
   }
 
   &__tech-value {
+
     color: var(--primary-color);
+
     font-size: 12px;
     font-weight: 700;
   }
