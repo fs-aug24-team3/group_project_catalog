@@ -80,7 +80,7 @@ export const ProductPage: FC<Props> = ({ title, fetchProduct }) => {
 
       {!isLoading && !error && !!amount && (
         <div className={styles['products-page__wrapper']}>
-          <BreadCrumbs />
+          <BreadCrumbs title={title} />
 
           <PageTitle>{title}</PageTitle>
 

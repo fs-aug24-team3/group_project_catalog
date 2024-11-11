@@ -30,7 +30,7 @@ export const Favourites: FC<Props> = ({ title }) => {
 
   return (
     <div className={styles['favourites-page__wrapper']}>
-      <BreadCrumbs />
+      <BreadCrumbs title={title} />
       <PageTitle>{title}</PageTitle>
 
       {favourites.length > 0 ? (
