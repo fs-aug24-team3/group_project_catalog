@@ -33,7 +33,7 @@ export const ProductPage: FC<Props> = ({ title, fetchProduct }) => {
 
   const [searchParams] = useSearchParams();
 
-  const sort = searchParams.get('sort') || 'Newest';
+  const sort = searchParams.get('sort') || 'newest';
 
   const filteredProducts = useMemo(
     () => getFilteredProducts(product, sort),
