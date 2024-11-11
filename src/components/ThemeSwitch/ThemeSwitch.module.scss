@@ -1,0 +1,46 @@
+.switch {
+  font-size: 17px;
+  position: relative;
+  display: inline-block;
+  width: 52px;
+  height: 26px;
+
+  &__input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+
+  &__slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    transition: 0.5s;
+    border-radius: 30px;
+    background: var(--accent-color);
+
+    &::before {
+      position: absolute;
+      content: '';
+      height: 18px;
+      width: 18px;
+      border-radius: 50%;
+      left: 10%;
+      bottom: 15%;
+      box-shadow: inset 8px -4px 0px 0px #fff000;
+      transition: 0.5s;
+    }
+  }
+
+  &__input:checked + &__slider {
+    background-color: #e3e5e8;
+
+    &::before {
+      transform: translateX(25px);
+      box-shadow: inset 15px -4px 0px 15px #fff000;
+    }
+  }
+}

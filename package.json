@@ -1,5 +1,6 @@
 {
   "name": "phone_catalog_team3",
+  "homepage": "https://fs-aug24-team3.github.io/group_project_catalog",
   "private": true,
   "version": "0.0.0",
   "scripts": {
@@ -13,7 +14,7 @@
     "update": "mate-scripts update",
     "postinstall": "npm run update",
     "predeploy": "npm run build",
-    "deploy": "mate-scripts deploy"
+    "deploy": "gh-pages -d build"
   },
   "dependencies": {
     "@fortawesome/fontawesome-free": "^6.5.2",

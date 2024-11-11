@@ -6,9 +6,9 @@
   flex-direction: column;
   gap: 16px;
   padding: 16px;
-  border: 1px solid $elements-color;
+  border: 1px solid var(--elements-color);
   border-radius: 16px;
-  background-color: $white-color;
+  background-color: var(--surface-color);
 
   @include on-tablet {
     flex-direction: row;
@@ -29,12 +29,10 @@
   }
 
   &__remove-button {
-    width: 16px;
-    height: 16px;
     border: none;
     background-color: inherit;
-    padding: 0;
     cursor: pointer;
+    padding: 7px;
 
     background-image: url('../../images/Icons/removeFromCart.svg');
     background-size: cover;
@@ -76,8 +74,8 @@
     width: 32px;
     height: 32px;
     border-radius: 50%;
-    border: 1px solid $icons-color;
-    background-color: $white-color;
+    border: 1px solid var(--icons-color);
+    background-color: var(--surface-color);
 
     &::before,
     &::after {
@@ -85,7 +83,7 @@
       content: '';
       width: 11px;
       height: 1px;
-      background-color: $primary-color;
+      background-color: var(--primary-color);
       border-radius: 1px;
       top: 50%;
       left: 50%;
@@ -106,15 +104,15 @@
     transition: border-color 0.3s;
 
     &:hover {
-      border-color: $primary-color;
+      border-color: var(--primary-color);
     }
 
     &:disabled {
-      border-color: $elements-color;
+      border-color: var(--elements-color);
 
       &::before,
       &::after {
-        background-color: $elements-color;
+        background-color: var(--elements-color);
       }
     }
   }

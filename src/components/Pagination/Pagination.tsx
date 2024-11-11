@@ -4,16 +4,21 @@ import cn from 'classnames';
 
 import { getNumbers } from '../../utils/getNumberOfPages';
 
-import arrowRigth from '../../images/Icons/arrow-right-black.svg';
+import arrowRight from '../../images/Icons/arrow-right-black.svg';
 import arrowLeft from '../../images/Icons/arrow-left-black.svg';
+import arrowRightDark from '../../images/Icons/arrow_right_dark.svg';
+import arrowLeftDark from '../../images/Icons/arrow_left_dark.svg';
 
 import styles from './Pagination.module.scss';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../redux/store';
 
 interface Props {
   total: number;
 }
 
 export const Pagination: FC<Props> = ({ total }) => {
+  const theme = useSelector((state: RootState) => state.theme.theme);
   const [searchParams, setSearchParams] = useSearchParams();
   const perPage = searchParams.get('perPage') || 'all';
   const currentPageFromURL = searchParams.get('page') || '1';
@@ -85,7 +90,10 @@ export const Pagination: FC<Props> = ({ total }) => {
           handleArrowPageChange('prev');
         }}
       >
-        <img src={arrowLeft} alt="arrow left" />
+        <img
+          src={theme === 'light' ? arrowLeft : arrowLeftDark}
+          alt="arrow left"
+        />
       </button>
 
       <ul className={styles.pagination__list}>
@@ -113,7 +121,10 @@ export const Pagination: FC<Props> = ({ total }) => {
           handleArrowPageChange('next');
         }}
       >
-        <img src={arrowRigth} alt="arrow-right" />
+        <img
+          src={theme === 'light' ? arrowRight : arrowRightDark}
+          alt="arrow-right"
+        />
       </button>
     </div>
   );
