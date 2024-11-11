@@ -1,6 +1,6 @@
 {
-  "name": "phone_catalog_team3",
-  "homepage": "https://fs-aug24-team3.github.io/group_project_catalog",
+  "name": "group_project_catalog",
+  "homepage": "group_project_catalog",
   "private": true,
   "version": "0.0.0",
   "scripts": {
@@ -19,6 +19,7 @@
   "dependencies": {
     "@fortawesome/fontawesome-free": "^6.5.2",
     "@reduxjs/toolkit": "^2.3.0",
+    "@vis.gl/react-google-maps": "^1.4.0",
     "bulma": "^1.0.1",
     "classnames": "^2.5.1",
     "react": "^18.3.1",

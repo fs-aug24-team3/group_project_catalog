@@ -4,10 +4,14 @@ import { Link } from 'react-router-dom';
 import { Product } from '../../types/Product';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../redux/store';
+import FavouritesIcon from '../../images/Icons/favourites.svg';
+import FavouritesIconDark from '../../../src/images/Icons/favouritesDark.svg';
+import FavouritesIconActive from '../../images/Icons/favourites-active.svg';
+import { DeatailedProduct } from '../../types/DetailedProduct';
 
 type Props = {
-  item: Product;
-  onRemoveFromFavourites?: (id: number) => void;
+  item: Product | DeatailedProduct;
+  onRemoveFromFavourites?: (id: number | string) => void;
 };
 
 export const AddToFavouritesButton: FC<Props> = ({
@@ -60,10 +64,10 @@ export const AddToFavouritesButton: FC<Props> = ({
       <img
         src={
           isFavourited
-            ? '../../../src/images/Icons/favourites-active.svg'
+            ? FavouritesIconActive
             : theme === 'light'
-              ? '../../../src/images/Icons/favourites.svg'
-              : '../../../src/images/Icons/favouritesDark.svg'
+              ? FavouritesIcon
+              : FavouritesIconDark
         }
         alt="favourites-icon"
       />

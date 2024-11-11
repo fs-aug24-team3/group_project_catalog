@@ -22,7 +22,7 @@ export const Favourites: FC<Props> = ({ title }) => {
     setFavourites(savedFavourites);
   }, []);
 
-  const removeFromFavourites = (id: number) => {
+  const removeFromFavourites = (id: number | string) => {
     setFavourites(prevFavourites =>
       prevFavourites.filter(item => item.id !== id),
     );
@@ -30,7 +30,7 @@ export const Favourites: FC<Props> = ({ title }) => {
 
   return (
     <div className={styles['favourites-page__wrapper']}>
-      <BreadCrumbs />
+      <BreadCrumbs title={title} />
       <PageTitle>{title}</PageTitle>
 
       {favourites.length > 0 ? (

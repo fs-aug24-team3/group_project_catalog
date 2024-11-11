@@ -62,6 +62,7 @@ export const selectStyles = (
       borderRadius: '8px',
       borderColor: '#E2E6E9',
       backgroundColor: '#FFF',
+      zIndex: '2',
     }),
   };
 };

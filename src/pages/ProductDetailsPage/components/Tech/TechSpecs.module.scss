@@ -1,0 +1,33 @@
+@import '../../../../styles/utils/mixins';
+@import '../../../../styles/utils/variables';
+
+.tech-specs {
+  @include on-desktop {
+    width: 512px;
+  }
+
+  &__box {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__wrap {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__name {
+    color: $secondary-color;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 21px;
+  }
+
+  &__data {
+    color: $primary-color;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 21px;
+  }
+}

@@ -1,5 +1,5 @@
-@import '../../../../styles/utils/mixins';
-@import '../../../../styles/utils/variables';
+@import '../../styles/utils/mixins';
+@import '../../styles/utils/variables';
 
 .brandNewModels {
   &__TextAndButtons {
@@ -73,6 +73,22 @@
 
   &__buttonNext:hover {
     border-color: var(--primary-color);
+    cursor: pointer;
+  }
+
+  &__buttonNext:hover {
+    border-color: var(--primary-color);
+    cursor: pointer;
+  }
+
+  &__buttonPrev:active {
+    border-color: var(--primary-color);
+    cursor: pointer;
+  }
+
+  &__buttonNext:active {
+    border-color: var(--primary-color);
+    cursor: pointer;
   }
 
   &__buttonPrev:disabled:hover {

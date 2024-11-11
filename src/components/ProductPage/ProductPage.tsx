@@ -28,12 +28,13 @@ export const ProductPage: FC<Props> = ({ title, fetchProduct }) => {
   const [product, setProduct] = useState<Product[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
+  const [isLoadedData, setIsLoadedData] = useState(false);
 
   const amount = product.length;
 
   const [searchParams] = useSearchParams();
 
-  const sort = searchParams.get('sort') || 'Newest';
+  const sort = searchParams.get('sort') || 'newest';
 
   const filteredProducts = useMemo(
     () => getFilteredProducts(product, sort),
@@ -50,11 +51,17 @@ export const ProductPage: FC<Props> = ({ title, fetchProduct }) => {
   const handleLoadProducts = () => {
     setError('');
     setIsLoading(true);
+    setIsLoadedData(false);
 
     fetchProduct()
-      .then(setProduct)
+      .then(data => {
+        setProduct(data);
+        setIsLoadedData(true);
+      })
       .catch(() => setError('Something went wrong! Please try again!'))
-      .finally(() => setIsLoading(false));
+      .finally(() => {
+        setIsLoading(false);
+      });
   };
 
   useEffect(() => {
@@ -74,13 +81,13 @@ export const ProductPage: FC<Props> = ({ title, fetchProduct }) => {
         <ErrorBlock errorMessage={error} reload={reload} />
       )}
 
-      {amount === 0 && !error && !isLoading && (
+      {amount === 0 && !error && !isLoading && isLoadedData && (
         <NotFoundProductMessage title={title} />
       )}
 
-      {!isLoading && !error && !!amount && (
+      {!isLoading && !error && !!amount && isLoadedData && (
         <div className={styles['products-page__wrapper']}>
-          <BreadCrumbs />
+          <BreadCrumbs title={title} />
 
           <PageTitle>{title}</PageTitle>
 
