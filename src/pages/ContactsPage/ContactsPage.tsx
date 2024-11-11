@@ -58,7 +58,16 @@ const generateMapLink = (lat: number, lng: number) => {
 };
 
 import { BreadCrumbs } from '../../components/BreadCrumbs';
+import { useEffect } from 'react';
+
 export const ContactsPage = () => {
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  });
+
   return (
     <div className={styles.contacts}>
       <div className={styles.contacts__top}>

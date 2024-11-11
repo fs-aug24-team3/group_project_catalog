@@ -68,10 +68,22 @@
 
   &__buttonPrev:hover {
     border-color: $primary-color;
+    cursor: pointer;
   }
 
   &__buttonNext:hover {
     border-color: $primary-color;
+    cursor: pointer;
+  }
+
+  &__buttonPrev:active {
+    background-color: $icons-color;
+    cursor: pointer;
+  }
+
+  &__buttonNext:active {
+    background-color: $icons-color;
+    cursor: pointer;
   }
 
   &__buttonPrev:disabled:hover {

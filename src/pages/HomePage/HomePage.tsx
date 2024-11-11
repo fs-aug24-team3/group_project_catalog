@@ -15,6 +15,10 @@ export const HomePage: React.FC = () => {
   const hotPricesTitle = 'Hot prices';
 
   useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
     setIsLoading(true);
 
     getCatalogPhones()

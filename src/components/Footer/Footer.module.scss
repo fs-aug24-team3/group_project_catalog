@@ -91,8 +91,15 @@
     border-radius: 90%;
     background-color: $white-color;
 
+    cursor: pointer;
+
     &:hover {
       border: 1px solid $primary-color;
+    }
+
+    &:active {
+      background-color: $icons-color;
+      cursor: pointer;
     }
   }
 
