@@ -6,13 +6,6 @@ import styles from './BreadCrumbs.module.scss';
 import cn from 'classnames';
 import React from 'react';
 
-// const NavData = [
-//   { title: 'Home', path: '/' },
-//   { title: 'Phones', path: '/phones' },
-//   { title: 'Tablets', path: '/tablets' },
-//   { title: 'Accessories', path: '/accessories' },
-// ];
-
 interface Props {
   title?: string;
 }
