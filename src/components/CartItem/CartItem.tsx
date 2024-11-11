@@ -17,6 +17,7 @@ interface Props {
 export const CartItem: React.FC<Props> = ({ cartProduct }) => {
   const dispatch = useDispatch();
   const { name, image, price, itemId, category } = cartProduct.product;
+
   const { quantity } = cartProduct;
 
   const handleDecrement = () => {

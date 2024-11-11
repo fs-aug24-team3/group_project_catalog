@@ -15,7 +15,7 @@ interface Props {
   item: Product;
   onSale?: boolean;
   posibilityToScale?: boolean;
-  onRemoveFromFavourites?: (id: number) => void;
+  onRemoveFromFavourites?: (id: number | string) => void;
 }
 
 export const ProductCard: FC<Props> = ({
@@ -60,11 +60,11 @@ export const ProductCard: FC<Props> = ({
       }
     >
       <div className={styles.card__wrapper}>
-        <Link to="#magyar" className={styles.card__image}>
+        <Link to={`/${item.category}/${itemId}`} className={styles.card__image}>
           <img src={image} alt={name} className={styles['card__image--img']} />
         </Link>
 
-        <Link to="#magyar" className={styles.card__name}>
+        <Link to={`/${item.category}/${itemId}`} className={styles.card__name}>
           {name}
         </Link>
       </div>
