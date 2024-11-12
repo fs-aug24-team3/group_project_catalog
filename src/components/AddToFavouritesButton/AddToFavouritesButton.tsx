@@ -7,11 +7,9 @@ import { RootState } from '../../redux/store';
 import FavouritesIcon from '../../images/Icons/favourites.svg';
 import FavouritesIconDark from '../../../src/images/Icons/favouritesDark.svg';
 import FavouritesIconActive from '../../images/Icons/favourites-active.svg';
-import { DeatailedProduct } from '../../types/DetailedProduct';
-
 
 type Props = {
-  item: Product | DeatailedProduct;
+  item: Product;
   onRemoveFromFavourites?: (id: number | string) => void;
 };
 
