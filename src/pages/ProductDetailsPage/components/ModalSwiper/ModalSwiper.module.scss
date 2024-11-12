@@ -55,25 +55,25 @@
   border-radius: 30px;
   height: 50px;
 
-  border: 1px solid $icons-color;
+  border: 1px solid var(--icons-color);
 
   &:disabled {
-    border-color: $elements-color;
-    color: $icons-color;
+    border-color: var(--elements-color);
+    color: var(--icons-color);
     cursor: not-allowed;
   }
 
   &:hover {
-    border-color: $primary-color;
+    border-color: var(--primary-color);
   }
 
   &:active {
-    background-color: $icons-color;
+    background-color: var(--icons-color);
   }
 
   &:disabled:hover {
-    border-color: $elements-color;
-    color: $icons-color;
+    border-color: var(--elements-color);
+    color: var(--icons-color);
     cursor: not-allowed;
   }
 
@@ -119,6 +119,9 @@
   align-items: flex-start;
   justify-content: center;
   margin: 0 auto;
+
+  border: 1px solid var(--icons-color);
+  border-radius: 5px;
 
   opacity: 0.4;
 

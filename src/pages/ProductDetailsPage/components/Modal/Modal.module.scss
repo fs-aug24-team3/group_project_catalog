@@ -10,7 +10,7 @@
   pointer-events: auto;
   z-index: 999;
 
-  background-color: rgba(17, 18, 19, 0.4);
+  background-color: var(--backdrop);
 
   &__content {
     position: relative;
@@ -23,7 +23,7 @@
     padding-block: 20px;
     width: 288px;
 
-    background-color: $hover-background-color;
+    background-color: var(--hover-background-color);
 
     @media (min-width: 420px) {
       width: 372px;
@@ -80,7 +80,7 @@
   }
 
   &__title {
-    color: $primary-color;
+    color: var(--primary-color);
     font-size: 20px;
     margin-bottom: 16px;
 
@@ -113,7 +113,7 @@
     &--new {
       font-size: 32px;
       font-weight: 800;
-      color: $primary-color;
+      color: var(--primary-color);
 
       @include on-tablet {
         line-height: 41px;
@@ -127,7 +127,7 @@
 
       font-size: 22px;
       font-weight: 500;
-      color: $secondary-color;
+      color: var(--secondary-color);
 
       &::after {
         content: '';
@@ -137,7 +137,7 @@
         right: 0;
         height: 2px;
         mix-blend-mode: color-dodge;
-        background-color: $secondary-color;
+        background-color: var(--secondary-color);
         transform: translateY(-50%);
       }
     }
@@ -148,8 +148,8 @@
     flex-direction: column;
     gap: 12px;
     padding: 40px 0;
-    border-top: 1px solid $elements-color;
-    border-bottom: 1px solid $elements-color;
+    border-top: 1px solid var(--elements-color);
+    border-bottom: 1px solid var(--elements-color);
     font-size: 15px;
   }
 }
