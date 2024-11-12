@@ -6,6 +6,7 @@
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 4;
+  overflow: hidden;
 
   display: flex;
   flex-direction: column;
@@ -154,11 +155,87 @@
 }
 
 .animationContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
   width: 100%;
   height: 100px;
+  opacity: 1;
+}
 
-  background-color: red;
-  opacity: 0;
+.truckRoad {
+  width: 100%;
+  height: 6px;
+  background-color: var(--primary-color);
+}
+
+.tilda1 {
+  width: 36px;
+  height: 22px;
+  position: absolute;
+  top: 362px;
+  right: 244px;
+  animation: spin 1s linear infinite;
+}
+
+.tilda2 {
+  width: 36px;
+  height: 22px;
+  position: absolute;
+  top: 362px;
+  right: 89px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes move-right {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(640px);
+  }
+}
+
+@keyframes bounce-up-down {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-3px);
+  }
+}
+
+.iconContainer {
+  width: 70px;
+  height: 50px;
+}
+
+.iconContainerAnim {
+  width: 70px;
+  height: 50px;
+  animation:
+  bounce-up-down 0.6s ease-in-out infinite;
+}
+
+.truckImage {
+  width: 70px;
+  height: 50px;
+}
+
+.truckImageAnimation {
+  width: 70px;
+  height: 50px;
+  animation:
+  move-right 3s linear infinite,
 }
 
 .paymentButton {
@@ -189,4 +266,27 @@
     background-color: var(--surface-color);
     border: 1px solid var(--elements-color);
   }
+}
+
+@keyframes appear {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.doneContainer {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  animation:
+  appear 1s linear,
+}
+
+.doneImage {
+  width: 40px;
+  height: 40px;
 }
