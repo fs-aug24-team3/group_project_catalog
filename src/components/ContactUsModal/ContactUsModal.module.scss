@@ -41,7 +41,7 @@
     }
 
     &:hover {
-      width: 136px;
+      width: 130px;
       box-shadow: 0 3px 13px var(--shadow-color);
     }
   }
@@ -95,10 +95,23 @@
     img {
       width: 20px;
     }
+
+    :hover {
+      transform: s;
+    }
   }
 
   &__send-request {
     display: flex;
+
+    &--timer {
+      font-size: 55px;
+
+      &-message {
+        display: block;
+        text-align: center;
+      }
+    }
 
     &--input {
       height: 54px;
@@ -106,7 +119,7 @@
       padding: 13px 20px;
       border: 1px solid var(--secondary-color);
 
-      color: #000000;
+      color: #000;
       font-size: 16px;
 
       @include only-mobile {
@@ -141,7 +154,21 @@
       }
     }
 
+    &--error {
+      &-message {
+        display: block;
+        padding: 0 260px 0 0;
+        color: var(--red-color);
+        font-size: 12px;
+
+        @include only-mobile {
+          padding-right: 70px;
+        }
+      }
+    }
+
     &--example {
+      display: block;
       padding-top: 4px;
       padding-right: 330px;
       font-size: 13px;

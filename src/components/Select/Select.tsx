@@ -47,6 +47,7 @@ export const ProductSelect: FC<Props> = ({
   return (
     <Select<Option>
       value={value}
+      isSearchable={false}
       onChange={onChange}
       options={options}
       placeholder={placeholder}

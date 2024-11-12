@@ -1,36 +1,68 @@
 import React, { useEffect, useState } from 'react';
 import styles from './ContactUsModal.module.scss';
 import { RootState } from '../../redux/store';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 import closeIcon from '../../images/Icons/close.svg';
 import closeIconDark from '../../images/Icons/close-dark.svg';
 import contactIcon from '../../images/Icons/phone-call.svg';
 import contactIconDark from '../../images/Icons/phone-call-dark.svg';
+import {
+  closeModal,
+  openModal,
+  resetRequest,
+  sendRequest,
+  setMobileNumber,
+  setTimer,
+} from '../../redux/slices/contactusSlice';
 
 export const ContactUsModal: React.FC = () => {
-  const [isModalOpen, setModalOpen] = useState(false);
-  const [mobileNumber, setMobileNumber] = useState('');
-  const [isRequestSent, setRequestSent] = useState(false);
-  const [timer, setTimer] = useState(30);
-  const [showTimer, setShowTimer] = useState(true);
+  const dispatch = useDispatch();
+  const { isModalOpen, mobileNumber, isRequestSent, timer, showTimer } =
+    useSelector((state: RootState) => state.contactUs);
   const theme = useSelector((state: RootState) => state.theme.theme);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
+
+  const formatTime = (milliseconds: number) => {
+    const minutes = Math.floor(milliseconds / 60000);
+    const seconds = Math.floor((milliseconds % 60000) / 1000);
+    const ms = Math.floor((milliseconds % 1000) / 10);
+
+    return `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}:${ms.toString().padStart(2, '0')}`;
+  };
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setErrorMessage(null);
+    dispatch(setMobileNumber(e.target.value));
+  };
+
+  const validateMobileNumber = (number: string) =>
+    /^[0-9]{10,13}$/.test(number);
+
+  const handleSendRequest = () => {
+    if (validateMobileNumber(mobileNumber)) {
+      localStorage.setItem('lastRequest', mobileNumber);
+      dispatch(sendRequest());
+    } else {
+      setErrorMessage('*Please enter a valid mobile number.');
+    }
+  };
 
   useEffect(() => {
     const lastRequest = localStorage.getItem('lastRequest');
 
     if (lastRequest) {
-      setRequestSent(true);
+      dispatch(sendRequest());
     }
-  }, []);
+  }, [dispatch]);
 
   useEffect(() => {
     let countdown: NodeJS.Timeout | null = null;
 
     if (isRequestSent && showTimer && timer > 0) {
       countdown = setInterval(() => {
-        setTimer(prev => Math.max(prev - 10, 0));
+        dispatch(setTimer(Math.max(timer - 10, 0)));
       }, 10);
     } else if (timer <= 0 && countdown) {
       clearInterval(countdown);
@@ -41,59 +73,14 @@ export const ContactUsModal: React.FC = () => {
         clearInterval(countdown);
       }
     };
-  }, [isRequestSent, showTimer, timer]);
-
-  const formatTime = (milliseconds: number) => {
-    const minutes = Math.floor(milliseconds / 60000);
-    const seconds = Math.floor((milliseconds % 60000) / 1000);
-    const ms = Math.floor((milliseconds % 1000) / 10);
-
-    return `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}:${ms.toString().padStart(2, '0')}`;
-  };
-
-  const handleOpenModal = () => {
-    setModalOpen(true);
-    setShowTimer(!isRequestSent);
-  };
-
-  const handleCloseModal = () => {
-    setModalOpen(false);
-  };
-
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setMobileNumber(e.target.value);
-  };
-
-  const validateMobileNumber = (number: string) => {
-    const mobileRegex = /^[0-9]{10,15}$/;
-
-    return mobileRegex.test(number);
-  };
-
-  const handleSendRequest = () => {
-    if (validateMobileNumber(mobileNumber)) {
-      localStorage.setItem('lastRequest', mobileNumber);
-      setRequestSent(true);
-      setTimer(30000);
-      setShowTimer(true);
-    } else {
-      alert('Please enter a valid mobile number.');
-    }
-  };
-
-  const handleResetRequest = () => {
-    setMobileNumber('');
-    setRequestSent(false);
-    setTimer(30000);
-    setShowTimer(true);
-  };
+  }, [isRequestSent, showTimer, timer, dispatch]);
 
   return (
     <div>
       <Link
         to="#"
         className={styles['contact-us__button']}
-        onClick={handleOpenModal}
+        onClick={() => dispatch(openModal())}
       >
         <img
           src={theme === 'light' ? contactIcon : contactIconDark}
@@ -107,7 +94,7 @@ export const ContactUsModal: React.FC = () => {
             <Link
               to="#"
               className={styles['modal__close-button']}
-              onClick={handleCloseModal}
+              onClick={() => dispatch(closeModal())}
             >
               <img
                 src={theme === 'light' ? closeIcon : closeIconDark}
@@ -139,6 +126,13 @@ export const ContactUsModal: React.FC = () => {
                 <span className={styles['modal__send-request--example']}>
                   Example: 067 000 00 00
                 </span>
+                {errorMessage && (
+                  <span
+                    className={styles['modal__send-request--error-message']}
+                  >
+                    {errorMessage}
+                  </span>
+                )}
                 <div className={styles.modal__status}>
                   <span className={styles['modal__status--available']}>
                     Available operators online: 1
@@ -151,12 +145,22 @@ export const ContactUsModal: React.FC = () => {
             ) : (
               <>
                 {isRequestSent && showTimer && (
-                  <div className={styles.timer}>{formatTime(timer)}</div>
+                  <div className={styles['modal__send-request--timer']}>
+                    {timer > 0 ? (
+                      formatTime(timer)
+                    ) : (
+                      <span
+                        className={styles['modal__send-request--timer-message']}
+                      >
+                        No operators available
+                      </span>
+                    )}
+                  </div>
                 )}
                 <Link
                   to="#"
                   className={styles['modal__send-request--button']}
-                  onClick={handleResetRequest}
+                  onClick={() => dispatch(resetRequest())}
                 >
                   Send One More Request
                 </Link>
