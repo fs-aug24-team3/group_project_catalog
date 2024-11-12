@@ -34,6 +34,7 @@ export const selectStyles = (
       height: '40px',
       borderRadius: '8px',
       borderColor: state.isFocused ? '#0F0F11' : '#B4BDC3',
+
       boxShadow: 'none',
     }),
 

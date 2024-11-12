@@ -13,6 +13,7 @@ const themeSlice = createSlice({
   initialState,
   reducers: {
     setTheme: (state, action: PayloadAction<'light' | 'dark'>) => {
+      // eslint-disable-next-line no-param-reassign
       state.theme = action.payload;
     },
   },

@@ -8,12 +8,13 @@ interface Props {
   className?: string;
 }
 
-export const ThemeSwitch: React.FC<Props> = (className) => {
+export const ThemeSwitch: React.FC<Props> = className => {
   const dispatch = useDispatch();
   const theme = useSelector((state: RootState) => state.theme.theme);
 
   const toggleTheme = () => {
     const newTheme = theme === 'light' ? 'dark' : 'light';
+
     dispatch(setTheme(newTheme));
   };
 
@@ -22,6 +23,7 @@ export const ThemeSwitch: React.FC<Props> = (className) => {
   }, [theme]);
 
   return (
+    // eslint-disable-next-line jsx-a11y/label-has-associated-control
     <label className={`${styles.switch} ${className}`}>
       <input
         className={styles.switch__input}

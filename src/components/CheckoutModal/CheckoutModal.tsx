@@ -32,7 +32,7 @@ export const CheckoutModal: React.FC<Props> = ({ hide }) => {
           <img src={canceIcon} alt="cancel icon" />
         </button>
         <p className={styles.modal__title}>
-          Checkout is not implemented yet. Do you want to clear the Cart?
+          Payment is not implemented yet. Do you want to clear the Cart?
         </p>
         <button className={styles.modal__button} onClick={handleClearCart}>
           Yes

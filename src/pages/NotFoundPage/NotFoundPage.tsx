@@ -1,5 +1,6 @@
 import React from 'react';
 import imageNotFound from '../../images/notFoundImage/page-not-found.png';
+// eslint-disable-next-line max-len
 import imageNotFoundDark from '../../images/notFoundImage/page-not-found-dark.png';
 import styles from './NotFoundPage.module.scss';
 import { Link } from 'react-router-dom';

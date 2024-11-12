@@ -1,8 +1,9 @@
 /* eslint-disable import/no-extraneous-dependencies */
-import { FC, useCallback, useEffect, useState } from 'react';
+import { FC, useEffect } from 'react';
 import Select, { PropsValue, SingleValue, StylesConfig } from 'react-select';
 import { Option } from '../../constants/optionsForSelect';
 import { selectStyles } from '../../constants/selectStyles';
+import { useWidth } from '../../hooks/useWidth';
 
 interface Props {
   value: PropsValue<Option>;
@@ -17,11 +18,7 @@ export const ProductSelect: FC<Props> = ({
   options,
   placeholder,
 }) => {
-  const [width, setWidth] = useState(0);
-
-  const updateWidth = useCallback(() => {
-    setWidth(document.documentElement.clientWidth);
-  }, []);
+  const { width, updateWidth } = useWidth();
 
   const isWidthForBiggerSelector =
     placeholder === 'Newest' ||
@@ -47,6 +44,7 @@ export const ProductSelect: FC<Props> = ({
   return (
     <Select<Option>
       value={value}
+      isSearchable={false}
       onChange={onChange}
       options={options}
       placeholder={placeholder}

@@ -25,7 +25,6 @@
     text-align: left;
     color: var(--primary-color);
 
-
     @include on-tablet {
       font-size: 32px;
       font-weight: 800;
@@ -43,10 +42,8 @@
     height: 32px;
   }
 
-
   &__buttonPrev,
   &__buttonNext {
-
     width: 32px;
     height: 32px;
 
@@ -57,60 +54,28 @@
     background-color: var(--hover-background-color);
 
     color: var(--primary-color);
-  }
 
-  &__buttonPrev:disabled {
-    border-color: var(--elements-color);
-    color: var(--icons-color);
+    &:hover {
+      border-color: var(--primary-color);
+      cursor: pointer;
+    }
 
-    cursor: not-allowed;
-  }
+    &:active {
+      border-color: var(--primary-color);
+      cursor: pointer;
+    }
 
-  &__buttonNext:disabled {
-    border-color: var(--elements-color);
-    color: var(--icons-color);
+    &:disabled {
+      border-color: var(--elements-color);
+      color: var(--icons-color);
 
-    cursor: not-allowed;
-  }
+      cursor: not-allowed;
 
-  &__buttonPrev:hover {
-
-    border-color: var(--primary-color);
-  }
-
-  &__buttonNext:hover {
-    border-color: var(--primary-color);
-    cursor: pointer;
-  }
-
-  &__buttonNext:hover {
-
-    border-color: var(--primary-color);
-
-    cursor: pointer;
-  }
-
-  &__buttonPrev:active {
-    border-color: var(--primary-color);
-    cursor: pointer;
-  }
-
-  &__buttonNext:active {
-    border-color: var(--primary-color);
-    cursor: pointer;
-  }
-
-  &__buttonPrev:disabled:hover {
-
-    border-color: var(--elements-color);
-    color: var(--icons-color);
-    cursor: not-allowed;
-  }
-
-  &__buttonNext:disabled:hover {
-    border-color: var(--elements-color);
-    color: var(--icons-color);
-
-    cursor: not-allowed;
+      &:hover {
+        border-color: var(--elements-color);
+        color: var(--icons-color);
+        cursor: not-allowed;
+      }
+    }
   }
 }

@@ -4,7 +4,7 @@ export const getColor = (color: string) => {
       return '#4C4C4C';
 
     case 'silver':
-      return '#F0F0F0';
+      return '#d1d1d1';
 
     case 'midnight':
       return '#0A0A0A';
@@ -40,7 +40,7 @@ export const getColor = (color: string) => {
       return '#BF9AF5';
 
     case 'white':
-      return '#FFFFFF';
+      return '#F0F0F0';
 
     case 'yellow':
       return '#F8EB72';
