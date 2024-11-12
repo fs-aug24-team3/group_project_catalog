@@ -80,7 +80,7 @@
     height: 58px;
     justify-content: center;
     border-radius: 4px;
-    border: 1px solid $icons-color;
+    border: 1px solid var(--icons-color);
     overflow: hidden;
 
     @include on-tablet {
@@ -94,7 +94,7 @@
     }
 
     &--active {
-      border-color: $primary-color;
+      border-color: var(--primary-color);
     }
   }
 
@@ -128,7 +128,9 @@
     &--new {
       font-size: 32px;
       font-weight: 800;
-      color: $primary-color;
+
+      color: var(--primary-color);
+
 
       @include on-tablet {
         line-height: 41px;
@@ -142,7 +144,7 @@
 
       font-size: 22px;
       font-weight: 500;
-      color: $secondary-color;
+      color: var(--secondary-color);
 
       &::after {
         content: '';
@@ -152,7 +154,8 @@
         right: 0;
         height: 2px;
         mix-blend-mode: color-dodge;
-        background-color: $secondary-color;
+        background-color: var(--secondary-color);
+
         transform: translateY(-50%);
       }
     }

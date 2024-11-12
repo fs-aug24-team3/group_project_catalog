@@ -11,10 +11,10 @@
       height: 40px;
       flex-shrink: 0;
       border-radius: 50%;
-      border: 1px solid $elements-color;
+      border: 1px solid var(--elements-color);
 
       &:hover {
-        border-color: $primary-color;
+        border-color: var(--primary-color);
       }
     }
   }

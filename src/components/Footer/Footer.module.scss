@@ -7,14 +7,14 @@
   left: 0;
   width: 100%;
   height: 257px;
-  background-color: $white-color;
+  background-color: var(--surface-color);
   z-index: 1;
 
   padding-block: 32px;
   padding-inline: inherit;
-  box-shadow: 0 -1px 0 0 $elements-color;
+  box-shadow: 0 -1px 0 0 var(--elements-color);
 
-  color: $secondary-color;
+  color: var(--secondary-color);
   font-size: 12px;
   line-height: 12px;
 
@@ -37,7 +37,7 @@
     text-transform: uppercase;
     letter-spacing: 0.04em;
 
-    background-color: $white-color;
+    background-color: var(--surface-color);
 
     @include only-mobile {
       flex-direction: column;
@@ -61,7 +61,7 @@
 
   &__link {
     &:hover {
-      color: $primary-color;
+      color: var(--primary-color);
     }
   }
 
@@ -87,18 +87,32 @@
     height: 32px;
     margin-left: 16px;
 
-    border: 1px solid $icons-color;
+    border: 1px solid var(--icons-color);
     border-radius: 90%;
-    background-color: $white-color;
+    background-color: var(--surface-color);
+
+    cursor: pointer;
+
+    cursor: pointer;
 
     cursor: pointer;
 
     &:hover {
-      border: 1px solid $primary-color;
+      border: 1px solid var(--primary-color);
     }
 
     &:active {
-      background-color: $icons-color;
+      background-color: var(--icons-color);
+      cursor: pointer;
+    }
+
+    &:active {
+      background-color: var(--icons-color);
+      cursor: pointer;
+    }
+
+    &:active {
+      background-color: var(--icons-color);
       cursor: pointer;
     }
   }
@@ -129,7 +143,7 @@
   line-height: 12px;
   padding-inline: 16px;
 
-  background-color: $white-color;
+  background-color: var(--surface-color);
 
   @include only-mobile {
     flex-direction: column;

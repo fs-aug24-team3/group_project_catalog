@@ -3,7 +3,9 @@ import styles from './Actions.module.scss';
 
 import classNames from 'classnames';
 import favouritesIcon from '../../../../images/Icons/favourites.svg';
-import cart from '../../../../images/Icons/cart.svg';
+import favouritesIconDark from '../../../../images/Icons/favouritesDark.svg';
+import cartIcon from '../../../../images/Icons/cart.svg';
+import cartIconDark from '../../../../images/Icons/cartDark.svg';
 
 import { useSelector } from 'react-redux';
 import { RootState } from '../../../../redux/store';
@@ -18,6 +20,7 @@ interface Props {
 
 export const Actions: React.FC<Props> = ({ className, onHideMenu }) => {
   const items = useSelector((state: RootState) => state.cart.cartItems);
+  const theme = useSelector((state: RootState) => state.theme.theme);
   const count = items.length;
 
   const [favorites, setFavorites] = useState<Product[]>([]);
@@ -50,7 +53,11 @@ export const Actions: React.FC<Props> = ({ className, onHideMenu }) => {
           <div className={styles.actions__counter}>{favorites.length}</div>
         )}
         {favorites && (
-          <img className={styles.logo} src={favouritesIcon} alt="favourites" />
+          <img
+            className={styles.logo}
+            src={theme === 'light' ? favouritesIcon : favouritesIconDark}
+            alt="favourites"
+          />
         )}
       </NavLink>
       <NavLink
@@ -63,7 +70,11 @@ export const Actions: React.FC<Props> = ({ className, onHideMenu }) => {
         onClick={onHideMenu}
       >
         {count > 0 && <div className={styles.actions__counter}>{count}</div>}
-        <img className={styles.logo} src={cart} alt="cart"></img>
+        <img
+          className={styles.logo}
+          src={theme === 'light' ? cartIcon : cartIconDark}
+          alt="cart"
+        ></img>
       </NavLink>
     </div>
   );

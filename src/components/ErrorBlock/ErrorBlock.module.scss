@@ -25,7 +25,7 @@
 
     font-size: 18px;
     font-weight: 600;
-    color: $primary-color;
+    color: var(--primary-color);
 
     @include on-tablet {
       max-width: unset;
@@ -46,10 +46,10 @@
     margin: 0 auto;
 
     font-size: 18px;
-    color: $elements-color;
+    color: var(--elements-color);
 
-    background-color: $accent-color;
-    border: 1px solid $accent-color;
+    background-color: var(--accent-color);
+    border: 1px solid var(--accent-color);
     border-radius: 30px;
 
     @include on-tablet {

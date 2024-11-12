@@ -26,8 +26,8 @@ type Position = {
 
 const contacts = [
   '+380 12 345 67 89',
-  '+380 12 345 67 89',
-  '+380 12 345 67 89',
+  '+380 12 345 68 89',
+  '+380 12 345 69 89',
 ];
 
 const locations: Position[] = [
@@ -141,7 +141,7 @@ export const ContactsPage = () => {
           <div className={styles['contacts__store-item']}>
             {locations.map((location: Position) => (
               <a
-                key={location.key}
+                key={location.location.lat}
                 href={generateMapLink(
                   location.location.lat,
                   location.location.lng,
