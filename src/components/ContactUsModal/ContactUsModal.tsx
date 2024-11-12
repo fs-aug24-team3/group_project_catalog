@@ -88,6 +88,7 @@ export const ContactUsModal: React.FC = () => {
         />
         Contact Us
       </Link>
+
       {isModalOpen && (
         <div className={styles.modal}>
           <div className={styles.modal__content}>
@@ -107,6 +108,7 @@ export const ContactUsModal: React.FC = () => {
                   Enter your phone number and we&apos;ll call you back in 30
                   seconds
                 </h2>
+
                 <div className={styles['modal__send-request']}>
                   <input
                     type="text"
@@ -115,6 +117,7 @@ export const ContactUsModal: React.FC = () => {
                     onChange={handleInputChange}
                     className={styles['modal__send-request--input']}
                   />
+
                   <Link
                     to="#"
                     className={styles['modal__send-request--button']}
@@ -123,9 +126,11 @@ export const ContactUsModal: React.FC = () => {
                     Send Request
                   </Link>
                 </div>
+
                 <span className={styles['modal__send-request--example']}>
                   Example: 067 000 00 00
                 </span>
+
                 {errorMessage && (
                   <span
                     className={styles['modal__send-request--error-message']}
@@ -133,6 +138,7 @@ export const ContactUsModal: React.FC = () => {
                     {errorMessage}
                   </span>
                 )}
+
                 <div className={styles.modal__status}>
                   <span className={styles['modal__status--available']}>
                     Available operators online: 1
@@ -144,19 +150,18 @@ export const ContactUsModal: React.FC = () => {
               </>
             ) : (
               <>
-                {isRequestSent && showTimer && (
+                {isRequestSent && showTimer && timer > 0 ? (
                   <div className={styles['modal__send-request--timer']}>
-                    {timer > 0 ? (
-                      formatTime(timer)
-                    ) : (
-                      <span
-                        className={styles['modal__send-request--timer-message']}
-                      >
-                        No operators available
-                      </span>
-                    )}
+                    {formatTime(timer)}
                   </div>
+                ) : (
+                  <span
+                    className={styles['modal__send-request--timer-message']}
+                  >
+                    No operators available
+                  </span>
                 )}
+
                 <Link
                   to="#"
                   className={styles['modal__send-request--button']}
