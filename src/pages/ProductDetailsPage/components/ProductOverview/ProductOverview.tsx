@@ -1,5 +1,5 @@
 import { FC, useEffect, useState } from 'react';
-import { DeatailedProduct } from '../../../../types/DetailedProduct';
+import { DetailedProduct } from '../../../../types/DetailedProduct';
 import { RadioInputs } from '../RadioInputs';
 import styles from './ProductOverview.module.scss';
 import cn from 'classnames';
@@ -7,12 +7,17 @@ import { AddToCartButton } from '../../../../components/AddToCartButton';
 // eslint-disable-next-line max-len
 import { AddToFavouritesButton } from '../../../../components/AddToFavouritesButton';
 import { CartProduct } from '../../../../types/CartProduct';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { addItemToCart } from '../../../../redux/slices/cartSlice';
-import { Product } from '../../../../types/Product';
+
+import { convertToProductType } from '../../../../utils/convertToProductType';
+
+import { Modal } from '../Modal';
+import { TechBlock } from '../../../../components/TechBlock';
+import { RootState } from '../../../../redux/store';
 
 interface Props {
-  product: DeatailedProduct;
+  product: DetailedProduct;
   selectedColor: string;
   onSelectColor: React.Dispatch<React.SetStateAction<string>>;
   selectedCapacity: string;
@@ -28,30 +33,15 @@ export const ProductOverview: FC<Props> = ({
 }) => {
   const [mainPhoto, setMainPhoto] = useState(product.images[0]);
   const [isPressed, setIsPressed] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const dispatch = useDispatch();
-
-  const convertToProductType = (): Product => {
-    return {
-      id: product.id,
-      category: product.category,
-      itemId: product.id,
-      name: product.name,
-      image: product.images[0],
-      price: product.priceDiscount,
-      fullPrice: product.priceRegular,
-      screen: product.screen,
-      capacity: product.capacity,
-      color: product.color,
-      ram: product.ram,
-    };
-  };
 
   const handleAddToCart = () => {
     if (!isPressed) {
       const cartProduct: CartProduct = {
         id: product.id,
-        product: convertToProductType(),
+        product: convertToProductType(product),
         quantity: 1,
       };
 
@@ -60,38 +50,68 @@ export const ProductOverview: FC<Props> = ({
     }
   };
 
+  const items = useSelector((state: RootState) => state.cart.cartItems);
+
   useEffect(() => {
     if (product) {
       setMainPhoto(product.images[0]);
     }
   }, [product]);
 
+  useEffect(() => {
+    const isItemInCart = items.some(itm => itm.id === product.id);
+
+    setIsPressed(isItemInCart);
+  }, [items, product.id]);
+
   return (
     <div className={styles.overview}>
       <div className={styles['overview__photos-block']}>
         <div className={styles['overview__main-photo-box']}>
-          <img
-            src={mainPhoto}
-            alt=""
-            className={styles['overview__main-photo']}
-          />
+          <button
+            type="button"
+            style={{
+              border: 'none',
+              backgroundColor: 'transparent',
+              cursor: 'pointer',
+              outline: 'none',
+            }}
+            onClick={() => setIsModalOpen(true)}
+          >
+            <img
+              src={mainPhoto}
+              alt="main photo"
+              className={styles['overview__main-photo']}
+            />
+          </button>
         </div>
 
         <div className={styles['overview__small-photo-box']}>
-          {product.images.map(image => (
+          {product.images.slice(0, 4).map(image => (
             <div
               key={image}
               className={cn(styles['overview__small-photo-wrap'], {
                 [styles['overview__small-photo-wrap--active']]:
                   image === mainPhoto,
               })}
-              onClick={() => setMainPhoto(image)}
+              // onClick={() => setMainPhoto(image)}
             >
-              <img
-                src={image}
-                alt=""
-                className={styles['overview__small-photo']}
-              />
+              <button
+                type="button"
+                style={{
+                  border: 'none',
+                  backgroundColor: 'transparent',
+                  cursor: 'pointer',
+                  outline: 'none',
+                }}
+                onClick={() => setMainPhoto(image)}
+              >
+                <img
+                  src={image}
+                  alt="small photos"
+                  className={styles['overview__small-photo']}
+                />
+              </button>
             </div>
           ))}
         </div>
@@ -120,32 +140,13 @@ export const ProductOverview: FC<Props> = ({
             onAddToCart={handleAddToCart}
             isPressed={isPressed}
           />
-          <AddToFavouritesButton item={convertToProductType()} />
+          <AddToFavouritesButton item={convertToProductType(product)} />
         </div>
 
-        <div className={styles['overview__tech-block']}>
-          <div className={styles['overview__tech-info']}>
-            <p className={styles['overview__tech-name']}>Screen</p>
-            <p className={styles['overview__tech-value']}>{product.screen}</p>
-          </div>
-          <div className={styles['overview__tech-info']}>
-            <p className={styles['overview__tech-name']}>Resolution</p>
-            <p className={styles['overview__tech-value']}>
-              {product.resolution}
-            </p>
-          </div>
-          <div className={styles['overview__tech-info']}>
-            <p className={styles['overview__tech-name']}>Processor</p>
-            <p className={styles['overview__tech-value']}>
-              {product.processor}
-            </p>
-          </div>
-          <div className={styles['overview__tech-info']}>
-            <p className={styles['overview__tech-name']}>RAM</p>
-            <p className={styles['overview__tech-value']}>{product.ram}</p>
-          </div>
-        </div>
+        <TechBlock product={product} />
       </div>
+
+      {isModalOpen && <Modal product={product} onCloseModal={setIsModalOpen} />}
     </div>
   );
 };

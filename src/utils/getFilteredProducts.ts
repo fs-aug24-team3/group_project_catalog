@@ -6,7 +6,10 @@ export const getFilteredProducts = (items: Product[], sort: string) => {
   filteredProducts = filteredProducts.sort((currentProduct, nextProduct) => {
     switch (sort) {
       case 'newest':
-        return nextProduct.year - currentProduct.year;
+        const currentYear = currentProduct.year ?? 0;
+        const nextYear = nextProduct.year ?? 0;
+
+        return nextYear - currentYear;
 
       case 'cheapest':
         return currentProduct.price - nextProduct.price;

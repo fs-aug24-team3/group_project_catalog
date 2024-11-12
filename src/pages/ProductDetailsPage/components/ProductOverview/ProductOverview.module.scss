@@ -168,31 +168,4 @@
 
     max-width: 288px;
   }
-
-  &__tech-block {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-  }
-
-  &__tech-info {
-    display: flex;
-    justify-content: space-between;
-  }
-
-  &__tech-name {
-
-    color: var(--secondary-color);
-
-    font-size: 12px;
-    font-weight: 600;
-  }
-
-  &__tech-value {
-
-    color: var(--primary-color);
-
-    font-size: 12px;
-    font-weight: 700;
-  }
 }

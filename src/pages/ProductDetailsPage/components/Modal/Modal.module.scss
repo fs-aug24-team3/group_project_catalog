@@ -1,0 +1,155 @@
+@import '../../../../styles/utils/mixins';
+@import '../../../../styles/utils/variables';
+
+.modal {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  pointer-events: auto;
+  z-index: 999;
+
+  background-color: rgba(17, 18, 19, 0.4);
+
+  &__content {
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 10px;
+
+    padding-inline: 16px;
+    padding-block: 20px;
+    width: 288px;
+
+    background-color: $hover-background-color;
+
+    @media (min-width: 420px) {
+      width: 372px;
+    }
+
+    @include on-tablet {
+      width: 592px;
+      height: 380px;
+      display: flex;
+      gap: 20px;
+    }
+
+    @include on-desktop {
+      width: 1000px;
+      height: 700px;
+      gap: 40px;
+      padding-right: 30px;
+    }
+  }
+
+  &__close {
+    position: absolute;
+    right: 16px;
+    top: 20px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+
+    @include on-desktop {
+      right: 30px;
+    }
+  }
+
+  &__close-image {
+    @include on-tablet {
+      width: 18px;
+      height: 18px;
+    }
+
+    @include on-desktop {
+      width: 22px;
+      height: 22px;
+    }
+  }
+
+  &__photo-wrap {
+    margin-top: 40px;
+    width: 220px;
+    height: 300px;
+  }
+
+  &__photo {
+    object-fit: contain;
+  }
+
+  &__title {
+    color: $primary-color;
+    font-size: 20px;
+    margin-bottom: 16px;
+
+    @include on-tablet {
+      padding-top: 30px;
+      font-size: 26px;
+    }
+
+    @include on-desktop {
+      padding-top: 50px;
+      margin-bottom: 24px;
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 10px;
+
+    @include on-desktop {
+      margin-bottom: 50px;
+    }
+  }
+
+  &__price-block {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 16px;
+
+    &--new {
+      font-size: 32px;
+      font-weight: 800;
+      color: $primary-color;
+
+      @include on-tablet {
+        line-height: 41px;
+        letter-spacing: -0.32px;
+      }
+    }
+
+    &--old {
+      position: relative;
+      isolation: isolate;
+
+      font-size: 22px;
+      font-weight: 500;
+      color: $secondary-color;
+
+      &::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 0;
+        right: 0;
+        height: 2px;
+        mix-blend-mode: color-dodge;
+        background-color: $secondary-color;
+        transform: translateY(-50%);
+      }
+    }
+  }
+
+  &__tech-block {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 40px 0;
+    border-top: 1px solid $elements-color;
+    border-bottom: 1px solid $elements-color;
+    font-size: 15px;
+  }
+}

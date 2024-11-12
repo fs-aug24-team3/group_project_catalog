@@ -4,7 +4,7 @@ import { BreadCrumbs } from '../../components/BreadCrumbs';
 import { BackLink } from '../../components/NavigateBack';
 
 import styles from './ProductDetailsPage.module.scss';
-import { DeatailedProduct } from '../../types/DetailedProduct';
+import { DetailedProduct } from '../../types/DetailedProduct';
 import { getAllProducts, getDetailedProduct } from '../../api/api';
 
 import { ProductOverview } from './components/ProductOverview';
@@ -14,12 +14,12 @@ import { CardsSlider } from '../../components/CardsSlider';
 import { Product } from '../../types/Product';
 
 export const ProductDetailsPage = () => {
-  const [products, setProducts] = useState<DeatailedProduct[]>([]);
+  const [products, setProducts] = useState<DetailedProduct[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
 
   const [productWithDetails, setProductWithDetails] =
-    useState<DeatailedProduct | null>(null);
+    useState<DetailedProduct | null>(null);
 
   const [selectedColor, setSelectedColor] = useState('');
   const [selectedCapacity, setSelectedCapacity] = useState('');
