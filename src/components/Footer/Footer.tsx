@@ -54,6 +54,12 @@ export const Footer: FC = () => {
               Rights
             </NavLink>
           </span>
+
+          <span>
+            <NavLink to={'service'} className={styles.footer__link}>
+              Service
+            </NavLink>
+          </span>
         </div>
         <div className={styles['footer__back-to-top']}>
           Back to top
