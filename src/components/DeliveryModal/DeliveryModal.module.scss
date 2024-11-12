@@ -28,6 +28,29 @@
     border-radius: 0;
   }
 
+  &__close {
+    cursor: pointer;
+    position: absolute;
+
+    right: 0;
+    transform: translate(-50%, -50%);
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: none;
+    background-color: transparent;
+  }
+
+  &__closeImg {
+    width: 30px;
+    height: 30px;
+
+    &:hover {
+      border: 1px solid;
+      border-radius: 50px;
+    }
+  }
+
   &__title {
     font-size: 48px;
     font-weight: 800;
@@ -62,7 +85,7 @@
 
 .label {
   font-size: 1rem;
-  color: #333;
+  color: var(--primary-color);
   cursor: pointer;
 }
 
@@ -118,4 +141,38 @@
 .deliveryImg {
   width: 100%;
   height: auto;
+}
+
+.animationContainer {
+  width: 100%;
+  height: 100px;
+
+  background-color: red;
+  opacity: 0;
+}
+
+.paymentButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 70px;
+  width: 100%;
+  border: none;
+  background-color: var(--accent-color);
+  border-radius: 48px;
+  font-size: 14px;
+  color: var(--white-color);
+
+  cursor: pointer;
+
+  &:hover {
+    box-shadow: 0 3px 13px #17203166;
+  }
+
+  &:active {
+    box-shadow: none;
+    color: var(--accent-color);
+    background-color: var(--surface-color);
+    border: 1px solid var(--elements-color);
+  }
 }

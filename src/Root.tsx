@@ -16,7 +16,6 @@ import { ContactsPage } from './pages/ContactsPage';
 import { RightsPage } from './pages/RightsPage';
 import { ProductDetailsPage } from './pages/ProductDetailsPage';
 import { ServicePage } from './pages/ServicePage';
-import { CheckPage } from './pages/CheckPage';
 
 export const Root = () => (
   <Router>
@@ -41,7 +40,6 @@ export const Root = () => (
         <Route path="contacts" element={<ContactsPage />} />
         <Route path="rights" element={<RightsPage />} />
         <Route path="service" element={<ServicePage />} />
-        <Route path="check" element={<CheckPage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Route>
     </Routes>

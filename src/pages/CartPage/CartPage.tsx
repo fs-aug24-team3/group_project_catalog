@@ -8,9 +8,11 @@ import { EmptyCart } from '../../components/EmptyCart';
 
 import { RootState } from '../../redux/store';
 import { useSelector } from 'react-redux';
+import { DeliveryModal } from '../../components/DeliveryModal';
 
 export const CartPage: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isDeliveryModalOpen, setIsDeliveryModalOpen] = useState(false);
 
   const cart = useSelector((state: RootState) => state.cart.cartItems);
 
@@ -42,7 +44,7 @@ export const CartPage: React.FC = () => {
             </p>
             <button
               onClick={() => {
-                setIsModalOpen(true);
+                setIsDeliveryModalOpen(true);
               }}
               className={styles['cart-page__checkout-button']}
             >
@@ -52,6 +54,13 @@ export const CartPage: React.FC = () => {
         </div>
       ) : (
         <EmptyCart />
+      )}
+
+      {isDeliveryModalOpen && (
+        <DeliveryModal
+          hide={() => setIsDeliveryModalOpen(false)}
+          openSecondModal={() => setIsModalOpen(true)}
+        />
       )}
 
       {isModalOpen && (

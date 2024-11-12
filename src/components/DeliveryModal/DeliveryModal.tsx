@@ -1,9 +1,21 @@
 import React, { useState, useEffect } from 'react';
 import styles from './DeliveryModal.module.scss';
 
-import deliveryGuy from './images/deliveryBright.png';
+import deliveryGuyLight from './images/deliveryBright.png';
+import deliveryGuyDark from './images/deliveryDark.png';
 
-export const DeliveryModal: React.FC = () => {
+import closeIcon from '../../images/Icons/close.svg';
+import closeIconDark from '../../images/Icons/close-dark.svg';
+
+import { RootState } from '../../redux/store';
+import { useSelector } from 'react-redux';
+
+interface Props {
+  hide: () => void;
+  openSecondModal: () => void;
+}
+
+export const DeliveryModal: React.FC<Props> = ({ hide, openSecondModal }) => {
   const [countryValue, setCountryValue] = useState('');
   const [touchedCountry, setTouchedCountry] = useState(false);
 
@@ -18,6 +30,27 @@ export const DeliveryModal: React.FC = () => {
   const hasErrorCity = touchedCity && required && !cityValue;
   const hasErrorPost = touchedPost && required && !postValue;
 
+  const submitButton = () => {
+    if (countryValue && cityValue && postValue) {
+      hide();
+      openSecondModal();
+    } else {
+      if (!countryValue) {
+        setTouchedCountry(true);
+      }
+
+      if (!cityValue) {
+        setTouchedCity(true);
+      }
+
+      if (!postValue) {
+        setTouchedPost(true);
+      }
+    }
+  };
+
+  const theme = useSelector((state: RootState) => state.theme.theme);
+
   useEffect(() => {
     document.body.style.overflow = 'hidden';
 
@@ -30,6 +63,14 @@ export const DeliveryModal: React.FC = () => {
     <div>
       <div className={styles.blur}></div>
       <dialog className={styles.modal}>
+        <button className={styles.modal__close} onClick={hide}>
+          <img
+            className={styles.modal__closeImg}
+            src={theme === 'light' ? closeIcon : closeIconDark}
+            alt="cancel icon"
+          />
+        </button>
+
         <div className={styles.rowWrapper}>
           <div className={styles.formContainer}>
             <p className={styles.modal__title}>Delivery</p>
@@ -109,11 +150,16 @@ export const DeliveryModal: React.FC = () => {
           <div className={styles.imgContainer}>
             <img
               className={styles.deliveryImg}
-              src={deliveryGuy}
+              src={theme === 'light' ? deliveryGuyLight : deliveryGuyDark}
               alt="delivery guy"
             />
           </div>
         </div>
+
+        <div className={styles.animationContainer}></div>
+        <button className={styles.paymentButton} onClick={submitButton}>
+          Go to payment
+        </button>
       </dialog>
     </div>
   );
