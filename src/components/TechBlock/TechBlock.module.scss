@@ -12,13 +12,13 @@
   }
 
   &__name {
-    color: $secondary-color;
+    color: var(--secondary-color);
     font-size: 12px;
     font-weight: 600;
   }
 
   &__value {
-    color: $primary-color;
+    color: var(--primary-color);
     font-size: 12px;
     font-weight: 700;
   }
