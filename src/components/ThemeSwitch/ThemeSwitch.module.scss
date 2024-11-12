@@ -14,10 +14,7 @@
   &__slider {
     position: absolute;
     cursor: pointer;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+    inset: 0;
     transition: 0.5s;
     border-radius: 30px;
     background: var(--accent-color);
@@ -30,7 +27,7 @@
       border-radius: 50%;
       left: 10%;
       bottom: 15%;
-      box-shadow: inset 8px -4px 0px 0px #fff000;
+      box-shadow: inset 8px -4px 0 0 #fff000;
       transition: 0.5s;
     }
   }
@@ -40,7 +37,7 @@
 
     &::before {
       transform: translateX(25px);
-      box-shadow: inset 15px -4px 0px 15px #fff000;
+      box-shadow: inset 15px -4px 0 15px #fff000;
     }
   }
 }

@@ -8,7 +8,6 @@ import FavouritesIcon from '../../images/Icons/favourites.svg';
 import FavouritesIconDark from '../../../src/images/Icons/favouritesDark.svg';
 import FavouritesIconActive from '../../images/Icons/favourites-active.svg';
 
-
 type Props = {
   item: Product;
   onRemoveFromFavourites?: (id: number | string) => void;
