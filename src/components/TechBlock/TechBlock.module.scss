@@ -1,0 +1,25 @@
+@import '../../styles/utils/mixins';
+@import '../../styles/utils/variables';
+
+.tech-block {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  &__info {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__name {
+    color: $secondary-color;
+    font-size: 12px;
+    font-weight: 600;
+  }
+
+  &__value {
+    color: $primary-color;
+    font-size: 12px;
+    font-weight: 700;
+  }
+}

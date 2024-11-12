@@ -1,0 +1,156 @@
+@import '../../../../styles/utils/mixins';
+@import '../../../../styles/utils/variables';
+
+.swiper__container {
+  margin-bottom: 24px;
+
+  @include on-tablet {
+    width: 300px;
+  }
+
+  @include on-tablet {
+    margin-bottom: unset;
+    width: 300px;
+  }
+
+  @include on-desktop {
+    width: 600px;
+  }
+}
+
+.customNextButton {
+  right: 5px;
+
+  @include on-tablet {
+    left: 30%;
+  }
+
+  @include on-desktop {
+    left: 35%;
+  }
+}
+
+.customPrevButton {
+  left: 5px;
+
+  @include on-tablet {
+    left: 20%;
+  }
+
+  @include on-desktop {
+    left: 25%;
+  }
+}
+
+.customNextButton,
+.customPrevButton {
+  cursor: pointer;
+  position: absolute;
+  top: 30%;
+  transform: translateY(-50%);
+  background-color: transparent;
+
+  padding: 4px;
+  z-index: 10;
+  border-radius: 30px;
+  height: 50px;
+
+  border: 1px solid $icons-color;
+
+  &:disabled {
+    border-color: $elements-color;
+    color: $icons-color;
+    cursor: not-allowed;
+  }
+
+  &:hover {
+    border-color: $primary-color;
+  }
+
+  &:active {
+    background-color: $icons-color;
+  }
+
+  &:disabled:hover {
+    border-color: $elements-color;
+    color: $icons-color;
+    cursor: not-allowed;
+  }
+
+  @include on-tablet {
+    top: unset;
+    bottom: 0;
+    height: 20px;
+    width: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  @include on-desktop {
+    height: 25px;
+    width: 52px;
+  }
+}
+
+.slideImage {
+  display: block;
+  height: 240px;
+
+  margin: 0 auto;
+
+  @include on-desktop {
+    height: 500px;
+  }
+}
+
+.slideImage__box {
+  margin-bottom: 16px;
+
+  @include on-desktop {
+    margin-bottom: 24px;
+  }
+}
+
+.thumbImage__box {
+  height: 50px;
+  width: 50px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  margin: 0 auto;
+
+  opacity: 0.4;
+
+  &:hover {
+    opacity: 1;
+  }
+
+  @include on-tablet {
+    height: 70px;
+    width: 70px;
+  }
+
+  @include on-desktop {
+    height: 90px;
+    width: 90px;
+  }
+}
+
+.thumbImage {
+  cursor: pointer;
+  margin: 0 auto;
+  height: 50px;
+
+  @include on-tablet {
+    height: 60px;
+  }
+
+  @include on-desktop {
+    height: 80px;
+  }
+}
+
+.activeThumb {
+  opacity: 1;
+}
