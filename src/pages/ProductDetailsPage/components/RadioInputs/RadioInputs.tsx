@@ -4,12 +4,12 @@ import { FC } from 'react';
 import styles from './RadioInputs.module.scss';
 
 import cn from 'classnames';
-import { DeatailedProduct } from '../../../../types/DetailedProduct';
+import { DetailedProduct } from '../../../../types/DetailedProduct';
 import { getColor } from '../../../../utils/getColor';
 import { useLocation, useNavigate } from 'react-router-dom';
 
 interface Props {
-  product: DeatailedProduct;
+  product: DetailedProduct;
   selectedColor: string;
   onSelectColor: React.Dispatch<React.SetStateAction<string>>;
   selectedCapacity: string;

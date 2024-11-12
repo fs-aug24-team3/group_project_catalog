@@ -1,11 +1,12 @@
 import { FC } from 'react';
 
+import { DetailedProduct } from '../../../../types/DetailedProduct';
+
 import productStyles from '../../ProductDetailsPage.module.scss';
 import styles from './About.module.scss';
-import { DeatailedProduct } from '../../../../types/DetailedProduct';
 
 interface Props {
-  product: DeatailedProduct;
+  product: DetailedProduct;
 }
 
 export const About: FC<Props> = ({ product }) => {

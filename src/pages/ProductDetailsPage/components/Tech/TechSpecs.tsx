@@ -2,10 +2,10 @@ import { FC, useCallback, useEffect, useState } from 'react';
 
 import productsStyles from '../../ProductDetailsPage.module.scss';
 import styles from './TechSpecs.module.scss';
-import { DeatailedProduct } from '../../../../types/DetailedProduct';
+import { DetailedProduct } from '../../../../types/DetailedProduct';
 
 interface Props {
-  product: DeatailedProduct;
+  product: DetailedProduct;
 }
 
 export const TechSpecs: FC<Props> = ({ product }) => {
@@ -28,7 +28,7 @@ export const TechSpecs: FC<Props> = ({ product }) => {
 
   return (
     <div className={styles['tech-specs']}>
-      <h3 className={productsStyles.subtitle}>Tech specs</h3>
+      <h3 className={productsStyles.details__subtitle}>Tech specs</h3>
 
       <div className={styles['tech-specs__box']}>
         <div className={styles['tech-specs__wrap']}>
