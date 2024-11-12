@@ -4,6 +4,7 @@ import { Outlet } from 'react-router-dom';
 import styles from './styles/App.module.scss';
 import { Header } from './components/Header';
 import { Footer } from './components/Footer';
+import { ContactUsModal } from './components/ContactUsModal';
 
 export const App: React.FC = () => {
   return (
@@ -13,6 +14,7 @@ export const App: React.FC = () => {
         <div className={styles.outletWrapper}>
           <Outlet />
         </div>
+        <ContactUsModal />
       </main>
       <Footer />
     </div>
