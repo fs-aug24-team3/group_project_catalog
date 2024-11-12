@@ -37,6 +37,7 @@ const contactUsSlice = createSlice({
       state.showTimer = true;
     },
     resetRequest(state) {
+      state.isModalOpen = false;
       state.mobileNumber = '';
       state.isRequestSent = false;
       state.timer = 30000;

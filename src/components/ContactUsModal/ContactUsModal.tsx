@@ -9,7 +9,6 @@ import closeIconDark from '../../images/Icons/close-dark.svg';
 import contactIcon from '../../images/Icons/phone-call.svg';
 import contactIconDark from '../../images/Icons/phone-call-dark.svg';
 import {
-  closeModal,
   openModal,
   resetRequest,
   sendRequest,
@@ -32,6 +31,9 @@ export const ContactUsModal: React.FC = () => {
     return `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}:${ms.toString().padStart(2, '0')}`;
   };
 
+  const escClose = (event: KeyboardEvent) =>
+    event.code === 'Escape' && dispatch(resetRequest());
+
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setErrorMessage(null);
     dispatch(setMobileNumber(e.target.value));
@@ -48,6 +50,12 @@ export const ContactUsModal: React.FC = () => {
       setErrorMessage('*Please enter a valid mobile number.');
     }
   };
+
+  useEffect(() => {
+    document.addEventListener('keydown', escClose);
+
+    return () => document.removeEventListener('keydown', escClose);
+  });
 
   useEffect(() => {
     const lastRequest = localStorage.getItem('lastRequest');
@@ -88,13 +96,17 @@ export const ContactUsModal: React.FC = () => {
         />
         Contact Us
       </Link>
+
       {isModalOpen && (
-        <div className={styles.modal}>
-          <div className={styles.modal__content}>
+        <div className={styles.modal} onClick={() => dispatch(resetRequest())}>
+          <div
+            className={styles.modal__content}
+            onClick={e => e.stopPropagation()}
+          >
             <Link
               to="#"
               className={styles['modal__close-button']}
-              onClick={() => dispatch(closeModal())}
+              onClick={() => dispatch(resetRequest())}
             >
               <img
                 src={theme === 'light' ? closeIcon : closeIconDark}
@@ -107,6 +119,7 @@ export const ContactUsModal: React.FC = () => {
                   Enter your phone number and we&apos;ll call you back in 30
                   seconds
                 </h2>
+
                 <div className={styles['modal__send-request']}>
                   <input
                     type="text"
@@ -115,6 +128,7 @@ export const ContactUsModal: React.FC = () => {
                     onChange={handleInputChange}
                     className={styles['modal__send-request--input']}
                   />
+
                   <Link
                     to="#"
                     className={styles['modal__send-request--button']}
@@ -123,9 +137,11 @@ export const ContactUsModal: React.FC = () => {
                     Send Request
                   </Link>
                 </div>
+
                 <span className={styles['modal__send-request--example']}>
                   Example: 067 000 00 00
                 </span>
+
                 {errorMessage && (
                   <span
                     className={styles['modal__send-request--error-message']}
@@ -133,6 +149,7 @@ export const ContactUsModal: React.FC = () => {
                     {errorMessage}
                   </span>
                 )}
+
                 <div className={styles.modal__status}>
                   <span className={styles['modal__status--available']}>
                     Available operators online: 1
@@ -144,26 +161,26 @@ export const ContactUsModal: React.FC = () => {
               </>
             ) : (
               <>
-                {isRequestSent && showTimer && (
+                {isRequestSent && showTimer && timer > 0 ? (
                   <div className={styles['modal__send-request--timer']}>
-                    {timer > 0 ? (
-                      formatTime(timer)
-                    ) : (
-                      <span
-                        className={styles['modal__send-request--timer-message']}
-                      >
-                        No operators available
-                      </span>
-                    )}
+                    {formatTime(timer)}
                   </div>
+                ) : (
+                  <>
+                    <span
+                      className={styles['modal__send-request--timer-message']}
+                    >
+                      No operators available
+                    </span>
+                    <Link
+                      to="#"
+                      className={styles['modal__send-request--button']}
+                      onClick={() => dispatch(resetRequest())}
+                    >
+                      Close
+                    </Link>
+                  </>
                 )}
-                <Link
-                  to="#"
-                  className={styles['modal__send-request--button']}
-                  onClick={() => dispatch(resetRequest())}
-                >
-                  Send One More Request
-                </Link>
               </>
             )}
           </div>
