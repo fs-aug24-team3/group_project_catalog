@@ -13,7 +13,7 @@ const initialState: ContactUsState = {
   isModalOpen: false,
   mobileNumber: '',
   isRequestSent: false,
-  timer: 1000,
+  timer: 30000,
   showTimer: true,
 };
 
@@ -37,7 +37,7 @@ const contactUsSlice = createSlice({
 
     sendRequest(state) {
       state.isRequestSent = true;
-      state.timer = 1000;
+      state.timer = 30000;
       state.showTimer = true;
     },
 
@@ -45,7 +45,7 @@ const contactUsSlice = createSlice({
       state.isModalOpen = false;
       state.mobileNumber = '';
       state.isRequestSent = false;
-      state.timer = 1000;
+      state.timer = 30000;
       state.showTimer = true;
     },
 
