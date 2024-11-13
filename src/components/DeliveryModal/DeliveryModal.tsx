@@ -7,6 +7,7 @@ import deliveryGuyDark from './images/deliveryDark.png';
 import closeIcon from '../../images/Icons/close.svg';
 import closeIconDark from '../../images/Icons/close-dark.svg';
 import truck from './images/truck.png';
+import whiteTruck from './images/whiteTruck.png';
 import tilda from './images/pngwing.com.png';
 import done from './images/done.png';
 
@@ -183,7 +184,7 @@ export const DeliveryModal: React.FC<Props> = ({ hide, openSecondModal }) => {
                   ? styles.truckImage
                   : styles.truckImageAnimation
               }
-              src={truck}
+              src={theme === 'light' ? truck : whiteTruck}
               alt="truck image"
             />
           </div>
