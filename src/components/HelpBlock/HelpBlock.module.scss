@@ -1,0 +1,14 @@
+@import '../../styles/utils/variables';
+@import '../../styles/utils/mixins';
+
+.help-block {
+  display: flex;
+
+  align-items: center;
+
+  position: fixed;
+  bottom: 0;
+  right: 0;
+
+  z-index: 998;
+}
