@@ -21,7 +21,7 @@ export const NotFoundProductMessage: FC<Props> = ({
     <div className={styles.box}>
       {noFilterTitle ? (
         <p className={styles.messageFilter}>
-          There are no phone corresponding your serch criterias
+          {`There are no ${title.toLowerCase()} corresponding your serch criterias`}
         </p>
       ) : (
         <p className={styles.message}>
