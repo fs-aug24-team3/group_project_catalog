@@ -18,6 +18,7 @@ import styles from './ProductPage.module.scss';
 import { Pagination } from '../Pagination';
 import { ErrorBlock } from '../ErrorBlock';
 import { NotFoundProductMessage } from '../NotFoundProductMessage';
+import { SearchInput } from '../SearchInput';
 
 interface Props {
   title: string;
@@ -34,10 +35,11 @@ export const ProductPage: FC<Props> = ({ title, fetchProduct }) => {
   const [searchParams] = useSearchParams();
 
   const sort = searchParams.get('sort') || 'Newest';
+  const query = searchParams.get('query') || '';
 
   const filteredProducts = useMemo(
-    () => getFilteredProducts(product, sort),
-    [product, sort],
+    () => getFilteredProducts(product, sort, query),
+    [product, sort, query],
   );
 
   const { itemsToShow, selectedPerPage, handlePerPageChange } = usePagination(
@@ -88,31 +90,43 @@ export const ProductPage: FC<Props> = ({ title, fetchProduct }) => {
 
           <div className={styles['products-page__dropdowns']}>
             <div>
-              <p className={styles['products-page__label']}>Sort by</p>
-              <ProductSelect
-                placeholder={selectedSortField.label}
-                value={selectedSortField}
-                options={optionsForSorting}
-                onChange={handleSortFieldChange}
-              />
+              <p className={styles['products-page__label']}>Search</p>
+              <SearchInput query={query} />
             </div>
 
-            <div>
-              <p className={styles['products-page__label']}>Items on page</p>
+            <div className={styles['products-page__selects']}>
+              <div>
+                <p className={styles['products-page__label']}>Sort by</p>
+                <ProductSelect
+                  placeholder={selectedSortField.label}
+                  value={selectedSortField}
+                  options={optionsForSorting}
+                  onChange={handleSortFieldChange}
+                />
+              </div>
 
-              <ProductSelect
-                value={selectedPerPage}
-                onChange={handlePerPageChange}
-                options={optionsPerPage}
-                placeholder={selectedPerPage.label}
-              />
+              <div>
+                <p className={styles['products-page__label']}>Items on page</p>
+                <ProductSelect
+                  value={selectedPerPage}
+                  onChange={handlePerPageChange}
+                  options={optionsPerPage}
+                  placeholder={selectedPerPage.label}
+                />
+              </div>
             </div>
           </div>
 
-          <ProductList items={itemsToShow} />
+          {itemsToShow.length === 0 ? (
+            <NotFoundProductMessage title={title} />
+          ) : (
+            <>
+              <ProductList items={itemsToShow} />
 
-          {selectedPerPage.value !== 'All' && !!amount && (
-            <Pagination total={amount} />
+              {selectedPerPage.value !== 'All' && !!amount && (
+                <Pagination total={amount} />
+              )}
+            </>
           )}
         </div>
       )}
