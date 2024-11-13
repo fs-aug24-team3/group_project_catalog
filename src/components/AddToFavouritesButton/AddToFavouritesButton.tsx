@@ -2,19 +2,22 @@ import { FC, useEffect, useState } from 'react';
 import styles from './AddToFavouritesButton.module.scss';
 import { Link } from 'react-router-dom';
 import { Product } from '../../types/Product';
-
+import { useSelector } from 'react-redux';
+import { RootState } from '../../redux/store';
 import FavouritesIcon from '../../images/Icons/favourites.svg';
+import FavouritesIconDark from '../../../src/images/Icons/favouritesDark.svg';
 import FavouritesIconActive from '../../images/Icons/favourites-active.svg';
 
 type Props = {
   item: Product;
-  onRemoveFromFavourites?: (id: number) => void;
+  onRemoveFromFavourites?: (id: number | string) => void;
 };
 
 export const AddToFavouritesButton: FC<Props> = ({
   item,
   onRemoveFromFavourites,
 }) => {
+  const theme = useSelector((state: RootState) => state.theme.theme);
   const [isFavourited, setIsFavourited] = useState(false);
 
   const event = new CustomEvent('onFavouriteUpdate');
@@ -58,7 +61,13 @@ export const AddToFavouritesButton: FC<Props> = ({
       onClick={handleFavourite}
     >
       <img
-        src={isFavourited ? FavouritesIconActive : FavouritesIcon}
+        src={
+          isFavourited
+            ? FavouritesIconActive
+            : theme === 'light'
+              ? FavouritesIcon
+              : FavouritesIconDark
+        }
         alt="favourites-icon"
       />
     </Link>

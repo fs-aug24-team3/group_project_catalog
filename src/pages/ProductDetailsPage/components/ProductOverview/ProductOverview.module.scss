@@ -1,0 +1,196 @@
+@import '../../../../styles/utils/mixins';
+@import '../../../../styles/utils/variables';
+
+.overview {
+  margin-bottom: 56px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+
+  @include on-tablet {
+    margin-bottom: 64px;
+
+    flex-direction: row;
+    gap: 17px;
+  }
+
+  @include on-desktop {
+    margin-bottom: 80px;
+
+    gap: 64px;
+  }
+
+  // ***************photos
+
+  &__photos-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    gap: 16px;
+
+    @include on-tablet {
+      max-width: 338px;
+
+      flex-direction: row-reverse;
+      align-items: unset;
+    }
+
+    @include on-desktop {
+      max-width: 560px;
+    }
+  }
+
+  &__main-photo-box {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    width: 288px;
+
+    @include on-desktop {
+      width: 464px;
+    }
+  }
+
+  &__main-photo {
+    display: block;
+    height: 270px;
+    margin: 0 auto;
+
+    @include on-desktop {
+      height: 442px;
+    }
+  }
+
+  &__small-photo-box {
+    display: flex;
+    gap: 8px;
+
+    @include on-tablet {
+      flex-direction: column;
+      gap: 16px;
+    }
+  }
+
+  &__small-photo-wrap {
+    display: flex;
+    align-items: center;
+    width: 60px;
+    height: 58px;
+    justify-content: center;
+    border-radius: 4px;
+    border: 1px solid var(--icons-color);
+    overflow: hidden;
+
+    @include on-tablet {
+      width: 35px;
+      height: 35px;
+    }
+
+    @include on-desktop {
+      width: 80px;
+      height: 80px;
+    }
+
+    &--active {
+      border-color: var(--primary-color);
+    }
+  }
+
+  &__small-photo {
+    display: block;
+    height: 50px;
+
+    @include on-tablet {
+      height: 25px;
+    }
+
+    @include on-desktop {
+      height: 66px;
+    }
+  }
+
+  // ***************photos
+
+  &__info-block {
+    @include on-tablet {
+      width: 100%;
+    }
+  }
+
+  &__price-block {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 16px;
+
+    &--new {
+      font-size: 32px;
+      font-weight: 800;
+
+      color: var(--primary-color);
+
+      @include on-tablet {
+        line-height: 41px;
+        letter-spacing: -0.32px;
+      }
+    }
+
+    &--old {
+      position: relative;
+      isolation: isolate;
+
+      font-size: 22px;
+      font-weight: 500;
+      color: var(--secondary-color);
+
+      &::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 0;
+        right: 0;
+        height: 2px;
+        mix-blend-mode: color-dodge;
+        background-color: var(--secondary-color);
+
+        transform: translateY(-50%);
+      }
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 32px;
+
+    max-width: 288px;
+  }
+
+  &__tech-block {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__tech-info {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__tech-name {
+    color: var(--secondary-color);
+
+    font-size: 12px;
+    font-weight: 600;
+  }
+
+  &__tech-value {
+    color: var(--primary-color);
+
+    font-size: 12px;
+    font-weight: 700;
+  }
+
+}

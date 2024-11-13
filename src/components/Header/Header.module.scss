@@ -11,8 +11,8 @@
   width: 100%;
   height: 48px;
   z-index: 2;
-  background-color: $white-color;
-  border: 1px solid $elements-color;
+  background-color: var(--surface-color);
+  border: 1px solid var(--elements-color);
 
   @include on-desktop {
     height: 64px;
@@ -40,16 +40,24 @@
     }
   }
 
+  &__switch-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 88px;
+    height: 64px;
+  }
+
   &__button {
     position: relative;
     width: 48px;
     height: 100%;
-    box-shadow: -1px 0 0 0 $elements-color;
+    box-shadow: -1px 0 0 0 var(--elements-color);
     display: flex;
     align-items: center;
     justify-content: center;
     border: none;
-    background-color: $white-color;
+    background-color: var(--surface-color);
 
     @include on-tablet {
       display: none;
@@ -57,15 +65,25 @@
   }
 }
 
-.nav_bar {
+.nav-bar {
   display: none;
   justify-content: space-between;
-
   width: 100%;
-
   letter-spacing: 0.04em;
 
   @include on-tablet {
+    display: flex;
+  }
+
+  &__switch-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 88px;
+    height: 64px;
+  }
+
+  &__actions-container {
     display: flex;
   }
 }

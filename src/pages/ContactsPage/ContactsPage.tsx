@@ -6,9 +6,6 @@ import {
 } from '@vis.gl/react-google-maps';
 import styles from './ContactsPage.module.scss';
 
-import backToHome from '../../images/Icons/home.svg';
-import backToPage from '../../images/Icons/arrow_right.svg';
-
 import Icon_map from '../../images/contacts/icons/icon-map.svg';
 import Icon_clock from '../../images/contacts/icons/icon-clock.svg';
 import Icon_email from '../../images/contacts/icons/icon-email.svg';
@@ -29,8 +26,8 @@ type Position = {
 
 const contacts = [
   '+380 12 345 67 89',
-  '+380 12 345 67 89',
-  '+380 12 345 67 89',
+  '+380 12 345 68 89',
+  '+380 12 345 69 89',
 ];
 
 const locations: Position[] = [
@@ -60,19 +57,21 @@ const generateMapLink = (lat: number, lng: number) => {
   return `https://www.google.com/maps?q=${lat},${lng}`;
 };
 
-import { Link } from 'react-router-dom';
+import { BreadCrumbs } from '../../components/BreadCrumbs';
+import { useEffect } from 'react';
+
 export const ContactsPage = () => {
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  });
+
   return (
     <div className={styles.contacts}>
       <div className={styles.contacts__top}>
-        <Link to={'/'} className={styles['contacts__top-link']}>
-          <img src={backToHome} alt="back to home page" />
-        </Link>
-
-        <Link to="" className={styles['contacts__top-link']}>
-          <img src={backToPage} alt="back to page" />
-        </Link>
-        <span className={styles['contacts__top-link']}>Contacts</span>
+        <BreadCrumbs title="Contacts" />
       </div>
 
       <h1 className={styles['contacts__main-title']}>Contacts</h1>
@@ -142,7 +141,7 @@ export const ContactsPage = () => {
           <div className={styles['contacts__store-item']}>
             {locations.map((location: Position) => (
               <a
-                key={location.key}
+                key={location.location.lat}
                 href={generateMapLink(
                   location.location.lat,
                   location.location.lng,

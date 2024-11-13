@@ -66,7 +66,8 @@
   margin-top: 18px;
 }
 
-.swiperButtonPrev, .swiperButtonNext {
+.swiperButtonPrev,
+.swiperButtonNext {
   @include only-mobile {
     display: none;
   }
@@ -76,9 +77,9 @@
     width: 32px;
 
     border: 1px solid;
-    border-color: $icons-color;
+    border-color: var(--icons-color);
     border-radius: 48px;
-    background-color: $white-color;
+    background-color: var(--surface-color);
 
     cursor: pointer;
     position: absolute;
@@ -99,9 +100,9 @@
 }
 
 .swiperButtonPrev:hover {
-  border-color: $primary-color;
+  border-color: var(--primary-color);
 }
 
 .swiperButtonNext:hover {
-  border-color: $primary-color;
+  border-color: var(--primary-color);
 }

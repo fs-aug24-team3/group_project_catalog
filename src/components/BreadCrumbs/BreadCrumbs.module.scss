@@ -12,11 +12,33 @@
     margin-bottom: 40px;
   }
 
-  &__link {
+
+  &__link,
+  &__arrow {
     text-decoration: none;
-    color: $secondary-color;
+    color: var(--secondary-color);
+
     font-size: 12px;
     font-weight: 600;
-    line-height: normal;
+    line-height: 15.34px;
+    text-align: left;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+    letter-spacing: 0.04em;
+  }
+
+  &__arrow {
+    display: flex;
+    justify-content: center;
+  }
+
+  &__link {
+    color: var(--primary-color);
+
+    &--active {
+      color: var(--secondary-color);
+
+      cursor: default;
+    }
   }
 }

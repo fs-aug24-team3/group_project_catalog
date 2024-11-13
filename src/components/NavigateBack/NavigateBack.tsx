@@ -3,6 +3,9 @@ import styles from './NavigateBack.module.scss';
 import { Link, useNavigate } from 'react-router-dom';
 import classNames from 'classnames';
 import arrowLeft from '../../images/Icons/arrow_left.svg';
+import arrowLeftDark from '../../images/Icons/arrow_left_dark.svg';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../redux/store';
 
 interface Props {
   className?: string;
@@ -10,6 +13,7 @@ interface Props {
 
 export const BackLink: React.FC<Props> = ({ className }) => {
   const navigate = useNavigate();
+  const theme = useSelector((state: RootState) => state.theme.theme);
 
   const onClickHandler = (event: MouseEvent<HTMLAnchorElement>) => {
     event.preventDefault();
@@ -24,7 +28,10 @@ export const BackLink: React.FC<Props> = ({ className }) => {
       onClick={onClickHandler}
     >
       <div className={styles['back-link__icon']}>
-        <img src={arrowLeft} alt="back arrow" />
+        <img
+          src={theme === 'light' ? arrowLeft : arrowLeftDark}
+          alt="back arrow"
+        />
       </div>
       <p className={styles['back-link__text']}>Back</p>
     </Link>

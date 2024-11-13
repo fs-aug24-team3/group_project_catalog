@@ -1,8 +1,18 @@
+import { useEffect } from 'react';
+import { BreadCrumbs } from '../../components/BreadCrumbs';
 import styles from './RightsPage.module.scss';
 
 export const RightsPage = () => {
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  });
+
   return (
     <div className={styles.rights}>
+      <BreadCrumbs title="Rights" />
       <h1 className={styles['rights__main-title']}>
         Product and Service Information
       </h1>

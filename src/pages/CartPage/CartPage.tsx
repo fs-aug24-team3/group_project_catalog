@@ -8,9 +8,11 @@ import { EmptyCart } from '../../components/EmptyCart';
 
 import { RootState } from '../../redux/store';
 import { useSelector } from 'react-redux';
+import { DeliveryModal } from '../../components/DeliveryModal';
 
 export const CartPage: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isDeliveryModalOpen, setIsDeliveryModalOpen] = useState(false);
 
   const cart = useSelector((state: RootState) => state.cart.cartItems);
 
@@ -25,36 +27,40 @@ export const CartPage: React.FC = () => {
   return (
     <section className={`${styles['cart-page']}, ${styles.container}`}>
       <BackLink className={styles['cart-page__back-link']} />
-
+      <PageTitle>Cart</PageTitle>
       {!!cart.length ? (
-        <>
-          <PageTitle>Cart</PageTitle>
-          <div className={styles['cart-page__container']}>
-            <ul className={styles['cart-page__list']}>
-              {cart.map(item => (
-                <li key={item.id}>
-                  <CartItem cartProduct={item}></CartItem>
-                </li>
-              ))}
-            </ul>
-            <div className={styles['cart-page__checkout-container']}>
-              <p className={styles['cart-page__total']}>${price}</p>
-              <p className={styles['cart-page__items-counter']}>
-                Total for {totalQuantity} item{cart.length > 1 && 's'}
-              </p>
-              <button
-                onClick={() => {
-                  setIsModalOpen(true);
-                }}
-                className={styles['cart-page__checkout-button']}
-              >
-                Checkout
-              </button>
-            </div>
+        <div className={styles['cart-page__container']}>
+          <ul className={styles['cart-page__list']}>
+            {cart.map(item => (
+              <li key={item.id}>
+                <CartItem cartProduct={item}></CartItem>
+              </li>
+            ))}
+          </ul>
+          <div className={styles['cart-page__checkout-container']}>
+            <p className={styles['cart-page__total']}>${price}</p>
+            <p className={styles['cart-page__items-counter']}>
+              Total for {totalQuantity} item{cart.length > 1 && 's'}
+            </p>
+            <button
+              onClick={() => {
+                setIsDeliveryModalOpen(true);
+              }}
+              className={styles['cart-page__checkout-button']}
+            >
+              Checkout
+            </button>
           </div>
-        </>
+        </div>
       ) : (
         <EmptyCart />
+      )}
+
+      {isDeliveryModalOpen && (
+        <DeliveryModal
+          hide={() => setIsDeliveryModalOpen(false)}
+          openSecondModal={() => setIsModalOpen(true)}
+        />
       )}
 
       {isModalOpen && (
