@@ -170,7 +170,7 @@ export const ContactUsModal: React.FC = () => {
                     <span
                       className={styles['modal__send-request--timer-message']}
                     >
-                      No operators available
+                      We&apos;ll call you as soon as possible
                     </span>
                     <Link
                       to="#"
