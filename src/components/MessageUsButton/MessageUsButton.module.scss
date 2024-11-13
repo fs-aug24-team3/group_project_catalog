@@ -1,0 +1,49 @@
+@import '../../styles/utils/mixins';
+@import '../../styles/utils/variables';
+
+.pop-up__button {
+  display: flex;
+  align-items: center;
+
+  position: relative;
+  padding: 4px;
+  right: 20px;
+  bottom: 100px;
+  width: 46px;
+  gap: 4px;
+
+  border-radius: 18px;
+  border: 1px solid var(--primary-color);
+  background-color: var(--primary-color);
+  overflow: hidden;
+  z-index: 999;
+
+  white-space: nowrap;
+  font-size: 13px;
+  color: var(--surface-color);
+
+  user-select: none;
+
+  transition:
+    width 0.3s ease,
+    transform 0.3s ease;
+
+  @include on-tablet {
+    bottom: 120px;
+  }
+
+  @include on-desktop {
+    bottom: 120px;
+  }
+
+  img {
+    width: 36px;
+    height: 36px;
+    flex-shrink: 0;
+  }
+
+  &:hover {
+    width: 130px;
+    box-shadow: 0 3px 13px var(--shadow-color);
+  }
+}

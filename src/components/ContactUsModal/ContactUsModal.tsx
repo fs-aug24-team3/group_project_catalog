@@ -6,15 +6,13 @@ import { Link } from 'react-router-dom';
 import styles from './ContactUsModal.module.scss';
 import closeIcon from '../../images/Icons/close.svg';
 import closeIconDark from '../../images/Icons/close-dark.svg';
-import contactIcon from '../../images/Icons/phone-call.svg';
-import contactIconDark from '../../images/Icons/phone-call-dark.svg';
 import {
-  openModal,
   resetRequest,
   sendRequest,
   setMobileNumber,
   setTimer,
 } from '../../redux/slices/contactusSlice';
+import { ContactUsModalButton } from '../ContactUsModalButton';
 
 export const ContactUsModal: React.FC = () => {
   const dispatch = useDispatch();
@@ -85,17 +83,7 @@ export const ContactUsModal: React.FC = () => {
 
   return (
     <div>
-      <Link
-        to="#"
-        className={styles['contact-us__button']}
-        onClick={() => dispatch(openModal())}
-      >
-        <img
-          src={theme === 'light' ? contactIcon : contactIconDark}
-          alt="Contact Us"
-        />
-        Contact Us
-      </Link>
+      <ContactUsModalButton />
 
       {isModalOpen && (
         <div className={styles.modal} onClick={() => dispatch(resetRequest())}>

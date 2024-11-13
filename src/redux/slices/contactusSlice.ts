@@ -23,6 +23,7 @@ const contactUsSlice = createSlice({
   reducers: {
     openModal(state) {
       state.isModalOpen = true;
+      state.isRequestSent = false;
       state.showTimer = !state.isRequestSent;
     },
 

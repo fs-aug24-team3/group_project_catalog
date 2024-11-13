@@ -2,12 +2,11 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../redux/store';
+import { MessageUsButton } from '../MessageUsButton/MessageUsButton';
 
 import styles from './MessageUs.module.scss';
 import closeIcon from '../../images/Icons/close.svg';
 import closeIconDark from '../../images/Icons/close-dark.svg';
-import messageIcon from '../../images/Icons/message-us.svg';
-import messageIconDark from '../../images/Icons/message-us-dark.svg';
 
 export const MessageUs: React.FC = () => {
   const theme = useSelector((state: RootState) => state.theme.theme);
@@ -48,7 +47,7 @@ export const MessageUs: React.FC = () => {
     setTimeout(() => {
       setShowSuccess(false);
       setIsFormVisible(prevVisible => !prevVisible);
-    }, 3000);
+    }, 7000);
   };
 
   const toggleFormVisibility = () => {
@@ -67,17 +66,7 @@ export const MessageUs: React.FC = () => {
 
   return (
     <form className={styles['pop-up']}>
-      <Link
-        to="#"
-        onClick={toggleFormVisibility}
-        className={styles['pop-up__button']}
-      >
-        <img
-          src={theme === 'light' ? messageIcon : messageIconDark}
-          alt="Contact Us"
-        />
-        Message Us
-      </Link>
+      <MessageUsButton onFormVisibility={toggleFormVisibility} />
 
       {isFormVisible && (
         <div
