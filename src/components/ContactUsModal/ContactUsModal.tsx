@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import styles from './ContactUsModal.module.scss';
 import { RootState } from '../../redux/store';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
+import styles from './ContactUsModal.module.scss';
 import closeIcon from '../../images/Icons/close.svg';
 import closeIconDark from '../../images/Icons/close-dark.svg';
 import contactIcon from '../../images/Icons/phone-call.svg';
@@ -113,6 +113,7 @@ export const ContactUsModal: React.FC = () => {
                 alt="Close"
               />
             </Link>
+
             {!isRequestSent ? (
               <>
                 <h2 className={styles.modal__title}>
@@ -154,6 +155,7 @@ export const ContactUsModal: React.FC = () => {
                   <span className={styles['modal__status--available']}>
                     Available operators online: 1
                   </span>
+
                   <span className={styles['modal__status--orders']}>
                     Call orders today: 5+
                   </span>
@@ -172,6 +174,7 @@ export const ContactUsModal: React.FC = () => {
                     >
                       We&apos;ll call you as soon as possible
                     </span>
+
                     <Link
                       to="#"
                       className={styles['modal__send-request--button']}
