@@ -26,8 +26,12 @@
 
   @include only-mobile {
     width: 100vw;
-    height: 900px;
+    height: 730px;
     border-radius: 0;
+    gap: 4px;
+
+    padding: 30px;
+    padding-bottom: 24px;
   }
 
   &__close {
@@ -41,6 +45,11 @@
     border-radius: 50%;
     border: none;
     background-color: transparent;
+
+    @include only-mobile {
+      width: 40px;
+      height: 40px;
+    }
   }
 
   &__closeImg {
@@ -63,6 +72,10 @@
     text-decoration-skip-ink: none;
 
     margin-bottom: 15px;
+
+    @include only-mobile {
+      font-size: 38px;
+    }
   }
 }
 
@@ -83,6 +96,10 @@
   align-items: flex-start;
   gap: 8px;
   height: 120px;
+
+  @include only-mobile {
+    height: 96px;
+  }
 }
 
 .label {
@@ -105,6 +122,11 @@
   outline: none;
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
 
+  @include only-mobile {
+    height: 34px;
+    font-size: 0.9rem;
+  }
+
   &::placeholder {
     color: #aaa;
   }
@@ -122,6 +144,10 @@
 .help {
   color: #ff4d4d;
   font-size: 0.88rem;
+
+  @include only-mobile {
+    font-size: 0.8rem;
+  }
 }
 
 .rowWrapper {
@@ -145,7 +171,7 @@
   width: 300px;
 
   @include only-mobile {
-    width: 220px;
+    width: 200px;
   }
 }
 
@@ -159,7 +185,7 @@
   flex-direction: column;
   gap: 2px;
   width: 100%;
-  height: 100px;
+  height: 80px;
   opacity: 1;
 }
 
@@ -167,6 +193,10 @@
   width: 100%;
   height: 6px;
   background-color: var(--primary-color);
+
+  @include only-mobile {
+    height: 3px;
+  }
 }
 
 .tilda1 {
@@ -176,6 +206,10 @@
   top: 362px;
   right: 244px;
   animation: spin 1s linear infinite;
+
+  @include only-mobile {
+    opacity: 0;
+  }
 }
 
 .tilda2 {
@@ -185,6 +219,10 @@
   top: 362px;
   right: 89px;
   animation: spin 1s linear infinite;
+
+  @include only-mobile {
+    opacity: 0;
+  }
 }
 
 @keyframes spin {
@@ -197,11 +235,14 @@
 }
 
 @keyframes move-right {
-  from {
+  0% {
     transform: translateX(0);
   }
-  to {
-    transform: translateX(640px);
+  20% {
+    transform: translateX(-8px);
+  }
+  100% {
+    transform: translateX(554px);
   }
 }
 
@@ -217,6 +258,11 @@
 .iconContainer {
   width: 70px;
   height: 50px;
+
+  @include only-mobile {
+    width: 56px;
+    height: 40px;
+  }
 }
 
 .iconContainerAnim {
@@ -224,25 +270,40 @@
   height: 50px;
   animation:
   bounce-up-down 0.6s ease-in-out infinite;
+
+  @include only-mobile {
+    width: 56px;
+    height: 40px;
+  }
 }
 
 .truckImage {
   width: 70px;
   height: 50px;
+
+  @include only-mobile {
+    width: 56px;
+    height: 40px;
+  }
 }
 
 .truckImageAnimation {
   width: 70px;
   height: 50px;
   animation:
-  move-right 3s linear infinite,
+  move-right 3s ease-in-out infinite;
+
+  @include only-mobile {
+    width: 56px;
+    height: 40px;
+  }
 }
 
 .paymentButton {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 70px;
+  height: 50px;
   width: 100%;
   border: none;
   background-color: var(--accent-color);
@@ -254,6 +315,7 @@
 
   @include only-mobile {
     width: 80%;
+    height: 40px;
   }
 
   &:hover {
