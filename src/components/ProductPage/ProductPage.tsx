@@ -125,7 +125,7 @@ export const ProductPage: FC<Props> = ({ title, fetchProduct }) => {
           </div>
 
           {itemsToShow.length === 0 ? (
-            <NotFoundProductMessage title={title} />
+            <NotFoundProductMessage title={title} noFilterTitle="a" />
           ) : (
             <>
               <ProductList items={itemsToShow} />
