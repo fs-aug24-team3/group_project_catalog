@@ -63,7 +63,7 @@ import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 
 export const ContactsPage = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
 
   useEffect(() => {
     window.scrollTo({
@@ -188,8 +188,10 @@ export const ContactsPage = () => {
         <div className={styles['contacts__store-map']}>
           <APIProvider
             apiKey={'AIzaSyBJGJ18Oc2UEljLBZF_YFdT20q1fi7LIxA'}
-            language={'en'}
-            region={'EN'}
+            // language={'en'}
+            language={i18n.language === 'en' ? 'en' : 'ua'}
+            // region={'EN'}
+            region={i18n.language === 'en' ? 'EN' : 'UA'}
           >
             <div className={styles['contacts__map-container']}>
               <Map
@@ -198,7 +200,6 @@ export const ContactsPage = () => {
                   overflow: 'hidden',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  // colorScheme: ColorScheme.DARK,
                 }}
                 defaultZoom={11}
                 defaultCenter={position}

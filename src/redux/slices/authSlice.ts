@@ -1,3 +1,5 @@
+/* eslint-disable no-param-reassign */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import {
   auth,
@@ -21,12 +23,14 @@ export const signupUser = createAsyncThunk(
         userData.email,
         userData.password,
       );
+
       await updateProfile(userCredential.user, { displayName: userData.name });
+
       return userCredential.user;
+
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (error: any) {
       return rejectWithValue(error.message);
-    } finally {
-      window.location.reload();
     }
   },
 );
@@ -45,11 +49,12 @@ export const loginUser = createAsyncThunk(
         email,
         password,
       );
+
       return userCredential.user;
+
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (error: any) {
       return thunkAPI.rejectWithValue(error.message);
-    } finally {
-      window.location.reload();
     }
   },
 );
