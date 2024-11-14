@@ -6,5 +6,7 @@ import { getCatalogPhones } from '../../api/api';
 import { ProductPage } from '../../components/ProductPage/ProductPage';
 
 export const PhonePage: React.FC = () => {
-  return <ProductPage title="Mobile phones" fetchProduct={getCatalogPhones} />;
+  return (
+    <ProductPage title={'pageTitle.phones'} fetchProduct={getCatalogPhones} />
+  );
 };

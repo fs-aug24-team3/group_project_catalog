@@ -1,3 +1,4 @@
+/* eslint-disable import/no-extraneous-dependencies */
 import { FC } from 'react';
 
 import Main_logo from '../../images/main_logo/Logo.svg';
@@ -10,8 +11,11 @@ import { Link, NavLink } from 'react-router-dom';
 import mainStyles from '../../styles/App.module.scss';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../redux/store';
+import { useTranslation } from 'react-i18next';
 
 export const Footer: FC = () => {
+  const { t } = useTranslation();
+
   function scrollToTop() {
     window.scrollTo({
       top: 0,
@@ -45,24 +49,24 @@ export const Footer: FC = () => {
 
           <span>
             <NavLink to={'contacts'} className={styles.footer__link}>
-              Contacts
+              {t('links.contacts')}
             </NavLink>
           </span>
 
           <span>
             <NavLink to={'rights'} className={styles.footer__link}>
-              Rights
+              {t('links.rights')}
             </NavLink>
           </span>
 
           <span>
             <NavLink to={'service'} className={styles.footer__link}>
-              Service
+              {t('links.service')}
             </NavLink>
           </span>
         </div>
         <div className={styles['footer__back-to-top']}>
-          Back to top
+          {t('links.back_to_top')}
           <button className={styles['footer__top-icon']} onClick={scrollToTop}>
             <img
               src={theme === 'light' ? Top_icon : Top_icon_dark}

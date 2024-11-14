@@ -80,7 +80,11 @@
     align-items: center;
     justify-content: center;
     width: 88px;
-    height: 64px;
+    height: 46px;
+
+    @include on-desktop {
+      height: 64px;
+    }
   }
 
   &__actions-container {

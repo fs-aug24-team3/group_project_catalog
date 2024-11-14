@@ -1,3 +1,4 @@
+/* eslint-disable import/no-extraneous-dependencies */
 import { FC, useEffect, useState } from 'react';
 import { AddToCartButton } from '../AddToCartButton';
 import { AddToFavouritesButton } from '../AddToFavouritesButton';
@@ -10,6 +11,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { addItemToCart } from '../../redux/slices/cartSlice';
 import { RootState } from '../../redux/store';
 import { CardPrices } from '../CardPrices/CardPrices';
+import { useTranslation } from 'react-i18next';
 
 interface Props {
   item: Product;
@@ -25,6 +27,8 @@ export const ProductCard: FC<Props> = ({
   onRemoveFromFavourites,
 }) => {
   const [isPressed, setIsPressed] = useState(false);
+
+  const { t } = useTranslation();
 
   const { image, name, price, fullPrice, screen, capacity, ram, itemId } = item;
 
@@ -75,7 +79,9 @@ export const ProductCard: FC<Props> = ({
 
       <div className={styles.card__description}>
         <div className={styles['card__description--container']}>
-          <p className={styles['card__description--container-name']}>Screen</p>
+          <p className={styles['card__description--container-name']}>
+            {t('details.screen')}
+          </p>
           <p className={styles['card__description--container-value']}>
             {screen}
           </p>
@@ -83,7 +89,7 @@ export const ProductCard: FC<Props> = ({
 
         <div className={styles['card__description--container']}>
           <p className={styles['card__description--container-name']}>
-            Capacity
+            {t('details.capacity')}
           </p>
           <p className={styles['card__description--container-value']}>
             {capacity}
@@ -91,7 +97,9 @@ export const ProductCard: FC<Props> = ({
         </div>
 
         <div className={styles['card__description--container']}>
-          <p className={styles['card__description--container-name']}>RAM</p>
+          <p className={styles['card__description--container-name']}>
+            {t('details.ram')}
+          </p>
           <p className={styles['card__description--container-value']}>{ram}</p>
         </div>
       </div>

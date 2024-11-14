@@ -1,3 +1,4 @@
+/* eslint-disable import/no-extraneous-dependencies */
 import {
   APIProvider,
   Map,
@@ -59,8 +60,11 @@ const generateMapLink = (lat: number, lng: number) => {
 
 import { BreadCrumbs } from '../../components/BreadCrumbs';
 import { useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 
 export const ContactsPage = () => {
+  const { t } = useTranslation();
+
   useEffect(() => {
     window.scrollTo({
       top: 0,
@@ -71,16 +75,20 @@ export const ContactsPage = () => {
   return (
     <div className={styles.contacts}>
       <div className={styles.contacts__top}>
-        <BreadCrumbs title="Contacts" />
+        <BreadCrumbs title={'pageTitle.contacts'} />
       </div>
 
-      <h1 className={styles['contacts__main-title']}>Contacts</h1>
+      <h1 className={styles['contacts__main-title']}>
+        {t('pageTitle.contacts')}
+      </h1>
 
       <div className={styles['contacts__block-contacts']}>
         <div className={styles.contacts__store}>
           <div className={styles['contacts__store-text']}>
             <div className={styles['contacts__contact-item']}>
-              <h2 className={styles.contacts__title}>Contact us</h2>
+              <h2 className={styles.contacts__title}>
+                {t('contacts_page.contact_us')}
+              </h2>
               <div className={styles.contacts_list}>
                 {contacts.map(contact => (
                   <span className={styles.contacts__row} key={contact}>
@@ -100,7 +108,9 @@ export const ContactsPage = () => {
               </div>
             </div>
             <div className={styles['contacts__contact-item']}>
-              <h2 className={styles.contacts__title}>Email</h2>
+              <h2 className={styles.contacts__title}>
+                {t('contacts_page.email')}
+              </h2>
               <span className={styles.contacts__row}>
                 <img
                   src={Icon_email}
@@ -116,14 +126,16 @@ export const ContactsPage = () => {
               </span>
             </div>
             <div className={styles['contacts__contact-item']}>
-              <h2 className={styles.contacts__title}>Work schedule</h2>
+              <h2 className={styles.contacts__title}>
+                {t('contacts_page.schedule')}
+              </h2>
               <span className={styles.contacts__row}>
                 <img
                   src={Icon_clock}
                   alt="Icon_clock"
                   className={styles['contacts__row-icon']}
                 />
-                Mon-Sun: 9:00 AM - 9:00 PM
+                {`${t('contacts_page.days')} : 9:00 AM - 9:00 PM`}
               </span>
             </div>
           </div>
@@ -136,7 +148,9 @@ export const ContactsPage = () => {
         </div>
 
         <div className={styles['contacts__contact-item']}>
-          <h2 className={styles.contacts__title}>Our Store Locations</h2>
+          <h2 className={styles.contacts__title}>
+            {t('contacts_page.locations')}
+          </h2>
 
           <div className={styles['contacts__store-item']}>
             {locations.map((location: Position) => (
@@ -168,7 +182,9 @@ export const ContactsPage = () => {
           </div>
         </div>
 
-        <h2 className={styles.contacts__title}>Store locations on map</h2>
+        <h2 className={styles.contacts__title}>
+          {t('contacts_page.locations_on_map')}
+        </h2>
         <div className={styles['contacts__store-map']}>
           <APIProvider
             apiKey={'AIzaSyBJGJ18Oc2UEljLBZF_YFdT20q1fi7LIxA'}

@@ -1,12 +1,14 @@
 import { NavLink } from 'react-router-dom';
 import styles from './Navigation.module.scss';
 import classNames from 'classnames';
+// eslint-disable-next-line import/no-extraneous-dependencies
+import { useTranslation } from 'react-i18next';
 
 const NavData = [
-  { title: 'Home', path: '/' },
-  { title: 'Phones', path: '/phones' },
-  { title: 'Tablets', path: '/tablets' },
-  { title: 'Accessories', path: '/accessories' },
+  { title: 'links.home', path: '/' },
+  { title: 'links.phones', path: '/phones' },
+  { title: 'links.tablets', path: '/tablets' },
+  { title: 'links.accessories', path: '/accessories' },
 ];
 
 interface Props {
@@ -15,6 +17,8 @@ interface Props {
 }
 
 export const Navigation: React.FC<Props> = ({ className, onHideMenu }) => {
+  const { t } = useTranslation();
+
   return (
     <ul className={`${styles.navigation__list} ${className}`}>
       {NavData.map(({ title, path }) => (
@@ -28,7 +32,7 @@ export const Navigation: React.FC<Props> = ({ className, onHideMenu }) => {
             to={path}
             onClick={onHideMenu}
           >
-            {title}
+            {t(`${title}`)}
           </NavLink>
         </li>
       ))}
