@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { openModal } from '../../redux/slices/contactusSlice';
 import styles from './ContactUsModalButton.module.scss';
-import contactIcon from '../../images/Icons/phone-call-dark_copy.svg';
+import contactIcon from '../../images/Icons/phone-call.svg';
 import contactIconDark from '../../images/Icons/phone-call-dark.svg';
 
 export const ContactUsModalButton = () => {
