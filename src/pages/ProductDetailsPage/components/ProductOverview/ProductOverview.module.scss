@@ -21,6 +21,13 @@
     gap: 64px;
   }
 
+  &__button {
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    outline: none;
+  }
+
   // ***************photos
 
   &__photos-block {
@@ -192,5 +199,4 @@
     font-size: 12px;
     font-weight: 700;
   }
-
 }

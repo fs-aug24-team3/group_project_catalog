@@ -1,4 +1,6 @@
+/* eslint-disable import/no-extraneous-dependencies */
 import { FC, useEffect, useMemo, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Product } from '../../types/Product';
 import { useSearchParams } from 'react-router-dom';
 import { getFilteredProducts } from '../../utils/getFilteredProducts';
@@ -8,16 +10,16 @@ import { Loader } from '../Loader';
 import { BreadCrumbs } from '../BreadCrumbs';
 import { PageTitle } from '../PageTitle';
 import { ProductSelect } from '../Select';
-import {
-  optionsForSorting,
-  optionsPerPage,
-} from '../../constants/optionsForSelect';
+
 import { ProductList } from '../ProductList';
 
 import styles from './ProductPage.module.scss';
 import { Pagination } from '../Pagination';
 import { ErrorBlock } from '../ErrorBlock';
 import { NotFoundProductMessage } from '../NotFoundProductMessage';
+
+import { useOptionsForSorting } from '../../hooks/useOptionsForSorting';
+import { useOptionsPerPage } from '../../hooks/useOptionsPerPage';
 
 interface Props {
   title: string;
@@ -30,6 +32,8 @@ export const ProductPage: FC<Props> = ({ title, fetchProduct }) => {
   const [error, setError] = useState('');
   const [isLoadedData, setIsLoadedData] = useState(false);
 
+  const { t, i18n } = useTranslation();
+
   const amount = product.length;
 
   const [searchParams] = useSearchParams();
@@ -41,12 +45,18 @@ export const ProductPage: FC<Props> = ({ title, fetchProduct }) => {
     [product, sort],
   );
 
-  const { itemsToShow, selectedPerPage, handlePerPageChange } = usePagination(
-    filteredProducts,
-    amount,
-  );
+  const {
+    itemsToShow,
+    selectedPerPage,
+    setSelectedPerPage,
+    handlePerPageChange,
+  } = usePagination(filteredProducts, amount);
 
-  const { selectedSortField, handleSortFieldChange } = useSortFilters();
+  const sortingOptions = useOptionsForSorting();
+  const perPageOptions = useOptionsPerPage();
+
+  const { selectedSortField, setSelectedSortField, handleSortFieldChange } =
+    useSortFilters();
 
   const handleLoadProducts = () => {
     setError('');
@@ -64,14 +74,25 @@ export const ProductPage: FC<Props> = ({ title, fetchProduct }) => {
       });
   };
 
+  const reload = () => {
+    handleLoadProducts();
+  };
+
   useEffect(() => {
     handleLoadProducts();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [fetchProduct]);
 
-  const reload = () => {
-    handleLoadProducts();
-  };
+  useEffect(() => {
+    setSelectedSortField(prev => ({
+      ...prev,
+      label: t(`select.${prev.value}`),
+    }));
+    setSelectedPerPage(prev => ({
+      ...prev,
+      label: prev.value === 'all' ? t(`select.${prev.value}`) : prev.value,
+    }));
+  }, [i18n.language, t, setSelectedSortField, setSelectedPerPage]);
 
   return (
     <>
@@ -89,36 +110,44 @@ export const ProductPage: FC<Props> = ({ title, fetchProduct }) => {
         <div className={styles['products-page__wrapper']}>
           <BreadCrumbs title={title} />
 
-          <PageTitle>{title}</PageTitle>
+          <PageTitle>{t(`${title}`)}</PageTitle>
 
-          <p className={styles['products-page__amount']}>{amount} models</p>
+          <p className={styles['products-page__amount']}>
+            {amount}{' '}
+            {amount === 124 || amount === 34
+              ? t('page.models')
+              : t('page.models1')}
+          </p>
 
           <div className={styles['products-page__dropdowns']}>
             <div>
-              <p className={styles['products-page__label']}>Sort by</p>
+              <p className={styles['products-page__label']}>{t('page.sort')}</p>
               <ProductSelect
                 placeholder={selectedSortField.label}
                 value={selectedSortField}
-                options={optionsForSorting}
+                options={sortingOptions}
                 onChange={handleSortFieldChange}
               />
             </div>
 
             <div>
-              <p className={styles['products-page__label']}>Items on page</p>
+              <p className={styles['products-page__label']}>
+                {t('page.perPage')}
+              </p>
 
               <ProductSelect
+                key={i18n.language}
                 value={selectedPerPage}
                 onChange={handlePerPageChange}
-                options={optionsPerPage}
-                placeholder={selectedPerPage.label}
+                options={perPageOptions}
+                placeholder={t(selectedPerPage.label)}
               />
             </div>
           </div>
 
           <ProductList items={itemsToShow} />
 
-          {selectedPerPage.value !== 'All' && !!amount && (
+          {selectedPerPage.value !== 'all' && !!amount && (
             <Pagination total={amount} />
           )}
         </div>

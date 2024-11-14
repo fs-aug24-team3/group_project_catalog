@@ -1,3 +1,4 @@
+/* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import { FC } from 'react';
 
@@ -7,6 +8,7 @@ import cn from 'classnames';
 import { DetailedProduct } from '../../../../types/DetailedProduct';
 import { getColor } from '../../../../utils/getColor';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 interface Props {
   product: DetailedProduct;
@@ -23,6 +25,7 @@ export const RadioInputs: FC<Props> = ({
   selectedCapacity,
   onSelectCapacity,
 }) => {
+  const { t } = useTranslation();
   const preparedSelectedColor = selectedColor
     .toLowerCase()
     .trim()
@@ -53,7 +56,7 @@ export const RadioInputs: FC<Props> = ({
   return (
     <div className={styles.radio}>
       <div className={styles.radio__input}>
-        <p className={styles.radio__title}>Available colors</p>
+        <p className={styles.radio__title}>{t('details.title.color')}</p>
 
         <div className={styles.radio__items}>
           {product.colorsAvailable.map(color => {
@@ -88,7 +91,7 @@ export const RadioInputs: FC<Props> = ({
       </div>
 
       <div className={styles.radio__input}>
-        <p className={styles.radio__title}>Select capacity</p>
+        <p className={styles.radio__title}>{t('details.title.capacity')}</p>
 
         <div className={styles.radio__items}>
           {product.capacityAvailable.map(capacity => (

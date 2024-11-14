@@ -3,15 +3,19 @@ import { useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { SingleValue } from 'react-select';
 
-import { Option } from '../constants/optionsForSelect';
+import { Option } from '../types/Options';
 import { Product } from '../types/Product';
-import { capitalizeFirstLetter } from '../utils/capitalizeFirstLetter';
+
+import { useTranslation } from 'react-i18next';
 
 export const usePagination = (items: Product[], amount: number) => {
   const [searchParams, setSearchParams] = useSearchParams();
-  const perPage = searchParams.get('perPage') || 'All';
+  const perPage = searchParams.get('perPage') || 'all';
+
+  const { t } = useTranslation();
+
   const [selectedPerPage, setSelectedPerPage] = useState<Option>({
-    label: capitalizeFirstLetter(perPage),
+    label: perPage === 'all' ? t(`select.${perPage}`) : perPage,
     value: perPage,
   });
 
@@ -19,7 +23,7 @@ export const usePagination = (items: Product[], amount: number) => {
 
   const currentPage = searchParams.get('page') || '1';
 
-  if (selectedPerPage.value !== 'All') {
+  if (selectedPerPage.value !== 'all') {
     const indexOfLastItem = +currentPage * +selectedPerPage.value;
     const indexOfFirstItem = indexOfLastItem - +selectedPerPage.value;
     const itemTo = Math.min(indexOfLastItem, amount);
@@ -45,6 +49,7 @@ export const usePagination = (items: Product[], amount: number) => {
 
   return {
     selectedPerPage,
+    setSelectedPerPage,
     handlePerPageChange,
     itemsToShow,
   };

@@ -70,12 +70,7 @@ export const ProductOverview: FC<Props> = ({
         <div className={styles['overview__main-photo-box']}>
           <button
             type="button"
-            style={{
-              border: 'none',
-              backgroundColor: 'transparent',
-              cursor: 'pointer',
-              outline: 'none',
-            }}
+            className={styles.overview__button}
             onClick={() => setIsModalOpen(true)}
           >
             <img
@@ -94,16 +89,10 @@ export const ProductOverview: FC<Props> = ({
                 [styles['overview__small-photo-wrap--active']]:
                   image === mainPhoto,
               })}
-              // onClick={() => setMainPhoto(image)}
             >
               <button
                 type="button"
-                style={{
-                  border: 'none',
-                  backgroundColor: 'transparent',
-                  cursor: 'pointer',
-                  outline: 'none',
-                }}
+                className={styles.overview__button}
                 onClick={() => setMainPhoto(image)}
               >
                 <img

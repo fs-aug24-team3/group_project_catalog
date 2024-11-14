@@ -5,7 +5,7 @@ import {
   OptionProps,
   StylesConfig,
 } from 'react-select';
-import { Option } from './optionsForSelect';
+import { Option } from '../types/Options';
 
 export const selectStyles = (
   width: number,

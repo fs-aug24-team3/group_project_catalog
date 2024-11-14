@@ -1,9 +1,13 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import { FC, useEffect } from 'react';
 import Select, { PropsValue, SingleValue, StylesConfig } from 'react-select';
-import { Option } from '../../constants/optionsForSelect';
-import { selectStyles } from '../../constants/selectStyles';
+import { Option } from '../../types/Options';
+import { selectStyles } from '../../utils/selectStyles';
 import { useWidth } from '../../hooks/useWidth';
+import { useTranslation } from 'react-i18next';
+
+// import './Select.css';
+import '../../styles/normalise.scss';
 
 interface Props {
   value: PropsValue<Option>;
@@ -18,12 +22,13 @@ export const ProductSelect: FC<Props> = ({
   options,
   placeholder,
 }) => {
+  const { t } = useTranslation();
   const { width, updateWidth } = useWidth();
 
   const isWidthForBiggerSelector =
-    placeholder === 'Newest' ||
-    placeholder === 'Cheapest' ||
-    placeholder === 'Alphabetically';
+    placeholder === t('select.newest') ||
+    placeholder === t('select.cheapest') ||
+    placeholder === t('select.alphabetically');
 
   const styles: StylesConfig<Option, false> = selectStyles(
     width,
@@ -47,7 +52,7 @@ export const ProductSelect: FC<Props> = ({
       isSearchable={false}
       onChange={onChange}
       options={options}
-      placeholder={placeholder}
+      placeholder={t(`placeholder.${placeholder}`)}
       styles={styles}
     />
   );
