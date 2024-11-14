@@ -17,6 +17,7 @@ import styles from './ProductPage.module.scss';
 import { Pagination } from '../Pagination';
 import { ErrorBlock } from '../ErrorBlock';
 import { NotFoundProductMessage } from '../NotFoundProductMessage';
+import { SearchInput } from '../SearchInput';
 
 import { useOptionsForSorting } from '../../hooks/useOptionsForSorting';
 import { useOptionsPerPage } from '../../hooks/useOptionsPerPage';
@@ -39,10 +40,11 @@ export const ProductPage: FC<Props> = ({ title, fetchProduct }) => {
   const [searchParams] = useSearchParams();
 
   const sort = searchParams.get('sort') || 'newest';
+  const query = searchParams.get('query') || '';
 
   const filteredProducts = useMemo(
-    () => getFilteredProducts(product, sort),
-    [product, sort],
+    () => getFilteredProducts(product, sort, query),
+    [product, sort, query],
   );
 
   const {
@@ -121,34 +123,45 @@ export const ProductPage: FC<Props> = ({ title, fetchProduct }) => {
 
           <div className={styles['products-page__dropdowns']}>
             <div>
-              <p className={styles['products-page__label']}>{t('page.sort')}</p>
-              <ProductSelect
-                placeholder={selectedSortField.label}
-                value={selectedSortField}
-                options={sortingOptions}
-                onChange={handleSortFieldChange}
-              />
+              <p className={styles['products-page__label']}>Search</p>
+              <SearchInput query={query} />
             </div>
 
-            <div>
-              <p className={styles['products-page__label']}>
-                {t('page.perPage')}
-              </p>
+            <div className={styles['products-page__selects']}>
+              <div>
+                <p className={styles['products-page__label']}>{t('page.sort')}</p>
+                <ProductSelect
+                  placeholder={selectedSortField.label}
+                  value={selectedSortField}
+                  options={optionsForSorting}
+                  onChange={handleSortFieldChange}
+                />
+              </div>
 
-              <ProductSelect
-                key={i18n.language}
-                value={selectedPerPage}
-                onChange={handlePerPageChange}
-                options={perPageOptions}
-                placeholder={t(selectedPerPage.label)}
-              />
+              <div>
+                <p className={styles['products-page__label']}>
+                  {t('page.perPage')}
+                </p>
+                <ProductSelect
+                  value={selectedPerPage}
+                  onChange={handlePerPageChange}
+                  options={optionsPerPage}
+                  placeholder={selectedPerPage.label}
+                />
+              </div>
             </div>
           </div>
 
-          <ProductList items={itemsToShow} />
+          {itemsToShow.length === 0 ? (
+            <NotFoundProductMessage title={title} noFilterTitle="a" />
+          ) : (
+            <>
+              <ProductList items={itemsToShow} />
 
-          {selectedPerPage.value !== 'all' && !!amount && (
-            <Pagination total={amount} />
+              {selectedPerPage.value !== 'all' && !!amount && (
+                <Pagination total={amount} />
+              )}
+            </>
           )}
         </div>
       )}

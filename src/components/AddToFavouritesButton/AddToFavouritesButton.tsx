@@ -4,9 +4,12 @@ import { Link } from 'react-router-dom';
 import { Product } from '../../types/Product';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../redux/store';
+
 import FavouritesIcon from '../../images/Icons/favourites.svg';
 import FavouritesIconDark from '../../../src/images/Icons/favouritesDark.svg';
 import FavouritesIconActive from '../../images/Icons/favourites-active.svg';
+// eslint-disable-next-line max-len
+import FavouritesIconDarkActive from '../../images/Icons/favouritesDark-active.svg';
 
 type Props = {
   item: Product;
@@ -63,7 +66,9 @@ export const AddToFavouritesButton: FC<Props> = ({
       <img
         src={
           isFavourited
-            ? FavouritesIconActive
+            ? theme === 'light'
+              ? FavouritesIconActive
+              : FavouritesIconDarkActive
             : theme === 'light'
               ? FavouritesIcon
               : FavouritesIconDark

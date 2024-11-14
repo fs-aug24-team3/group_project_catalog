@@ -7,6 +7,10 @@ import deliveryGuyDark from './images/deliveryDark.png';
 
 import closeIcon from '../../images/Icons/close.svg';
 import closeIconDark from '../../images/Icons/close-dark.svg';
+import truck from './images/truck.png';
+import whiteTruck from './images/whiteTruck.png';
+import tilda from './images/pngwing.com.png';
+import done from './images/done.png';
 
 import { RootState } from '../../redux/store';
 import { useSelector } from 'react-redux';
@@ -28,6 +32,7 @@ export const DeliveryModal: React.FC<Props> = ({ hide, openSecondModal }) => {
   const [touchedPost, setTouchedPost] = useState(false);
 
   const { t } = useTranslation();
+  const [toShowAnimation, setToshowAnimation] = useState(false);
 
   const required = true;
   const hasErrorCountry = touchedCountry && required && !countryValue;
@@ -36,8 +41,12 @@ export const DeliveryModal: React.FC<Props> = ({ hide, openSecondModal }) => {
 
   const submitButton = () => {
     if (countryValue && cityValue && postValue) {
-      hide();
-      openSecondModal();
+      setToshowAnimation(true);
+
+      setTimeout(() => {
+        hide();
+        openSecondModal();
+      }, 3000);
     } else {
       if (!countryValue) {
         setTouchedCountry(true);
@@ -56,6 +65,7 @@ export const DeliveryModal: React.FC<Props> = ({ hide, openSecondModal }) => {
   const theme = useSelector((state: RootState) => state.theme.theme);
 
   useEffect(() => {
+    setToshowAnimation(false);
     document.body.style.overflow = 'hidden';
 
     return () => {
@@ -67,6 +77,8 @@ export const DeliveryModal: React.FC<Props> = ({ hide, openSecondModal }) => {
     <div>
       <div className={styles.blur}></div>
       <dialog className={styles.modal}>
+        <img src={tilda} alt="tilda" className={styles.tilda1} />
+        <img src={tilda} alt="tilda" className={styles.tilda2} />
         <button className={styles.modal__close} onClick={hide}>
           <img
             className={styles.modal__closeImg}
@@ -95,6 +107,7 @@ export const DeliveryModal: React.FC<Props> = ({ hide, openSecondModal }) => {
                     value={countryValue}
                     onChange={event => setCountryValue(event.target.value)}
                     onBlur={() => setTouchedCountry(true)}
+                    disabled={toShowAnimation}
                   />
                 </div>
 
@@ -120,6 +133,7 @@ export const DeliveryModal: React.FC<Props> = ({ hide, openSecondModal }) => {
                     value={cityValue}
                     onChange={event => setCityValue(event.target.value)}
                     onBlur={() => setTouchedCity(true)}
+                    disabled={toShowAnimation}
                   />
                 </div>
 
@@ -143,6 +157,7 @@ export const DeliveryModal: React.FC<Props> = ({ hide, openSecondModal }) => {
                     value={postValue}
                     onChange={event => setPostValue(event.target.value)}
                     onBlur={() => setTouchedPost(true)}
+                    disabled={toShowAnimation}
                   />
                 </div>
 
@@ -164,10 +179,38 @@ export const DeliveryModal: React.FC<Props> = ({ hide, openSecondModal }) => {
           </div>
         </div>
 
-        <div className={styles.animationContainer}></div>
-        <button className={styles.paymentButton} onClick={submitButton}>
-          {t('delivery.payment')}
-        </button>
+        <div className={styles.animationContainer}>
+          <div
+            className={
+              !toShowAnimation ? styles.iconContainer : styles.iconContainerAnim
+            }
+          >
+            <img
+              className={
+                !toShowAnimation
+                  ? styles.truckImage
+                  : styles.truckImageAnimation
+              }
+              src={theme === 'light' ? truck : whiteTruck}
+              alt="truck image"
+            />
+          </div>
+          <div className={styles.truckRoad}></div>
+        </div>
+
+        {toShowAnimation ? (
+          <div className={styles.doneContainer}>
+            <img src={done} alt="done image" className={styles.doneImage} />
+          </div>
+        ) : (
+          <button
+            className={styles.paymentButton}
+            onClick={submitButton}
+            disabled={toShowAnimation}
+          >
+            {t('delivery.payment')}
+          </button>
+        )}
       </dialog>
     </div>
   );
