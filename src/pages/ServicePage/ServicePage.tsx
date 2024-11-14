@@ -61,7 +61,7 @@ export const ServicePage = () => {
   ];
 
   return (
-    <div className={styles.container}>
+    <div>
       <div>
         <BreadCrumbs title="Service" />
       </div>
