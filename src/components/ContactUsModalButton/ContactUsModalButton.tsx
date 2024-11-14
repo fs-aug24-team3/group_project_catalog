@@ -1,13 +1,13 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import { Link } from 'react-router-dom';
 import { RootState } from '../../redux/store';
+import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from 'react-redux';
 import { openModal } from '../../redux/slices/contactusSlice';
 
 import styles from './ContactUsModalButton.module.scss';
 import contactIcon from '../../images/Icons/phone-call.svg';
 import contactIconDark from '../../images/Icons/phone-call-dark.svg';
-import { useTranslation } from 'react-i18next';
 
 export const ContactUsModalButton = () => {
   const { t } = useTranslation();

@@ -10,7 +10,7 @@
   bottom: 100px;
   height: 46px;
   width: 46px;
-  gap: 8px;
+  gap: 12px;
 
   border-radius: 18px;
   border: 1px solid var(--primary-color);
@@ -40,7 +40,6 @@
   img {
     width: 32px;
     height: 32px;
-    flex-shrink: 0;
   }
 
   &:hover {
