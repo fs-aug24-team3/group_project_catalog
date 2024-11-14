@@ -18,6 +18,29 @@
     "all": "All"
   },
 
+  "auth_pages": {
+    "back_link": "Home",
+    "login": "Login",
+    "enter_email": "Enter your email",
+    "enter_password": "Enter your password",
+    "login_button": "Login",
+    "not_registered": "Not registered yet ?",
+    "invalid_email": "Invalid email address",
+    "required_email": "Email is required",
+    "invalid_password": "Password must be at least 6 characters",
+    "required_password": "Password is required",
+
+    "register": "Register",
+    "enter_name": "Enter your name",
+    "confirm_password": "Confirm your password",
+    "signup": "Signup",
+    "registered": "Already registered ?",
+    "invalid_name": "Name must be at least 2 characters",
+    "required_name": "Name is required",
+    "password_must_match": "Passwords must match",
+    "required_confirm": "Confirm Password is required"
+  },
+
   "pageTitle": {
     "phones": "Mobile phones",
     "tablets": "Tablets",
@@ -129,6 +152,49 @@
     "text_fair_pricing": "We believe in offering the best value for your money. Our pricing is transparent, with no hidden fees or surprise charges. The prices listed on our website are what you’ll pay at checkout. At Nice Gadgets, we strive to make advanced technology accessible to everyone without compromising on quality, ensuring that you receive the best products at fair prices.",
     "title_customer_support": "Customer Support and Returns",
     "text_customer_support": "At Nice Gadgets, your satisfaction is our priority. If you have any questions or concerns about your purchase, our customer support team is here to help. We offer a straightforward return policy, giving you peace of mind knowing that you can return or exchange your products if they do not meet your expectations. We are committed to ensuring you have a smooth and enjoyable shopping experience with us."
+  },
+
+  "service_page": {
+    "questions": {
+      "title": {
+        "located": "Where is the service center located?",
+        "working_hours": "What are the working hours of the Apple Room service center?",
+        "diagnostics_cost": "How much does diagnostics cost?",
+        "specialized_devices": "What devices do you specialize in repairing?"
+      },
+      "info": {
+        "located_info": "Nice Gadgets service center is located in the center of Lviv at Kopernika 37.",
+        "working_hours_info": "We are open every day from 10:00 to 21:00.",
+        "diagnostics_cost_info": "Diagnostics is free for our clients",
+        "specialized_devices_info": "We specialize in repairing all kinds of devices — nothing is too challenging for us!"
+      }
+    },
+
+    "phone_input": {
+      "title": "Repair of Nice Gadgets equipment fast and hassle-free",
+      "enter_number": "Enter you phone number",
+      "button_consultation": "Get a consultation",
+      "example": "Example",
+      "sended_request": "Your consultation request has been sent! Wait for a call back",
+      "close": "Close"
+    },
+
+    "info": {
+      "title": {
+        "safety": "Safety and Reliability",
+        "breakdown_case": "What to Do in Case of a Breakdown",
+        "determinated": "How Repair Pricing and Time are Determined",
+        "advantages": "Advantages of Our Services",
+        "benefits": "Benefits of Our Service"
+      },
+      "text": {
+        "safety_text": "At our service centers, we prioritize the safety and security of your devices. We understand the importance of your gadgets in daily life, which is why we ensure that every repair is performed with the utmost care. Our technicians use only high-quality, certified replacement parts, ensuring the longevity and reliability of your device. Plus, our secure data handling practices guarantee that your personal information remains protected throughout the repair process.",
+        "breakdown_case_text": "If your device breaks down or stops working, don’t panic! Our service centers are here to help. First, make sure your device is powered off and try to assess the issue. Then, bring it to our service center where our trained professionals will diagnose the problem. Whether it is a hardware issue or software malfunction, we’ll provide a thorough inspection and give you a detailed estimate of the repair costs.",
+        "determinated_text": "We believe in full transparency when it comes to pricing. The cost of repairs is based on the type of damage, the parts required, and the time needed to complete the work. After an initial inspection, we will provide you with an accurate quote and estimated repair time. Our goal is to offer efficient services without compromising on quality, so you can enjoy a fast, affordable, and reliable solution for your device...",
+        "advantages_text": "Choosing our service center means choosing peace of mind. We offer fast turnaround times, high-quality repairs, and a customer-centric approach that puts your needs first. Our professional team is always ready to help with any problem, big or small. Whether it’s a simple screen repair or a more complex issue, you can trust us to get the job done right the first time.",
+        "benefits_text": "When you choose our service center, you’re investing in the long-term health of your device. Our expert technicians not only fix the immediate issue but also ensure your device is optimized for better updates, system checks, and cleaning to help prolong the life of your gadget, giving you better value and reliability over time."
+      }
+    }
   },
 
   "contacts_page": {
