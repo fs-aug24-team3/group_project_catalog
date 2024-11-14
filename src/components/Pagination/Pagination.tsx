@@ -29,6 +29,7 @@ export const Pagination: FC<Props> = ({ total }) => {
 
   const pagesPerBlock = 4;
   const currentBlock = Math.floor((currentPage - 1) / pagesPerBlock);
+
   const startPage = currentBlock * pagesPerBlock + 1;
   const endPage = Math.min(startPage + pagesPerBlock - 1, amountOfPages.length);
 
