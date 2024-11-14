@@ -13,6 +13,7 @@ import { ThemeSwitch } from '../ThemeSwitch';
 import { Link } from 'react-router-dom';
 import { RootState } from '../../redux/store';
 import { useSelector } from 'react-redux';
+import { TranslationButtons } from '../TranslationButtons';
 
 export const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -32,6 +33,8 @@ export const Header: React.FC = () => {
       <nav className={styles['nav-bar']}>
         <Navigation />
         <div className={styles['nav-bar__actions-container']}>
+          <TranslationButtons />
+
           <div className={styles['nav-bar__switch-container']}>
             <ThemeSwitch />
           </div>

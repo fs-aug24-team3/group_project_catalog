@@ -5,7 +5,7 @@ import {
   OptionProps,
   StylesConfig,
 } from 'react-select';
-import { Option } from './optionsForSelect';
+import { Option } from '../types/Options';
 
 export const selectStyles = (
   width: number,
@@ -64,6 +64,14 @@ export const selectStyles = (
       borderColor: '#E2E6E9',
       backgroundColor: '#FFF',
       zIndex: '2',
+    }),
+
+    dropdownIndicator: (provided: CSSObjectWithLabel) => ({
+      ...provided,
+      '& svg path': {
+        fill: 'black',
+        stroke: 'black',
+      },
     }),
   };
 };

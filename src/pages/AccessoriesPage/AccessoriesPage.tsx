@@ -7,6 +7,9 @@ import { ProductPage } from '../../components/ProductPage/ProductPage';
 
 export const AccessoriesPage: React.FC = () => {
   return (
-    <ProductPage title="Accessories" fetchProduct={getCatalogAccessories} />
+    <ProductPage
+      title={'pageTitle.accessories'}
+      fetchProduct={getCatalogAccessories}
+    />
   );
 };

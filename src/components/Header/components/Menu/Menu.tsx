@@ -4,6 +4,7 @@ import { Navigation } from '../Navigation/Navigation';
 import styles from './Menu.module.scss';
 import { useEffect } from 'react';
 import { ThemeSwitch } from '../../../ThemeSwitch';
+import { TranslationButtons } from '../../../TranslationButtons';
 
 interface Props {
   isOpen: boolean;
@@ -29,6 +30,9 @@ export const Menu: React.FC<Props> = ({ isOpen, onHideMenu }) => {
     >
       <Navigation className={styles.Menu__navigation} onHideMenu={onHideMenu} />
       <div>
+        <div className={styles['Menu__translation-container']}>
+          <TranslationButtons />
+        </div>
         <div className={styles['Menu__switch-container']}>
           <span>Dark Mode</span>
           <ThemeSwitch />

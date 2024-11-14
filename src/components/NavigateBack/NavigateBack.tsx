@@ -1,3 +1,4 @@
+/* eslint-disable import/no-extraneous-dependencies */
 import React, { MouseEvent } from 'react';
 import styles from './NavigateBack.module.scss';
 import { Link, useNavigate } from 'react-router-dom';
@@ -6,12 +7,14 @@ import arrowLeft from '../../images/Icons/arrow_left.svg';
 import arrowLeftDark from '../../images/Icons/arrow_left_dark.svg';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../redux/store';
+import { useTranslation } from 'react-i18next';
 
 interface Props {
   className?: string;
 }
 
 export const BackLink: React.FC<Props> = ({ className }) => {
+  const { t } = useTranslation();
   const navigate = useNavigate();
   const theme = useSelector((state: RootState) => state.theme.theme);
 
@@ -33,7 +36,7 @@ export const BackLink: React.FC<Props> = ({ className }) => {
           alt="back arrow"
         />
       </div>
-      <p className={styles['back-link__text']}>Back</p>
+      <p className={styles['back-link__text']}>{t('links.back')}</p>
     </Link>
   );
 };

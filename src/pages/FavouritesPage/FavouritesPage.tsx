@@ -24,7 +24,7 @@ export const FavouritesPage = () => {
   return (
     <>
       {favourites.length > 0 ? (
-        <Favourites title="Favourites" />
+        <Favourites title="pageTitle.favourites" />
       ) : (
         <p>No favourites added yet.</p>
       )}

@@ -1,3 +1,4 @@
+/* eslint-disable import/no-extraneous-dependencies */
 import backToHome from '../../images/Icons/home.svg';
 import backToHomeDark from '../../images/Icons/homeDark.svg';
 import backToPage from '../../images/Icons/arrow_right.svg';
@@ -7,6 +8,7 @@ import cn from 'classnames';
 import React from 'react';
 import { RootState } from '../../redux/store';
 import { useSelector } from 'react-redux';
+import { useTranslation } from 'react-i18next';
 
 interface Props {
   title?: string;
@@ -17,18 +19,16 @@ export const BreadCrumbs: React.FC<Props> = ({
   title = 'Phones',
   theThirdPart = '',
 }) => {
+  const { t } = useTranslation();
+
   const theme = useSelector((state: RootState) => state.theme.theme);
-  let breadCrumbsTitle = 'Phones';
 
-  if (title !== 'Mobile phones') {
-    breadCrumbsTitle = title;
-  }
+  const breadCrumbsTitle =
+    title === 'pageTitle.phones'
+      ? t(title).replace('Mobile phones', 'Phones')
+      : t(title);
 
-  let breadCrumbsLink = 'phones';
-
-  if (title !== 'Mobile phones') {
-    breadCrumbsLink = title.toLowerCase();
-  }
+  const breadCrumbsLink = title.replace('pageTitle.', '').toLowerCase();
 
   const { pathname } = useLocation();
 

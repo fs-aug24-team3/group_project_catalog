@@ -1,3 +1,4 @@
+/* eslint-disable import/no-extraneous-dependencies */
 import React, { useState, useEffect } from 'react';
 import styles from './DeliveryModal.module.scss';
 
@@ -13,6 +14,7 @@ import done from './images/done.png';
 
 import { RootState } from '../../redux/store';
 import { useSelector } from 'react-redux';
+import { useTranslation } from 'react-i18next';
 
 interface Props {
   hide: () => void;
@@ -29,6 +31,7 @@ export const DeliveryModal: React.FC<Props> = ({ hide, openSecondModal }) => {
   const [postValue, setPostValue] = useState('');
   const [touchedPost, setTouchedPost] = useState(false);
 
+  const { t } = useTranslation();
   const [toShowAnimation, setToshowAnimation] = useState(false);
 
   const required = true;
@@ -86,12 +89,12 @@ export const DeliveryModal: React.FC<Props> = ({ hide, openSecondModal }) => {
 
         <div className={styles.rowWrapper}>
           <div className={styles.formContainer}>
-            <p className={styles.modal__title}>Delivery</p>
+            <p className={styles.modal__title}>{t('delivery.title')}</p>
 
             <form>
               <div className={styles.field}>
                 <label className={styles.label} htmlFor={'1'}>
-                  Enter your country
+                  {t('delivery.enter_country')}
                   <span style={{ color: 'red' }}> *</span>
                 </label>
 
@@ -100,7 +103,7 @@ export const DeliveryModal: React.FC<Props> = ({ hide, openSecondModal }) => {
                     className={`${styles.input} ${hasErrorCountry ? styles.error : ''}`}
                     type="search"
                     id="1"
-                    placeholder="Country to deliver"
+                    placeholder={t('delivery.placeholder_country')}
                     value={countryValue}
                     onChange={event => setCountryValue(event.target.value)}
                     onBlur={() => setTouchedCountry(true)}
@@ -109,13 +112,15 @@ export const DeliveryModal: React.FC<Props> = ({ hide, openSecondModal }) => {
                 </div>
 
                 {hasErrorCountry && (
-                  <p className={styles.help}>Country is required</p>
+                  <p className={styles.help}>
+                    {t('delivery.required_country')}
+                  </p>
                 )}
               </div>
 
               <div className={styles.field}>
                 <label className={styles.label} htmlFor="2">
-                  Enter your city
+                  {t('delivery.enter_city')}
                   <span style={{ color: 'red' }}> *</span>
                 </label>
 
@@ -124,7 +129,7 @@ export const DeliveryModal: React.FC<Props> = ({ hide, openSecondModal }) => {
                     className={`${styles.input} ${hasErrorCity ? styles.error : ''}`}
                     type="search"
                     id="2"
-                    placeholder="City to deliver"
+                    placeholder={t('delivery.placeholder_city')}
                     value={cityValue}
                     onChange={event => setCityValue(event.target.value)}
                     onBlur={() => setTouchedCity(true)}
@@ -133,13 +138,13 @@ export const DeliveryModal: React.FC<Props> = ({ hide, openSecondModal }) => {
                 </div>
 
                 {hasErrorCity && (
-                  <p className={styles.help}>City is required</p>
+                  <p className={styles.help}>{t('delivery.required_city')}</p>
                 )}
               </div>
 
               <div className={styles.field}>
                 <label className={styles.label} htmlFor="3">
-                  Enter your post department
+                  {t('delivery.post_department')}
                   <span style={{ color: 'red' }}> *</span>
                 </label>
 
@@ -148,7 +153,7 @@ export const DeliveryModal: React.FC<Props> = ({ hide, openSecondModal }) => {
                     className={`${styles.input} ${hasErrorPost ? styles.error : ''}`}
                     type="search"
                     id="3"
-                    placeholder="Post department"
+                    placeholder={t('delivery.placeholder_post_department')}
                     value={postValue}
                     onChange={event => setPostValue(event.target.value)}
                     onBlur={() => setTouchedPost(true)}
@@ -157,7 +162,9 @@ export const DeliveryModal: React.FC<Props> = ({ hide, openSecondModal }) => {
                 </div>
 
                 {hasErrorPost && (
-                  <p className={styles.help}>Post department is required</p>
+                  <p className={styles.help}>
+                    {t('delivery.required_post_department')}
+                  </p>
                 )}
               </div>
             </form>
@@ -201,7 +208,7 @@ export const DeliveryModal: React.FC<Props> = ({ hide, openSecondModal }) => {
             onClick={submitButton}
             disabled={toShowAnimation}
           >
-            Go to payment
+            {t('delivery.payment')}
           </button>
         )}
       </dialog>
