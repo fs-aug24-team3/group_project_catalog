@@ -3,7 +3,7 @@ import { BreadCrumbs } from '../../components/BreadCrumbs';
 export const ServicePage = () => {
   return (
     <div>
-      <BreadCrumbs title="Service" />
+      <BreadCrumbs title="pageTitle.service" />
     </div>
   );
 };

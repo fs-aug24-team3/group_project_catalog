@@ -1,14 +1,17 @@
+/* eslint-disable import/no-extraneous-dependencies */
 import styles from './CheckoutModal.module.scss';
 import canceIcon from '../../images/Icons/close.svg';
 import { useDispatch } from 'react-redux';
 import { clearAllItemsFromCart } from '../../redux/slices/cartSlice';
 import { useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 
 interface Props {
   hide: () => void;
 }
 
 export const CheckoutModal: React.FC<Props> = ({ hide }) => {
+  const { t } = useTranslation();
   const dispatch = useDispatch();
 
   const handleClearCart = () => {
@@ -32,10 +35,10 @@ export const CheckoutModal: React.FC<Props> = ({ hide }) => {
           <img src={canceIcon} alt="cancel icon" />
         </button>
         <p className={styles.modal__title}>
-          Payment is not implemented yet. Do you want to clear the Cart?
+          {t('delivery.payment_not_implemented')}
         </p>
         <button className={styles.modal__button} onClick={handleClearCart}>
-          Yes
+          {t('delivery.yes')}
         </button>
       </dialog>
     </>

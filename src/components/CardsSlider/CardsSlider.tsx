@@ -1,3 +1,4 @@
+/* eslint-disable import/no-extraneous-dependencies */
 import React, { useEffect, useState } from 'react';
 import styles from './CardsSlider.module.scss';
 
@@ -11,6 +12,7 @@ import 'swiper/scss/navigation';
 import { Product } from '../../types/Product';
 import { ProductCard } from '../ProductCard';
 import { calculateWidth } from './calculateWidth';
+import { useTranslation } from 'react-i18next';
 
 interface Props {
   productsForSlider: Product[];
@@ -27,6 +29,8 @@ export const CardsSlider: React.FC<Props> = ({
   onSale = true,
   sortingOrder = 'desc',
 }) => {
+  const { t } = useTranslation();
+
   const allProducts = productsForSlider;
 
   const visibleProducts = allProducts.filter(
@@ -63,7 +67,9 @@ export const CardsSlider: React.FC<Props> = ({
     <div className={styles.brandNewModels}>
       <div className={styles.brandNewModels__TextAndButtons}>
         <div className={styles.brandNewModels__textWrapper}>
-          <h2 className={styles.brandNewModels__title}>{sliderTitle}</h2>
+          <h2 className={styles.brandNewModels__title}>
+            {t(`${sliderTitle}`)}
+          </h2>
         </div>
         <div className={styles.brandNewModels__buttonsWrapper}>
           <button className={styles.brandNewModels__buttonPrev}>{'<'}</button>

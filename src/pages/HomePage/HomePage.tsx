@@ -1,3 +1,4 @@
+/* eslint-disable import/no-extraneous-dependencies */
 import React, { useEffect, useState } from 'react';
 import styles from './HomePage.module.scss';
 import { MainImageSlider } from './components/MainImageSlider';
@@ -5,14 +6,17 @@ import { Product } from '../../types/Product';
 import { getCatalogPhones } from '../../api/api';
 import { CardsSlider } from '../../components/CardsSlider';
 import { Categories } from './components/Categories';
+import { useTranslation } from 'react-i18next';
 
 export const HomePage: React.FC = () => {
   const [phonesForSlider, setPhonesForSlider] = useState<Product[]>([]);
   const [isLoading, setIsLoading] = useState(false);
 
-  const brandNewModelsTitl = 'Brand new models';
+  const { t } = useTranslation();
 
-  const hotPricesTitle = 'Hot prices';
+  const brandNewModelsTitl = 'homePage.newModelsTitle';
+
+  const hotPricesTitle = 'homePage.hotPricesTitle';
 
   useEffect(() => {
     window.scrollTo({
@@ -32,9 +36,7 @@ export const HomePage: React.FC = () => {
   return (
     <div className={styles.homePage}>
       <div className={styles.homePage__box}>
-        <h1 className={styles.homePage__title}>
-          Welcome to Nice Gadgets store!
-        </h1>
+        <h1 className={styles.homePage__title}>{t('homePage.mainTitle')}</h1>
       </div>
 
       <div className={styles.homePage__swiperBox}>

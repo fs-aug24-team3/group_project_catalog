@@ -1,3 +1,4 @@
+/* eslint-disable import/no-extraneous-dependencies */
 import { FC, useEffect, useState } from 'react';
 import { Product } from '../../types/Product';
 import { ProductList } from '../ProductList';
@@ -6,6 +7,8 @@ import styles from './Favourites.module.scss';
 import { PageTitle } from '../PageTitle';
 import { BreadCrumbs } from '../BreadCrumbs';
 import { EmptyFavourites } from '../EmptyFavourites';
+import { useTranslation } from 'react-i18next';
+import { getItemEnds } from '../../utils/getItemEnds';
 
 interface Props {
   title: string;
@@ -13,6 +16,8 @@ interface Props {
 
 export const Favourites: FC<Props> = ({ title }) => {
   const [favourites, setFavourites] = useState<Product[]>([]);
+
+  const { t } = useTranslation();
 
   useEffect(() => {
     const savedFavourites = JSON.parse(
@@ -31,11 +36,11 @@ export const Favourites: FC<Props> = ({ title }) => {
   return (
     <div className={styles['favourites-page__wrapper']}>
       <BreadCrumbs title={title} />
-      <PageTitle>{title}</PageTitle>
+      <PageTitle>{t(title)}</PageTitle>
 
       {favourites.length > 0 ? (
         <p className={styles['favourites-page__amount']}>
-          {favourites.length} {favourites.length === 1 ? 'item' : 'items'}
+          {favourites.length} {t(getItemEnds(favourites.length))}
         </p>
       ) : (
         <EmptyFavourites />

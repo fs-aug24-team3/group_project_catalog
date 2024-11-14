@@ -1,3 +1,4 @@
+/* eslint-disable import/no-extraneous-dependencies */
 import styles from './CartPage.module.scss';
 import { useState } from 'react';
 import { CartItem } from '../../components/CartItem/CartItem';
@@ -9,10 +10,14 @@ import { EmptyCart } from '../../components/EmptyCart';
 import { RootState } from '../../redux/store';
 import { useSelector } from 'react-redux';
 import { DeliveryModal } from '../../components/DeliveryModal';
+import { useTranslation } from 'react-i18next';
+import { getItemEnds } from '../../utils/getItemEnds';
 
 export const CartPage: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isDeliveryModalOpen, setIsDeliveryModalOpen] = useState(false);
+
+  const { t } = useTranslation();
 
   const cart = useSelector((state: RootState) => state.cart.cartItems);
 
@@ -27,7 +32,7 @@ export const CartPage: React.FC = () => {
   return (
     <section className={`${styles['cart-page']}, ${styles.container}`}>
       <BackLink className={styles['cart-page__back-link']} />
-      <PageTitle>Cart</PageTitle>
+      <PageTitle>{t('pageTitle.cart')}</PageTitle>
       {!!cart.length ? (
         <div className={styles['cart-page__container']}>
           <ul className={styles['cart-page__list']}>
@@ -40,7 +45,8 @@ export const CartPage: React.FC = () => {
           <div className={styles['cart-page__checkout-container']}>
             <p className={styles['cart-page__total']}>${price}</p>
             <p className={styles['cart-page__items-counter']}>
-              Total for {totalQuantity} item{cart.length > 1 && 's'}
+              {t('actions_pages.total_for')} {totalQuantity}{' '}
+              {t(getItemEnds(totalQuantity))}
             </p>
             <button
               onClick={() => {
@@ -48,7 +54,7 @@ export const CartPage: React.FC = () => {
               }}
               className={styles['cart-page__checkout-button']}
             >
-              Checkout
+              {t('actions_pages.checkout')}
             </button>
           </div>
         </div>

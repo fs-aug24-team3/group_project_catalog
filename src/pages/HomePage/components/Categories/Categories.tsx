@@ -1,3 +1,4 @@
+/* eslint-disable import/no-extraneous-dependencies */
 import React from 'react';
 
 import styles from './Categories.module.scss';
@@ -6,12 +7,17 @@ import { Link } from 'react-router-dom';
 import categoryPhonesImg from './categoriesImages/newnewnewPhones.png';
 import categoryTabletsImg from './categoriesImages/categoryTablets.png';
 import categoryAccessories from './categoriesImages/newnewACCESS.png';
+import { useTranslation } from 'react-i18next';
 
 export const Categories: React.FC = () => {
+  const { t } = useTranslation();
+
   return (
     <>
       <div className={styles.categories__categoriesTitleContainer}>
-        <h2 className={styles.categories__categoriesTitle}>Shop by category</h2>
+        <h2 className={styles.categories__categoriesTitle}>
+          {t('homePage.by_category')}
+        </h2>
       </div>
 
       <div className={styles.categories__categoriesContainer}>
@@ -30,10 +36,10 @@ export const Categories: React.FC = () => {
           </div>
           <div className={styles.titleContainer}>
             <Link to="phones">
-              <h3 className={styles.categoryTitle}>Mobile phones</h3>
+              <h3 className={styles.categoryTitle}>{t('pageTitle.phones')}</h3>
             </Link>
           </div>
-          <p className={styles.amountOfModels}>124 models</p>
+          <p className={styles.amountOfModels}>124 {t('page.models')}</p>
         </div>
 
         <div className={styles.oneCategory}>
@@ -54,10 +60,10 @@ export const Categories: React.FC = () => {
           </div>
           <div className={styles.titleContainer}>
             <Link to="tablets">
-              <h3 className={styles.categoryTitle}>Tablets</h3>
+              <h3 className={styles.categoryTitle}>{t('pageTitle.tablets')}</h3>
             </Link>
           </div>
-          <p className={styles.amountOfModels}>36 models</p>
+          <p className={styles.amountOfModels}>36 {t('page.models1')}</p>
         </div>
 
         <div className={`${styles.oneCategory} ${styles.noMarginRight}`}>
@@ -78,10 +84,12 @@ export const Categories: React.FC = () => {
           </div>
           <div className={styles.titleContainer}>
             <Link to="accessories">
-              <h3 className={styles.categoryTitle}>Accessories</h3>
+              <h3 className={styles.categoryTitle}>
+                {t('pageTitle.accessories')}
+              </h3>
             </Link>
           </div>
-          <p className={styles.amountOfModels}>34 models</p>
+          <p className={styles.amountOfModels}>34 {t('page.models')}</p>
         </div>
       </div>
     </>
