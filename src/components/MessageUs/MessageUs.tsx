@@ -7,6 +7,8 @@ import { MessageUsButton } from '../MessageUsButton/MessageUsButton';
 import styles from './MessageUs.module.scss';
 import closeIcon from '../../images/Icons/close.svg';
 import closeIconDark from '../../images/Icons/close-dark.svg';
+// eslint-disable-next-line import/no-extraneous-dependencies
+import { useTranslation } from 'react-i18next';
 
 export const MessageUs: React.FC = () => {
   const theme = useSelector((state: RootState) => state.theme.theme);
@@ -17,6 +19,8 @@ export const MessageUs: React.FC = () => {
   const [successMessage, setSuccessMessage] = useState('');
   const [isFormVisible, setIsFormVisible] = useState(false);
   const [showSuccess, setShowSuccess] = useState(false);
+
+  const { t } = useTranslation();
 
   const validatePhone = (number: string) => /^[0-9]{10,13}$/.test(number);
 
@@ -30,18 +34,18 @@ export const MessageUs: React.FC = () => {
     setSuccessMessage('');
 
     if (!validatePhone(phone)) {
-      setError('Wrong phone number input');
+      setError(t('message_us.error_wrong_phone'));
 
       return;
     }
 
     if (!message || message.length < 10) {
-      setError("You haven't written anything or the message is too short");
+      setError(t('message_us.not_enought_letters'));
 
       return;
     }
 
-    setSuccessMessage('Thank you! Your message has been sent.');
+    setSuccessMessage(t('message_us.success'));
     setShowSuccess(true);
 
     setTimeout(() => {
@@ -90,14 +94,14 @@ export const MessageUs: React.FC = () => {
                   />
                 </Link>
                 <span className={styles['message-us__title']}>
-                  Write us a message
+                  {t('message_us.title')}
                 </span>
 
                 <div className={styles['message-us__input-container']}>
                   <input
                     type="text"
                     className={`${styles['message-us__input-container']} ${styles.textfields}`}
-                    placeholder="Name"
+                    placeholder={t('message_us.placeholder_name')}
                   />
 
                   <input
@@ -105,7 +109,7 @@ export const MessageUs: React.FC = () => {
                     className={`${styles['message-us__input-container--phone']}
                       ${error && !validatePhone(phone) ? styles['input-error'] : ''}
                       ${styles.textfields}`}
-                    placeholder="* Phone Number"
+                    placeholder={`* ${t('message_us.placeholder_number')}`}
                     value={phone}
                     onChange={e => setPhone(e.target.value)}
                   />
@@ -121,7 +125,7 @@ export const MessageUs: React.FC = () => {
                       ${error && (!message || message.length < 10) ? styles['input-error'] : ''}
                       ${styles.textfields}
                       ${styles['message-field']}`}
-                    placeholder="Message"
+                    placeholder={t('message_us.placeholder_message')}
                     value={message}
                     rows={3}
                     onChange={e => setMessage(e.target.value)}
@@ -137,7 +141,7 @@ export const MessageUs: React.FC = () => {
                   onClick={handleSubmit}
                   className={styles['message-us__button']}
                 >
-                  Send Message
+                  {t('message_us.send')}
                 </Link>
               </>
             )}
