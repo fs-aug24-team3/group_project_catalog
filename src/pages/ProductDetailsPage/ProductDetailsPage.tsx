@@ -1,10 +1,11 @@
+/* eslint-disable import/no-extraneous-dependencies */
 import { useEffect, useState } from 'react';
 import { useLocation, useParams } from 'react-router-dom';
 import { BreadCrumbs } from '../../components/BreadCrumbs';
 import { BackLink } from '../../components/NavigateBack';
 
 import styles from './ProductDetailsPage.module.scss';
-import { DeatailedProduct } from '../../types/DetailedProduct';
+import { DetailedProduct } from '../../types/DetailedProduct';
 import { getAllProducts, getDetailedProduct } from '../../api/api';
 
 import { ProductOverview } from './components/ProductOverview';
@@ -12,19 +13,22 @@ import { About } from './components/About';
 import { TechSpecs } from './components/Tech';
 import { CardsSlider } from '../../components/CardsSlider';
 import { Product } from '../../types/Product';
+import { useTranslation } from 'react-i18next';
 
 export const ProductDetailsPage = () => {
-  const [products, setProducts] = useState<DeatailedProduct[]>([]);
+  const [products, setProducts] = useState<DetailedProduct[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
 
   const [productWithDetails, setProductWithDetails] =
-    useState<DeatailedProduct | null>(null);
+    useState<DetailedProduct | null>(null);
 
   const [selectedColor, setSelectedColor] = useState('');
   const [selectedCapacity, setSelectedCapacity] = useState('');
 
   const [productsForSlider, setProductsForSlider] = useState<Product[]>([]);
+
+  const { t } = useTranslation();
 
   const { itemId } = useParams();
   const { pathname } = useLocation();
@@ -88,7 +92,7 @@ export const ProductDetailsPage = () => {
   return (
     <div className={styles.details}>
       <BreadCrumbs
-        title={breadCrumbsTitle}
+        title={`pageTitle.${breadCrumbsTitle.toLowerCase()}`}
         theThirdPart={productWithDetails?.name}
       />
 
@@ -114,7 +118,7 @@ export const ProductDetailsPage = () => {
 
           <CardsSlider
             productsForSlider={productsForSlider}
-            sliderTitle={'You may also like'}
+            sliderTitle={t('details.title.you_may_also_like')}
             productYear={2020}
           />
         </div>

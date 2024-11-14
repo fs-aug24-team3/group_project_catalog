@@ -3,15 +3,18 @@ import { useState } from 'react';
 import { SingleValue } from 'react-select';
 import { useSearchParams } from 'react-router-dom';
 
-import { Option } from '../constants/optionsForSelect';
-import { capitalizeFirstLetter } from '../utils/capitalizeFirstLetter';
+import { Option } from '../types/Options';
+
+import { useTranslation } from 'react-i18next';
 
 export const useSortFilters = () => {
   const [searchParams, setSearchParams] = useSearchParams();
-  const sort = searchParams.get('sort') || 'Newest';
+  const sort = searchParams.get('sort') || 'newest';
+
+  const { t } = useTranslation();
 
   const [selectedSortField, setSelectedSortField] = useState<Option>({
-    label: capitalizeFirstLetter(sort),
+    label: t(`select.${sort}`),
     value: sort,
   });
 
@@ -28,5 +31,5 @@ export const useSortFilters = () => {
     }
   };
 
-  return { selectedSortField, handleSortFieldChange };
+  return { selectedSortField, setSelectedSortField, handleSortFieldChange };
 };

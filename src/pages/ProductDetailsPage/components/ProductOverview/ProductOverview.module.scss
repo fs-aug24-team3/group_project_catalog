@@ -21,6 +21,13 @@
     gap: 64px;
   }
 
+  &__button {
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    outline: none;
+  }
+
   // ***************photos
 
   &__photos-block {
@@ -131,7 +138,6 @@
 
       color: var(--primary-color);
 
-
       @include on-tablet {
         line-height: 41px;
         letter-spacing: -0.32px;
@@ -181,7 +187,6 @@
   }
 
   &__tech-name {
-
     color: var(--secondary-color);
 
     font-size: 12px;
@@ -189,7 +194,6 @@
   }
 
   &__tech-value {
-
     color: var(--primary-color);
 
     font-size: 12px;

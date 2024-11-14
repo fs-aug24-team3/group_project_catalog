@@ -1,0 +1,125 @@
+@import '../../styles/utils/mixins';
+@import '../../styles//utils/variables';
+
+.pop-up {
+  display: flex;
+}
+
+.message-us {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  position: fixed;
+
+  right: 10px;
+  bottom: 150px;
+
+  background-color: var(--surface-color);
+  border-radius: 18px;
+  border: 1px solid var(--secondary-color);
+  z-index: 999;
+
+  opacity: 1;
+  transition: opacity 7s ease;
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-height: 400px;
+    width: 250px;
+    padding: 20px;
+    gap: 4px;
+  }
+
+  &__close-button {
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 5px;
+    right: 5px;
+
+    img {
+      width: 20px;
+    }
+
+    :hover {
+      scale: 1.2;
+    }
+  }
+
+  &__title {
+    text-align: center;
+    font-weight: 800;
+    padding-bottom: 16px;
+  }
+
+  &__input-container {
+    display: flex;
+    gap: 8px;
+    flex-direction: column;
+
+    &--message {
+      resize: none;
+      margin-bottom: 12px;
+    }
+  }
+
+  &__error-message {
+    margin-top: 10px;
+
+    text-align: center;
+    color: var(--red-color);
+  }
+
+  &__success-message {
+    text-align: center;
+    color: var(--green-color);
+  }
+
+  &__button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    height: 54px;
+    width: 200px;
+
+    border: 1px solid var(--accent-color);
+    border: none;
+
+    background-color: var(--accent-color);
+    color: var(--white-color);
+
+    @include only-mobile {
+      height: 54px;
+      width: 100%;
+    }
+
+    &:hover {
+      box-shadow: 0 3px 13px var(--shadow-color);
+    }
+  }
+}
+
+.textfields {
+  background-color: var(--surface-color);
+  height: 35px;
+  width: 200px;
+  border: none;
+  border-bottom: 2px solid var(--icons-color);
+
+  &::placeholder {
+    opacity: 0.4;
+  }
+}
+
+.message-field {
+  height: 100%;
+}
+
+.fade-out {
+  opacity: 0;
+}

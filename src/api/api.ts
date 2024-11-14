@@ -1,5 +1,5 @@
 import { Accessory } from '../types/Accessory';
-import { DeatailedProduct } from '../types/DetailedProduct';
+import { DetailedProduct } from '../types/DetailedProduct';
 import { Phone } from '../types/Phone';
 import { Product } from '../types/Product';
 import { Tablet } from '../types/Tablet';
@@ -23,7 +23,7 @@ export const getDetailedTablets = () => get<Tablet[]>('/tablets');
 export const getDetailedAccessories = () => get<Accessory[]>('/accessories');
 
 export const getDetailedProduct = (catalog: string) =>
-  get<DeatailedProduct[]>(`/${catalog}`);
+  get<DetailedProduct[]>(`/${catalog}`);
 
 export const getCatalogPhones = () => {
   return get<Product[]>('/products').then(products =>

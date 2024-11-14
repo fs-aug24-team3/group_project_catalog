@@ -1,0 +1,156 @@
+@import '../../styles/utils/variables';
+@import '../../styles/utils/mixins';
+
+.contact-us {
+  display: flex;
+}
+
+.modal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  position: fixed;
+
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+
+  background-color: var(--shadow-color);
+  z-index: 1000;
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    position: relative;
+    padding: 20px;
+    max-width: 1000px;
+    height: 500px;
+    width: 90%;
+
+    border-radius: 8px;
+    background-color: var(--surface-color);
+  }
+
+  &__title {
+    display: block;
+    text-align: center;
+    margin-top: 80px;
+    padding-bottom: 40px;
+  }
+
+  &__close-button {
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+
+    img {
+      width: 20px;
+    }
+
+    :hover {
+      scale: 1.2;
+    }
+  }
+
+  &__send-request {
+    display: flex;
+
+    &--timer {
+      display: block;
+      width: 220px;
+      font-size: 55px;
+
+      &-message {
+        display: block;
+        padding-bottom: 20px;
+        font-size: 45px;
+        text-align: center;
+      }
+    }
+
+    &--input {
+      height: 54px;
+      width: 275px;
+      padding: 13px 20px;
+      border: 1px solid var(--secondary-color);
+
+      color: #000;
+      font-size: 16px;
+
+      @include only-mobile {
+        height: 54px;
+        width: 100%;
+      }
+
+      &::placeholder {
+        opacity: 0.4;
+      }
+    }
+
+    &--button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 54px;
+      width: 250px;
+      border: 1px solid var(--accent-color);
+      border: none;
+
+      background-color: var(--accent-color);
+      color: var(--white-color);
+
+      @include only-mobile {
+        height: 54px;
+        width: 100%;
+      }
+
+      &:hover {
+        box-shadow: 0 3px 13px var(--shadow-color);
+      }
+    }
+
+    &--error {
+      &-message {
+        display: block;
+        padding: 0 260px 0 0;
+        color: var(--red-color);
+        font-size: 12px;
+
+        @include only-mobile {
+          padding-right: 70px;
+        }
+      }
+    }
+
+    &--example {
+      display: block;
+      padding-top: 4px;
+      padding-right: 330px;
+      font-size: 13px;
+      opacity: 0.3;
+
+      @include only-mobile {
+        padding-right: 140px;
+      }
+    }
+  }
+
+  &__status {
+    display: flex;
+    flex-direction: column;
+    padding: 120px 298px 0 0;
+    font-size: 13px;
+    opacity: 0.3;
+
+    @include only-mobile {
+      padding-right: 108px;
+    }
+  }
+}

@@ -6,6 +6,13 @@ import themeReducer from './slices/themeSlice';
 import { persistStore, persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import { useDispatch } from 'react-redux';
+import storage from 'redux-persist/lib/storage';
+import { persistStore, persistReducer } from 'redux-persist';
+
+import cartReducer, { CartState } from './slices/cartSlice';
+import favouritesReducer, { FavouritesState } from './slices/favouritesSlice';
+import themeReducer, { ThemeState } from './slices/themeSlice';
+import contactUsReducer, { ContactUsState } from './slices/contactusSlice';
 
 const authPersistConfig = {
   key: 'auth',
@@ -30,6 +37,11 @@ const themePersistConfig = {
 
 const persistedAuthReducer = persistReducer(authPersistConfig, authReducer);
 
+const contactUsPersistConfig = {
+  key: 'contact',
+  storage,
+};
+
 const persistedCartReducer = persistReducer(cartPersistConfig, cartReducer);
 
 const persistedFavouritesReducer = persistReducer(
@@ -39,10 +51,16 @@ const persistedFavouritesReducer = persistReducer(
 
 const persistedThemeReducer = persistReducer(themePersistConfig, themeReducer);
 
+const persistedContactUsReducer = persistReducer(
+  contactUsPersistConfig,
+  contactUsReducer,
+);
+
 export const store = configureStore({
   reducer: {
     cart: persistedCartReducer,
     favourites: persistedFavouritesReducer,
+    contactUs: persistedContactUsReducer,
     theme: persistedThemeReducer,
     auth: persistedAuthReducer,
   },
@@ -54,8 +72,11 @@ export const store = configureStore({
 
 export const persistor = persistStore(store);
 
+
 export type RootState = ReturnType<typeof store.getState>;
 
 export type AppDispatch = typeof store.dispatch;
 
 export const useAppDispatch = () => useDispatch<AppDispatch>()
+
+export type AppDispatch = typeof store.dispatch;

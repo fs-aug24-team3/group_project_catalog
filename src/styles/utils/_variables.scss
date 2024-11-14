@@ -18,6 +18,7 @@ html.light {
   --surface-color: #fff;
   --shadow-color: #17203166;
   --text-color: #000;
+  --backdrop: rgba(17, 18, 19, 0.4);
 }
 
 html.dark {
@@ -29,4 +30,5 @@ html.dark {
   --surface-color: #161827;
   --shadow-color: #17203166;
   --text-color: #fff;
+  --backdrop: rgba(216, 216, 216, 0.4);
 }

@@ -1,0 +1,356 @@
+@import '../../styles/utils/variables';
+@import '../../styles/utils/mixins';
+
+.modal {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 4;
+  overflow: hidden;
+
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+
+  align-items: flex-start;
+
+  margin: 0;
+  width: 700px;
+  height: 700px;
+  padding: 64px 46px 46px;
+  border-radius: 16px;
+  border: 1px solid var(--elements-color);
+  background-color: var(--surface-color);
+  gap: 24px;
+  text-align: center;
+
+  @include only-mobile {
+    width: 100vw;
+    height: 730px;
+    border-radius: 0;
+    gap: 4px;
+
+    padding: 30px;
+    padding-bottom: 24px;
+  }
+
+  &__close {
+    cursor: pointer;
+    position: absolute;
+
+    right: 0;
+    transform: translate(-50%, -50%);
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: none;
+    background-color: transparent;
+
+    @include only-mobile {
+      width: 40px;
+      height: 40px;
+    }
+  }
+
+  &__closeImg {
+    width: 30px;
+    height: 30px;
+
+    &:hover {
+      border: 1px solid;
+      border-radius: 50px;
+    }
+  }
+
+  &__title {
+    font-size: 48px;
+    font-weight: 800;
+    line-height: 56px;
+    letter-spacing: -0.01em;
+    text-align: left;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+
+    margin-bottom: 15px;
+
+    @include only-mobile {
+      font-size: 38px;
+    }
+  }
+}
+
+.blur {
+  position: fixed;
+  height: 100vh;
+  width: 100vw;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 3;
+  backdrop-filter: blur(10px);
+  pointer-events: none;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  height: 120px;
+
+  @include only-mobile {
+    height: 96px;
+  }
+}
+
+.label {
+  font-size: 1rem;
+  color: var(--primary-color);
+  cursor: pointer;
+}
+
+.control {
+  position: relative;
+}
+
+.input {
+  width: 250px;
+  padding: 12px;
+  border: 2px solid #ddd;
+  color: #000;
+  border-radius: 8px;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+
+  @include only-mobile {
+    height: 34px;
+    font-size: 0.9rem;
+  }
+
+  &::placeholder {
+    color: #aaa;
+  }
+
+  &:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 8px rgba(0, 123, 255, 0.2);
+  }
+}
+
+.error {
+  border-color: #ff4d4d;
+}
+
+.help {
+  color: #ff4d4d;
+  font-size: 0.88rem;
+
+  @include only-mobile {
+    font-size: 0.8rem;
+  }
+}
+
+.rowWrapper {
+  display: flex;
+  flex-direction: row;
+
+  @include only-mobile {
+    flex-direction: column;
+  }
+}
+
+.formContainer {
+  width: 300px;
+}
+
+.imgContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 300px;
+
+  @include only-mobile {
+    width: 200px;
+  }
+}
+
+.deliveryImg {
+  width: 100%;
+  height: auto;
+}
+
+.animationContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  width: 100%;
+  height: 80px;
+  opacity: 1;
+}
+
+.truckRoad {
+  width: 100%;
+  height: 6px;
+  background-color: var(--primary-color);
+
+  @include only-mobile {
+    height: 3px;
+  }
+}
+
+.tilda1 {
+  width: 36px;
+  height: 22px;
+  position: absolute;
+  top: 362px;
+  right: 244px;
+  animation: spin 1s linear infinite;
+  z-index: -1;
+
+  @include only-mobile {
+    opacity: 0;
+  }
+}
+
+.tilda2 {
+  width: 36px;
+  height: 22px;
+  position: absolute;
+  top: 362px;
+  right: 89px;
+  animation: spin 1s linear infinite;
+  z-index: -1;
+
+  @include only-mobile {
+    opacity: 0;
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes move-right {
+  0% {
+    transform: translateX(0);
+  }
+  20% {
+    transform: translateX(-8px);
+  }
+  100% {
+    transform: translateX(554px);
+  }
+}
+
+@keyframes bounce-up-down {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-3px);
+  }
+}
+
+.iconContainer {
+  width: 70px;
+  height: 50px;
+
+  @include only-mobile {
+    width: 56px;
+    height: 40px;
+  }
+}
+
+.iconContainerAnim {
+  width: 70px;
+  height: 50px;
+  animation:
+  bounce-up-down 0.6s ease-in-out infinite;
+
+  @include only-mobile {
+    width: 56px;
+    height: 40px;
+  }
+}
+
+.truckImage {
+  width: 70px;
+  height: 50px;
+
+  @include only-mobile {
+    width: 56px;
+    height: 40px;
+  }
+}
+
+.truckImageAnimation {
+  width: 70px;
+  height: 50px;
+  animation:
+  move-right 3s ease-in-out infinite;
+
+  @include only-mobile {
+    width: 56px;
+    height: 40px;
+  }
+}
+
+.paymentButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 50px;
+  width: 100%;
+  border: none;
+  background-color: var(--accent-color);
+  border-radius: 48px;
+  font-size: 14px;
+  color: var(--white-color);
+
+  cursor: pointer;
+
+  @include only-mobile {
+    width: 80%;
+    height: 40px;
+  }
+
+  &:hover {
+    box-shadow: 0 3px 13px #17203166;
+  }
+
+  &:active {
+    box-shadow: none;
+    color: var(--accent-color);
+    background-color: var(--surface-color);
+    border: 1px solid var(--elements-color);
+  }
+}
+
+@keyframes appear {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.doneContainer {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  animation:
+  appear 1s linear,
+}
+
+.doneImage {
+  width: 40px;
+  height: 40px;
+}
