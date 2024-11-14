@@ -206,6 +206,7 @@
   top: 362px;
   right: 244px;
   animation: spin 1s linear infinite;
+  z-index: -1;
 
   @include only-mobile {
     opacity: 0;
@@ -219,6 +220,7 @@
   top: 362px;
   right: 89px;
   animation: spin 1s linear infinite;
+  z-index: -1;
 
   @include only-mobile {
     opacity: 0;

@@ -2,49 +2,7 @@
 @import '../../styles/utils/mixins';
 
 .contact-us {
-  &__button {
-    display: flex;
-    align-items: center;
-
-    position: fixed;
-    padding: 2px;
-    bottom: 60px;
-    right: 20px;
-    width: 42px;
-    gap: 4px;
-
-    border-radius: 18px;
-    border: 1px solid var(--primary-color);
-    background-color: var(--primary-color);
-    overflow: hidden;
-    z-index: 999;
-
-    white-space: nowrap;
-    font-size: 13px;
-    color: var(--surface-color);
-
-    transition: width 0.3s ease;
-    user-select: none;
-
-    @include on-tablet {
-      bottom: 90px;
-    }
-
-    @include on-desktop {
-      bottom: 90px;
-    }
-
-    img {
-      width: 36px;
-      height: 36px;
-      flex-shrink: 0;
-    }
-
-    &:hover {
-      width: 130px;
-      box-shadow: 0 3px 13px var(--shadow-color);
-    }
-  }
+  display: flex;
 }
 
 .modal {
@@ -105,12 +63,14 @@
     display: flex;
 
     &--timer {
+      display: block;
       width: 220px;
       font-size: 55px;
 
       &-message {
-        font-size: 55px;
         display: block;
+        padding-bottom: 20px;
+        font-size: 45px;
         text-align: center;
       }
     }

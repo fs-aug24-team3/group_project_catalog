@@ -23,18 +23,32 @@
     }
   }
 
-  &__dropdowns {
-    display: flex;
-
-    gap: 16px;
-    margin-bottom: 24px;
-  }
-
   &__label {
     color: var(--secondary-color);
     font-size: 12px;
     font-weight: 700;
     line-height: normal;
     margin-bottom: 4px;
+  }
+
+  &__dropdowns {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 24px;
+
+    @include only-mobile {
+      display: grid;
+      grid-template-columns: 1fr;
+      row-gap: 16px;
+
+      &:first-child {
+        grid-column: 1 / -1;
+      }
+    }
+  }
+  
+  &__selects {
+    display: flex;
+    gap: 16px;
   }
 }

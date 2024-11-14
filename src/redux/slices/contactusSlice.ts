@@ -23,19 +23,24 @@ const contactUsSlice = createSlice({
   reducers: {
     openModal(state) {
       state.isModalOpen = true;
+      state.isRequestSent = false;
       state.showTimer = !state.isRequestSent;
     },
+
     closeModal(state) {
       state.isModalOpen = false;
     },
+
     setMobileNumber(state, action: PayloadAction<string>) {
       state.mobileNumber = action.payload;
     },
+
     sendRequest(state) {
       state.isRequestSent = true;
       state.timer = 30000;
       state.showTimer = true;
     },
+
     resetRequest(state) {
       state.isModalOpen = false;
       state.mobileNumber = '';
@@ -43,9 +48,11 @@ const contactUsSlice = createSlice({
       state.timer = 30000;
       state.showTimer = true;
     },
+
     setTimer(state, action: PayloadAction<number>) {
       state.timer = action.payload;
     },
+
     toggleShowTimer(state, action: PayloadAction<boolean>) {
       state.showTimer = action.payload;
     },

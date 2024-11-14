@@ -1,20 +1,18 @@
 import React, { useEffect, useState } from 'react';
-import styles from './ContactUsModal.module.scss';
 import { RootState } from '../../redux/store';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
+import styles from './ContactUsModal.module.scss';
 import closeIcon from '../../images/Icons/close.svg';
 import closeIconDark from '../../images/Icons/close-dark.svg';
-import contactIcon from '../../images/Icons/phone-call.svg';
-import contactIconDark from '../../images/Icons/phone-call-dark.svg';
 import {
-  openModal,
   resetRequest,
   sendRequest,
   setMobileNumber,
   setTimer,
 } from '../../redux/slices/contactusSlice';
+import { ContactUsModalButton } from '../ContactUsModalButton';
 
 export const ContactUsModal: React.FC = () => {
   const dispatch = useDispatch();
@@ -85,17 +83,7 @@ export const ContactUsModal: React.FC = () => {
 
   return (
     <div>
-      <Link
-        to="#"
-        className={styles['contact-us__button']}
-        onClick={() => dispatch(openModal())}
-      >
-        <img
-          src={theme === 'light' ? contactIcon : contactIconDark}
-          alt="Contact Us"
-        />
-        Contact Us
-      </Link>
+      <ContactUsModalButton />
 
       {isModalOpen && (
         <div className={styles.modal} onClick={() => dispatch(resetRequest())}>
@@ -113,6 +101,7 @@ export const ContactUsModal: React.FC = () => {
                 alt="Close"
               />
             </Link>
+
             {!isRequestSent ? (
               <>
                 <h2 className={styles.modal__title}>
@@ -154,6 +143,7 @@ export const ContactUsModal: React.FC = () => {
                   <span className={styles['modal__status--available']}>
                     Available operators online: 1
                   </span>
+
                   <span className={styles['modal__status--orders']}>
                     Call orders today: 5+
                   </span>
@@ -170,8 +160,9 @@ export const ContactUsModal: React.FC = () => {
                     <span
                       className={styles['modal__send-request--timer-message']}
                     >
-                      No operators available
+                      We&apos;ll call you as soon as possible
                     </span>
+
                     <Link
                       to="#"
                       className={styles['modal__send-request--button']}

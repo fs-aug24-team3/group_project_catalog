@@ -1,7 +1,21 @@
 import { Product } from '../types/Product';
 
-export const getFilteredProducts = (items: Product[], sort: string) => {
+export const getFilteredProducts = (
+  items: Product[],
+  sort: string,
+  query: string,
+) => {
   let filteredProducts = [...items];
+
+  const normalizedQuery = query.trim().toLowerCase() || '';
+
+  if (normalizedQuery) {
+    filteredProducts = filteredProducts.filter(product => {
+      const normalizedName = product.name.toLowerCase().trim();
+
+      return normalizedName.includes(normalizedQuery);
+    });
+  }
 
   filteredProducts = filteredProducts.sort((currentProduct, nextProduct) => {
     switch (sort) {
