@@ -7,11 +7,14 @@ import { clearError, signupUser } from '../../redux/slices/authSlice';
 import { RootState, useAppDispatch } from '../../redux/store';
 import { Link, useNavigate } from 'react-router-dom';
 import arrowLeft from '../../images/Icons/arrow_left.svg';
+import { useTranslation } from 'react-i18next';
 
 export const SignupPage: React.FC = () => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const { isLoggedIn, error } = useSelector((state: RootState) => state.auth);
+
+  const { t } = useTranslation();
 
   const initialValues = {
     name: '',
@@ -22,17 +25,17 @@ export const SignupPage: React.FC = () => {
 
   const validationSchema = Yup.object({
     name: Yup.string()
-      .min(2, 'Name must be at least 2 characters')
-      .required('Name is required'),
+      .min(2, t('auth_pages.invalid_name'))
+      .required(t('auth_pages.required_name')),
     email: Yup.string()
-      .email('Invalid email address')
-      .required('Email is required'),
+      .email(t('auth_pages.invalid_email'))
+      .required(t('auth_pages.required_email')),
     password: Yup.string()
-      .min(6, 'Password must be at least 6 characters')
-      .required('Password is required'),
+      .min(6, t('auth_pages.invalid_password'))
+      .required(t('auth_pages.required_password')),
     confirmPassword: Yup.string()
-      .oneOf([Yup.ref('password')], 'Passwords must match')
-      .required('Confirm Password is required'),
+      .oneOf([Yup.ref('password')], t('auth_pages.password_must_match'))
+      .required(t('auth_pages.required_confirm')),
   });
 
   const handleSubmit = async (values: typeof initialValues) => {
@@ -66,15 +69,17 @@ export const SignupPage: React.FC = () => {
               <div className={styles['back-link__icon']}>
                 <img src={arrowLeft} alt="back arrow" />
               </div>
-              <p className={styles['back-link__text']}>Home</p>
+              <p className={styles['back-link__text']}>
+                {t('auth_pages.back_link')}
+              </p>
             </Link>
-            <h1>Register</h1>
+            <h1>{t('auth_pages.register')}</h1>
             <div className={styles['signup-form__input']}>
               <Field
                 type="text"
                 name="name"
                 id="name"
-                placeholder="Enter your name"
+                placeholder={t('auth_pages.enter_name')}
                 className={styles['signup-form__field']}
                 onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
                   handleClearError();
@@ -93,7 +98,7 @@ export const SignupPage: React.FC = () => {
                 type="email"
                 name="email"
                 id="email"
-                placeholder="Enter your email"
+                placeholder={t('auth_pages.enter_email')}
                 className={styles['signup-form__field']}
                 onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
                   handleClearError();
@@ -112,7 +117,7 @@ export const SignupPage: React.FC = () => {
                 type="password"
                 name="password"
                 id="password"
-                placeholder="Enter your password"
+                placeholder={t('auth_pages.enter_password')}
                 className={styles['signup-form__field']}
                 onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
                   handleClearError();
@@ -131,7 +136,7 @@ export const SignupPage: React.FC = () => {
                 type="password"
                 name="confirmPassword"
                 id="confirmPassword"
-                placeholder="Confirm your password"
+                placeholder={t('auth_pages.confirm_password')}
                 className={styles['signup-form__field']}
                 onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
                   handleClearError();
@@ -150,11 +155,11 @@ export const SignupPage: React.FC = () => {
             )}
 
             <button type="submit" className={styles['signup-form__submit']}>
-              Signup
+              {t('auth_pages.signup')}
             </button>
 
             <Link className={styles['signup-form__redirect']} to="../login">
-              Already registered ?
+              {t('auth_pages.registered')}
             </Link>
           </Form>
         )}
