@@ -1,10 +1,10 @@
 import { Link } from 'react-router-dom';
 import { RootState } from '../../redux/store';
 import { useDispatch, useSelector } from 'react-redux';
-import { openModal } from '../../redux/slices/contactusSlice';
 
+import { openModal } from '../../redux/slices/contactusSlice';
 import styles from './ContactUsModalButton.module.scss';
-import contactIcon from '../../images/Icons/phone-call.svg';
+import contactIcon from '../../images/Icons/phone-call-dark_copy.svg';
 import contactIconDark from '../../images/Icons/phone-call-dark.svg';
 
 export const ContactUsModalButton = () => {
@@ -14,7 +14,7 @@ export const ContactUsModalButton = () => {
   return (
     <Link
       to="#"
-      className={styles['contact-us__button']}
+      className={`${styles['contact-us__button']} ${styles[theme]}`}
       onClick={() => dispatch(openModal())}
     >
       <img

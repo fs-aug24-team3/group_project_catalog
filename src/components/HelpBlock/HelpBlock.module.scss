@@ -13,8 +13,6 @@
 
   z-index: 1000;
 
-  background-color: black;
-
   @include only-mobile {
     z-index: 1;
   }
