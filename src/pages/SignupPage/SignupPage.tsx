@@ -4,14 +4,14 @@ import * as Yup from 'yup';
 import styles from './SignupPage.module.scss';
 import { useSelector } from 'react-redux';
 import { clearError, signupUser } from '../../redux/slices/authSlice';
-import { useAppDispatch } from '../../redux/store';
+import { RootState, useAppDispatch } from '../../redux/store';
 import { Link, useNavigate } from 'react-router-dom';
 import arrowLeft from '../../images/Icons/arrow_left.svg';
 
 export const SignupPage: React.FC = () => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
-  const { isLoggedIn, error } = useSelector((state: any) => state.auth);
+  const { isLoggedIn, error } = useSelector((state: RootState) => state.auth);
 
   const initialValues = {
     name: '',
@@ -37,7 +37,10 @@ export const SignupPage: React.FC = () => {
 
   const handleSubmit = async (values: typeof initialValues) => {
     const { name, email, password } = values;
+
     dispatch(signupUser({ name, email, password }));
+
+    setTimeout(() => window.location.reload(), 2000);
   };
 
   const handleClearError = () => {
@@ -46,7 +49,7 @@ export const SignupPage: React.FC = () => {
 
   useEffect(() => {
     if (isLoggedIn) {
-      navigate('/home');
+      navigate('/');
     }
   }, [isLoggedIn, navigate]);
 

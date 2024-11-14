@@ -28,7 +28,6 @@ export const Actions: React.FC<Props> = ({ className, onHideMenu }) => {
   const dispatch = useDispatch();
   const items = useSelector((state: RootState) => state.cart.cartItems);
   const theme = useSelector((state: RootState) => state.theme.theme);
-  const [isLoading, setIsLoading] = useState(true)
   const { isLoggedIn } = useSelector((state: RootState) => state.auth);
   const count = items.length;
 

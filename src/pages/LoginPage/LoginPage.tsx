@@ -4,14 +4,14 @@ import * as Yup from 'yup';
 import styles from './LoginPage.module.scss';
 import { Link, useNavigate } from 'react-router-dom';
 import { clearError, loginUser } from '../../redux/slices/authSlice';
-import { useAppDispatch } from '../../redux/store';
+import { RootState, useAppDispatch } from '../../redux/store';
 import { useSelector } from 'react-redux';
 import arrowLeft from '../../images/Icons/arrow_left.svg';
 
 export const LoginPage: React.FC = () => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
-  const { isLoggedIn, error } = useSelector((state: any) => state.auth);
+  const { isLoggedIn, error } = useSelector((state: RootState) => state.auth);
 
   const initialValues = {
     email: '',
@@ -29,7 +29,7 @@ export const LoginPage: React.FC = () => {
 
   const handleSubmit = (values: { email: string; password: string }) => {
     dispatch(loginUser(values));
-    //setTimeout(() => window.location.reload(), 1);
+    setTimeout(() => window.location.reload(), 1000);
   };
 
   const handleClearError = () => {
@@ -38,7 +38,7 @@ export const LoginPage: React.FC = () => {
 
   useEffect(() => {
     if (isLoggedIn) {
-      navigate('/home');
+      navigate('/');
     }
   }, [isLoggedIn, navigate]);
 
