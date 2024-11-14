@@ -129,11 +129,13 @@ export const ProductPage: FC<Props> = ({ title, fetchProduct }) => {
 
             <div className={styles['products-page__selects']}>
               <div>
-                <p className={styles['products-page__label']}>{t('page.sort')}</p>
+                <p className={styles['products-page__label']}>
+                  {t('page.sort')}
+                </p>
                 <ProductSelect
                   placeholder={selectedSortField.label}
                   value={selectedSortField}
-                  options={optionsForSorting}
+                  options={sortingOptions}
                   onChange={handleSortFieldChange}
                 />
               </div>
@@ -145,7 +147,7 @@ export const ProductPage: FC<Props> = ({ title, fetchProduct }) => {
                 <ProductSelect
                   value={selectedPerPage}
                   onChange={handlePerPageChange}
-                  options={optionsPerPage}
+                  options={perPageOptions}
                   placeholder={selectedPerPage.label}
                 />
               </div>
