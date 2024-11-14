@@ -18,7 +18,7 @@ export const MessageUsButton: FC<Props> = ({ onFormVisibility }) => {
     <Link
       to="#"
       onClick={onFormVisibility}
-      className={styles['pop-up__button']}
+      className={`${styles['pop-up__button']} ${styles[theme]}`}
     >
       <img
         src={theme === 'light' ? messageIcon : messageIconDark}

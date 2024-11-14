@@ -14,7 +14,7 @@ export const ContactUsModalButton = () => {
   return (
     <Link
       to="#"
-      className={styles['contact-us__button']}
+      className={`${styles['contact-us__button']} ${styles[theme]}`}
       onClick={() => dispatch(openModal())}
     >
       <img
