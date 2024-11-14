@@ -70,7 +70,7 @@ export const ProductPage: FC<Props> = ({ title, fetchProduct }) => {
         setProduct(data);
         setIsLoadedData(true);
       })
-      .catch(() => setError('Something went wrong! Please try again!'))
+      .catch(() => setError(t('page.error_message')))
       .finally(() => {
         setIsLoading(false);
       });
@@ -123,7 +123,9 @@ export const ProductPage: FC<Props> = ({ title, fetchProduct }) => {
 
           <div className={styles['products-page__dropdowns']}>
             <div>
-              <p className={styles['products-page__label']}>Search</p>
+              <p className={styles['products-page__label']}>
+                {t('page.search')}
+              </p>
               <SearchInput query={query} />
             </div>
 

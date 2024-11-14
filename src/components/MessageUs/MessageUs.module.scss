@@ -51,6 +51,7 @@
   }
 
   &__title {
+    text-align: center;
     font-weight: 800;
     padding-bottom: 16px;
   }
@@ -82,6 +83,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    text-align: center;
     height: 54px;
     width: 200px;
 
