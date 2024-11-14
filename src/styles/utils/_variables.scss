@@ -15,7 +15,7 @@ html.light {
   --icons-color: #b4bdc3;
   --elements-color: #e2e6e9;
   --hover-background-color: #fafbfc;
-  --surface-color: #fff; // used to be white-color
+  --surface-color: #fff;
   --shadow-color: #17203166;
   --text-color: #000;
 }
@@ -30,17 +30,3 @@ html.dark {
   --shadow-color: #17203166;
   --text-color: #fff;
 }
-
-/*var(--accent-color): #4219D0;
-$secondary-accent-color: #F4BA47;
-var(--primary-color): #0F0F11;
-var(--secondary-color): #89939A;
-var(--icons-color): #B4BDC3;
-var(--elements-color): #E2E6E9;
-var(--hover-background-color): #FAFBFC;
-var(--surface-color): #fff;
-$green-color: #27AE60;
-$red-color: #EB5757;
-var(--shadow-color): #17203166;
-
-*/

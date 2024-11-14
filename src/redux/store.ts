@@ -1,9 +1,17 @@
 import { configureStore } from '@reduxjs/toolkit';
-import cartReducer, { CartState } from './slices/cartSlice';
-import favouritesReducer, { FavouritesState } from './slices/favouritesSlice';
-import themeReducer, { ThemeState } from './slices/themeSlice';
+import cartReducer from './slices/cartSlice';
+import favouritesReducer from './slices/favouritesSlice';
+import authReducer from './slices/authSlice';
+import themeReducer from './slices/themeSlice';
 import { persistStore, persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
+import { useDispatch } from 'react-redux';
+
+const authPersistConfig = {
+  key: 'auth',
+  storage,
+  whitelist: ['user', 'isLoggedIn'],
+};
 
 const cartPersistConfig = {
   key: 'cart',
@@ -20,6 +28,8 @@ const themePersistConfig = {
   storage,
 };
 
+const persistedAuthReducer = persistReducer(authPersistConfig, authReducer);
+
 const persistedCartReducer = persistReducer(cartPersistConfig, cartReducer);
 
 const persistedFavouritesReducer = persistReducer(
@@ -34,16 +44,18 @@ export const store = configureStore({
     cart: persistedCartReducer,
     favourites: persistedFavouritesReducer,
     theme: persistedThemeReducer,
+    auth: persistedAuthReducer,
   },
+  middleware: getDefaultMiddleware =>
+    getDefaultMiddleware({
+      serializableCheck: false,
+    }),
 });
 
 export const persistor = persistStore(store);
 
-export type RootState = {
-  cart: CartState;
-  favourites: FavouritesState;
-  theme: ThemeState;
-};
+export type RootState = ReturnType<typeof store.getState>;
 
 export type AppDispatch = typeof store.dispatch;
 
+export const useAppDispatch = () => useDispatch<AppDispatch>()
