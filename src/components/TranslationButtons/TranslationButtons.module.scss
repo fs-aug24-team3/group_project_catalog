@@ -1,0 +1,32 @@
+@import '../../styles/utils/mixins';
+@import '../../styles/utils/variables';
+
+.buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  width: 40px;
+  height: 46px;
+
+  @include on-desktop {
+    height: 64px;
+  }
+
+  &__button {
+    cursor: pointer;
+    border: none;
+    background-color: transparent;
+    color: var(--secondary-color);
+    font-weight: 600;
+
+    &:hover,
+    &:focus {
+      color: var(--primary-color);
+    }
+
+    &--active {
+      color: var(--primary-color);
+    }
+  }
+}
