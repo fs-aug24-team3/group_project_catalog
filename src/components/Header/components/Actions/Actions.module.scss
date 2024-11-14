@@ -12,6 +12,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    cursor: pointer;
+    background: none;
 
     @include on-tablet {
       width: 48px;
@@ -69,6 +71,8 @@
     text-align: center;
   }
 }
+
+
 
 /* .bubble {
   display: flex;

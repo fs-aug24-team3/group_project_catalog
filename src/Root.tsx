@@ -16,13 +16,19 @@ import { ContactsPage } from './pages/ContactsPage';
 import { RightsPage } from './pages/RightsPage';
 import { ProductDetailsPage } from './pages/ProductDetailsPage';
 import { ServicePage } from './pages/ServicePage';
+import { LoginPage } from './pages/LoginPage';
+import { SignupPage } from './pages/SignupPage';
+import { ProtectedRoute } from './components/ProtectedRoute/ProtectedRoute';
 
 export const Root = () => (
   <Router>
     <Routes>
+      <Route path="login" element={<LoginPage />} />
+      <Route path="signup" element={<SignupPage />} />
       <Route path="/" element={<App />}>
         <Route index element={<HomePage />} />
         <Route path="home" element={<Navigate to="/" replace />} />
+
         <Route path="phones">
           <Route index element={<PhonePage />} />
           <Route path=":itemId" element={<ProductDetailsPage />} />
@@ -35,8 +41,22 @@ export const Root = () => (
           <Route index element={<AccessoriesPage />} />
           <Route path=":itemId" element={<ProductDetailsPage />} />
         </Route>
-        <Route path="favourites" element={<FavouritesPage />} />
-        <Route path="cart" element={<CartPage />} />
+        <Route
+          path="favourites"
+          element={
+            <ProtectedRoute>
+              <FavouritesPage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="cart"
+          element={
+            <ProtectedRoute>
+              <CartPage />
+            </ProtectedRoute>
+          }
+        />
         <Route path="contacts" element={<ContactsPage />} />
         <Route path="rights" element={<RightsPage />} />
         <Route path="service" element={<ServicePage />} />

@@ -1,0 +1,120 @@
+.signupPage {
+  color: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  height: 100vh;
+  text-align: center;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    background-image: url('../../../public/img/StarryNight.jpg');
+    background-size: cover;
+    background-position: center center;
+  }
+}
+
+.signup-form {
+  z-index: 2;
+  background: #ffffff;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 320px;
+  box-sizing: border-box;
+
+  h1 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    text-align: center;
+    color: #333;
+  }
+
+  &__input {
+    margin-bottom: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0rem;
+
+    label {
+      font-size: 0.9rem;
+      color: #666;
+    }
+  }
+
+  &__field {
+    padding: 0.6rem;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    transition: border-color 0.3s;
+
+    &:focus {
+      border-color: #007bff;
+      outline: none;
+    }
+  }
+
+  &__error {
+    font-size: 0.8rem;
+    color: #d9534f;
+    margin-top: 0.25rem;
+  }
+
+  &__submit {
+    width: 100%;
+    padding: 0.8rem;
+    font-size: 1rem;
+    background: var(--accent-color);
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    margin-bottom: 20px;
+    cursor: pointer;
+    transition: background 0.3s;
+
+    &:hover {
+      box-shadow: 0 3px 13px #17203166;
+    }
+
+    &:disabled {
+      background: #ccc;
+      cursor: not-allowed;
+    }
+  }
+
+  &__redirect {
+    color: #000;
+    &:hover {
+      color: #48b4ee;
+      text-decoration: underline;
+    }
+  }
+}
+
+.back-link {
+  display: flex;
+  width: 66px;
+  height: 16px;
+  gap: 4px;
+
+  &__icon {
+    width: 12px;
+    height: 12px;
+    display: flex;
+  }
+
+  &__text {
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 15px;
+    color: #000;
+  }
+}
