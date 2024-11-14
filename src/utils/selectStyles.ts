@@ -65,5 +65,13 @@ export const selectStyles = (
       backgroundColor: '#FFF',
       zIndex: '2',
     }),
+
+    dropdownIndicator: (provided: CSSObjectWithLabel) => ({
+      ...provided,
+      '& svg path': {
+        fill: 'black',
+        stroke: 'black',
+      },
+    }),
   };
 };

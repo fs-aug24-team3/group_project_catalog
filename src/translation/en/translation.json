@@ -39,7 +39,45 @@
     "models1": "models",
     "models2": "models",
     "sort": "Sort by",
-    "perPage": "Items on page"
+    "perPage": "Items on page",
+    "search": "Search",
+    "error": "Try again",
+    "error_message": "Something went wrong! Please try again!",
+    "page_not_found": "Page not found",
+    "back_to_home": "Back to home page"
+  },
+
+  "message_us": {
+    "error_wrong_phone": "Wrong phone number input",
+    "not_enought_letters": "You haven't written anything or the message is too short",
+    "success": "Thank you! Your message has been sent",
+    "title": "Write us a message",
+    "placeholder_name": "Name",
+    "placeholder_number": "Phone Number",
+    "placeholder_message": "Message",
+    "send": "Send Message",
+    "button_message_us": "Message Us"
+  },
+
+  "contact_us": {
+    "contact_us": "Contact Us",
+    "call_back_text": "Enter your phone number and we will call you back in 30 seconds",
+    "enter_phone": "Enter your phone number",
+    "send": "Send Request",
+    "example": "Example",
+    "available_operators": "Available operators online",
+    "call_orders": "Call orders today",
+    "recall_message": "We'll call you as soon as possible",
+    "close": "Close",
+    "error": "Please enter a valid mobile number."
+  },
+
+  "no_items": {
+    "no_items_yet": "There are no {{title}} yet",
+    "no_items_with_criterias": "There are no {{title}} corresponding your serch criterias",
+    "phones": "phones",
+    "tablets": "tablets",
+    "accessories": "accessories"
   },
 
   "homePage": {

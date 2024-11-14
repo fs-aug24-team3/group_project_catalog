@@ -1,7 +1,9 @@
+/* eslint-disable import/no-extraneous-dependencies */
 import { FC } from 'react';
 import { useSearchParams } from 'react-router-dom';
 
 import styles from './SearchInput.module.scss';
+import { useTranslation } from 'react-i18next';
 
 type Props = {
   query: string;
@@ -9,6 +11,8 @@ type Props = {
 
 export const SearchInput: FC<Props> = ({ query }) => {
   const [searchParams, setSearchParams] = useSearchParams();
+
+  const { t } = useTranslation();
 
   function handleQueryChange(event: React.ChangeEvent<HTMLInputElement>) {
     const value = event.target.value;
@@ -34,7 +38,7 @@ export const SearchInput: FC<Props> = ({ query }) => {
     <div className={styles.searchInput}>
       <input
         type="text"
-        placeholder="Search"
+        placeholder={t('page.search')}
         value={query}
         onChange={handleQueryChange}
         className={styles['searchInput-search']}

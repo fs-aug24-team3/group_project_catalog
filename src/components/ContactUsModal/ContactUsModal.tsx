@@ -1,3 +1,4 @@
+/* eslint-disable import/no-extraneous-dependencies */
 import React, { useEffect, useState } from 'react';
 import { RootState } from '../../redux/store';
 import { useDispatch, useSelector } from 'react-redux';
@@ -13,6 +14,7 @@ import {
   setTimer,
 } from '../../redux/slices/contactusSlice';
 import { ContactUsModalButton } from '../ContactUsModalButton';
+import { useTranslation } from 'react-i18next';
 
 export const ContactUsModal: React.FC = () => {
   const dispatch = useDispatch();
@@ -20,6 +22,8 @@ export const ContactUsModal: React.FC = () => {
     useSelector((state: RootState) => state.contactUs);
   const theme = useSelector((state: RootState) => state.theme.theme);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
+
+  const { t } = useTranslation();
 
   const formatTime = (milliseconds: number) => {
     const minutes = Math.floor(milliseconds / 60000);
@@ -45,7 +49,7 @@ export const ContactUsModal: React.FC = () => {
       localStorage.setItem('lastRequest', mobileNumber);
       dispatch(sendRequest());
     } else {
-      setErrorMessage('*Please enter a valid mobile number.');
+      setErrorMessage(`*${t('contact_us.error')} `);
     }
   };
 
@@ -105,14 +109,13 @@ export const ContactUsModal: React.FC = () => {
             {!isRequestSent ? (
               <>
                 <h2 className={styles.modal__title}>
-                  Enter your phone number and we&apos;ll call you back in 30
-                  seconds
+                  {t('contact_us.call_back_text')}
                 </h2>
 
                 <div className={styles['modal__send-request']}>
                   <input
                     type="text"
-                    placeholder="Enter your phone number"
+                    placeholder={t('contact_us.enter_phone')}
                     value={mobileNumber}
                     onChange={handleInputChange}
                     className={styles['modal__send-request--input']}
@@ -123,12 +126,12 @@ export const ContactUsModal: React.FC = () => {
                     className={styles['modal__send-request--button']}
                     onClick={handleSendRequest}
                   >
-                    Send Request
+                    {t('contact_us.send')}
                   </Link>
                 </div>
 
                 <span className={styles['modal__send-request--example']}>
-                  Example: 067 000 00 00
+                  {t('contact_us.example')}: 067 000 00 00
                 </span>
 
                 {errorMessage && (
@@ -141,11 +144,11 @@ export const ContactUsModal: React.FC = () => {
 
                 <div className={styles.modal__status}>
                   <span className={styles['modal__status--available']}>
-                    Available operators online: 1
+                    {t('contact_us.available_operators')}: 1
                   </span>
 
                   <span className={styles['modal__status--orders']}>
-                    Call orders today: 5+
+                    {t('contact_us.call_orders')}: 5+
                   </span>
                 </div>
               </>
@@ -160,7 +163,7 @@ export const ContactUsModal: React.FC = () => {
                     <span
                       className={styles['modal__send-request--timer-message']}
                     >
-                      We&apos;ll call you as soon as possible
+                      {t('contact_us.recall_message')}
                     </span>
 
                     <Link
@@ -168,7 +171,7 @@ export const ContactUsModal: React.FC = () => {
                       className={styles['modal__send-request--button']}
                       onClick={() => dispatch(resetRequest())}
                     >
-                      Close
+                      {t('contact_us.close')}
                     </Link>
                   </>
                 )}
