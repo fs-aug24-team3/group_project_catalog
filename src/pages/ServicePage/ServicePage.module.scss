@@ -1,1 +1,270 @@
-// write here
+@import '../../styles/utils/variables';
+@import '../../styles/utils/mixins';
+
+.consultation-block {
+  height: 250px;
+  display: grid;
+  justify-content: center;
+  align-content: center;
+  gap: 16px;
+  margin-bottom: 50px;
+  &__title {
+    text-align: center;
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    height: 50px;
+    margin-bottom: 10px;
+    width: 100%;
+  }
+
+  &__phone-input {
+    width: 200px;
+    color: #000;
+    padding: 10px;
+  }
+
+  &__button {
+    color: #fff;
+    background-color: var(--accent-color);
+    padding: 10px;
+    border: none;
+  }
+
+  &__text {
+    padding-left: 5px;
+    color: var(--secondary-color);
+    font-size: 12px;
+  }
+
+  &__error {
+    position: absolute;
+    text-align: center;
+    color: var(--red-color);
+    font-size: 12px;
+    padding-left: 5px;
+  }
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--backdrop);
+  z-index: 1000;
+
+  &__content {
+    background-color: var(--surface-color);
+    padding: 20px;
+    border-radius: 8px;
+    max-width: 400px;
+    width: 90%;
+    text-align: center;
+  }
+
+  &__message {
+    font-size: 18px;
+    color: var(--primary-color);
+  }
+
+  &__close {
+    margin-top: 15px;
+    padding: 8px 16px;
+    background-color: var(--accent-color);
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+}
+
+.service {
+  display: grid;
+  width: 100%;
+  height: 500px;
+  margin: auto;
+
+  position: relative;
+  padding: 20px;
+  line-height: 1.6;
+  position: relative;
+  margin-bottom: 50px;
+
+  @include only-mobile {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto;
+  }
+
+  @include on-tablet {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto;
+  }
+
+  @include on-desktop {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  &-block {
+    margin-bottom: 40px;
+
+    direction: ltr;
+    gap: 20px;
+
+    @include only-mobile {
+      grid-row: 2;
+    }
+    @include on-tablet {
+      grid-row: 2;
+    }
+    @include on-desktop {
+      grid-column: 1;
+    }
+  }
+
+  &-content {
+    flex: 1;
+    width: 100%;
+  }
+
+  &-title {
+    font-size: 18px;
+    color: var(--primary-color);
+    margin-bottom: 16px;
+    text-align: left;
+  }
+
+  &-text {
+    color: var(--primary-color);
+    margin-bottom: 20px;
+    text-align: left;
+    flex: 1;
+    max-width: 100%;
+  }
+
+  &-image-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: start;
+
+    @include only-mobile {
+      grid-row: 1;
+    }
+
+    @include on-tablet {
+      grid-row: 1;
+    }
+
+    @include on-desktop {
+      grid-column: 2;
+      align-items: center;
+    }
+  }
+
+  &-image {
+    @include only-mobile {
+      width: 300px;
+    }
+
+    @include on-tablet {
+      width: 300px;
+    }
+
+    @include on-desktop {
+      max-width: 80%;
+    }
+  }
+}
+
+.slider {
+  position: relative;
+  padding-left: 20px;
+  overflow-y: scroll;
+  direction: rtl;
+  outline: none;
+}
+
+.slider::-webkit-scrollbar {
+  width: 10px;
+  outline: none;
+}
+
+.slider::-webkit-scrollbar-track {
+  background: lightgrey;
+  //  box-shadow: inset 0 0 0 0 rgba(0, 0, 0, 0);
+  outline: none;
+  border-left: 4px solid var(--hover-background-color);
+  border-right: 4px solid var(--hover-background-color);
+}
+
+.slider::-webkit-scrollbar-thumb {
+  background: darkgray;
+  outline: none;
+}
+
+.block_questions {
+  // border: 6px solid var(--accent-color);
+  height: 300px;
+  padding: 20px;
+
+  &-element {
+    padding: 10px;
+    position: relative;
+    border-top: 1px solid var(--primary-color);
+    border-bottom: 1px solid var(--primary-color);
+    margin-bottom: 10px;
+    overflow: hidden;
+
+    transition:
+      max-height 0.3s ease,
+      opacity 0.3s ease;
+  }
+
+  &-button {
+    position: absolute;
+    left: 97%;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 24px;
+    color: var(--text-color);
+
+    &.is-open {
+      transform: translateY(-50%);
+      font-size: 32px;
+      color: var(--text-color);
+      left: 97%;
+      top: 30%;
+    }
+  }
+
+  &-title {
+    font-size: 24px;
+  }
+
+  &-text {
+    font-size: 16px;
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    color: var();
+
+    transition:
+      max-height 0.9s ease-in,
+      opacity 0.2s ease;
+
+    &.is-open {
+      max-height: 100px;
+      opacity: 1;
+    }
+  }
+}
