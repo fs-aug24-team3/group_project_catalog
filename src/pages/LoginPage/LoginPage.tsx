@@ -7,11 +7,14 @@ import { clearError, loginUser } from '../../redux/slices/authSlice';
 import { RootState, useAppDispatch } from '../../redux/store';
 import { useSelector } from 'react-redux';
 import arrowLeft from '../../images/Icons/arrow_left.svg';
+import { useTranslation } from 'react-i18next';
 
 export const LoginPage: React.FC = () => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const { isLoggedIn, error } = useSelector((state: RootState) => state.auth);
+
+  const { t } = useTranslation();
 
   const initialValues = {
     email: '',
@@ -20,11 +23,11 @@ export const LoginPage: React.FC = () => {
 
   const validationSchema = Yup.object({
     email: Yup.string()
-      .email('Invalid email address')
-      .required('Email is required'),
+      .email(t('auth_pages.invalid_email'))
+      .required(t('auth_pages.required_email')),
     password: Yup.string()
-      .min(6, 'Password must be at least 6 characters')
-      .required('Password is required'),
+      .min(6, t('auth_pages.invalid_password'))
+      .required(t('auth_pages.required_password')),
   });
 
   const handleSubmit = (values: { email: string; password: string }) => {
@@ -55,14 +58,16 @@ export const LoginPage: React.FC = () => {
               <div className={styles['back-link__icon']}>
                 <img src={arrowLeft} alt="back arrow" />
               </div>
-              <p className={styles['back-link__text']}>Home</p>
+              <p className={styles['back-link__text']}>
+                {t('auth_pages.back_link')}
+              </p>
             </Link>
-            <h1>Login</h1>
+            <h1>{t('auth_pages.login')}</h1>
             <div className={styles['login-form__input']}>
               <Field
                 name="email"
                 id="email"
-                placeholder="Enter your email"
+                placeholder={t('auth_pages.enter_email')}
                 className={styles['login-form__field']}
                 onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
                   handleClearError();
@@ -81,7 +86,7 @@ export const LoginPage: React.FC = () => {
                 type="password"
                 name="password"
                 id="password"
-                placeholder="Enter your password"
+                placeholder={t('auth_pages.enter_password')}
                 className={styles['login-form__field']}
                 onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
                   handleClearError();
@@ -100,11 +105,11 @@ export const LoginPage: React.FC = () => {
             )}
 
             <button type="submit" className={styles['login-form__submit']}>
-              Login
+              {t('auth_pages.login_button')}
             </button>
 
             <Link className={styles['login-form__redirect']} to="../signup">
-              Not registered yet ?{' '}
+              {t('auth_pages.not_registered')}
             </Link>
           </Form>
         )}
