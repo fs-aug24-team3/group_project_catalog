@@ -15,23 +15,40 @@
 
     &--old-value {
       position: relative;
-      isolation: isolate;
 
       font-size: 22px;
       font-weight: 500;
       color: var(--secondary-color);
-
-      &::after {
-        content: '';
-        position: absolute;
-        top: 50%;
-        left: 0;
-        right: 0;
-        height: 2px;
-        mix-blend-mode: color-dodge;
-        background-color: var(--secondary-color);
-        transform: translateY(-50%);
-      }
     }
+  }
+}
+
+.light {
+  isolation: isolate;
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 2px;
+    mix-blend-mode: color-dodge;
+    background-color: var(--secondary-color);
+    transform: translateY(-50%);
+  }
+}
+
+.dark {
+  &::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 2px;
+    mix-blend-mode: difference;
+    background-color: var(--secondary-color);
+    transform: translateY(-50%);
   }
 }
