@@ -10,8 +10,8 @@
   &::before {
     content: '';
     position: absolute;
-    top: 0px;
-    left: 0px;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
     background-image: url('../../../public/img/StarryNight.jpg');
@@ -22,7 +22,7 @@
 
 .signup-form {
   z-index: 2;
-  background: #ffffff;
+  background: #fff;
   padding: 2rem;
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -41,7 +41,7 @@
     margin-bottom: 1.5rem;
     display: flex;
     flex-direction: column;
-    gap: 0rem;
+    gap: 0;
 
     label {
       font-size: 0.9rem;

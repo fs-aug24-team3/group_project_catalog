@@ -2,16 +2,12 @@
 @import '../../styles/utils/mixins';
 
 .consultation-block {
-  height: 250px;
   display: grid;
-
-  // justify-content: center;
-  // align-content: center;
-
   place-content: center;
-
   gap: 16px;
-  margin-bottom: 50px;
+  height: 200px;
+  margin-bottom: 40px;
+
   &__title {
     max-width: 260px;
     margin: 0 auto;
@@ -22,22 +18,27 @@
     display: flex;
     flex-direction: row;
     justify-content: center;
-    height: 50px;
     margin-bottom: 10px;
+    height: 50px;
     width: 100%;
   }
 
   &__phone-input {
+    padding: 10px;
     width: 200px;
     color: #000;
-    padding: 10px;
+
+    &:focus {
+      outline: 1px solid #007aff;
+      border-color: transparent;
+    }
   }
 
   &__button {
-    color: #fff;
-    background-color: var(--accent-color);
     padding: 10px;
     border: none;
+    color: #fff;
+    background-color: var(--accent-color);
   }
 
   &__text {
@@ -48,60 +49,58 @@
 
   &__error {
     position: absolute;
+    padding-left: 5px;
     text-align: center;
     color: var(--red-color);
     font-size: 12px;
-    padding-left: 5px;
   }
 }
 
 .modal {
   position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   background-color: var(--backdrop);
-  z-index: 1000;
+  z-index: 10;
 
   &__content {
-    background-color: var(--surface-color);
     padding: 20px;
-    border-radius: 8px;
     max-width: 400px;
     width: 90%;
+    border-radius: 8px;
+    background-color: var(--surface-color);
     text-align: center;
   }
 
   &__message {
-    font-size: 18px;
     color: var(--primary-color);
+    font-size: 18px;
   }
 
   &__close {
     margin-top: 15px;
     padding: 8px 16px;
-    background-color: var(--accent-color);
-    color: #fff;
     border: none;
     border-radius: 4px;
+    background-color: var(--accent-color);
+    color: #fff;
     cursor: pointer;
   }
 }
 
 .service {
   display: grid;
-  width: 100%;
-  height: 500px;
-  margin: auto;
-
   position: relative;
-  padding: 20px;
+  margin: auto;
+  padding: 5px;
+  margin-bottom: 80px;
+  width: 100%;
   line-height: 1.6;
-  margin-bottom: 50px;
 
   @include only-mobile {
     grid-template-columns: 1fr;
@@ -115,11 +114,11 @@
 
   @include on-desktop {
     grid-template-columns: 1fr 1fr;
+    padding: 20px;
   }
 
   &-block {
     margin-bottom: 40px;
-
     direction: ltr;
     gap: 20px;
 
@@ -137,23 +136,25 @@
   }
 
   &-content {
-    flex: 1;
     width: 100%;
   }
 
   &-title {
-    font-size: 18px;
-    color: var(--primary-color);
     margin-bottom: 16px;
+    color: var(--primary-color);
+    font-size: 18px;
     text-align: left;
+
+    @include on-desktop {
+      font-size: 20px;
+    }
   }
 
   &-text {
-    color: var(--primary-color);
     margin-bottom: 20px;
-    text-align: left;
-    flex: 1;
     max-width: 100%;
+    color: var(--primary-color);
+    text-align: left;
   }
 
   &-image-wrapper {
@@ -163,29 +164,34 @@
 
     @include only-mobile {
       grid-row: 1;
+      margin-bottom: 20px;
     }
 
     @include on-tablet {
       grid-row: 1;
+      margin-bottom: 20px;
+      padding-left: 20px;
     }
 
     @include on-desktop {
       grid-column: 2;
       align-items: center;
+      padding-left: 20px;
     }
   }
 
   &-image {
     @include only-mobile {
-      width: 300px;
+      width: 90%;
     }
 
     @include on-tablet {
-      width: 300px;
+      height: 500px;
+      width: 600px;
     }
 
     @include on-desktop {
-      max-width: 80%;
+      width: 100%;
     }
   }
 }
@@ -196,6 +202,18 @@
   overflow-y: scroll;
   direction: rtl;
   outline: none;
+
+  @include only-mobile {
+    height: 300px;
+  }
+
+  @include on-tablet {
+    height: 400px;
+  }
+
+  @include on-desktop {
+    height: 500px;
+  }
 }
 
 .slider::-webkit-scrollbar {
@@ -204,12 +222,10 @@
 }
 
 .slider::-webkit-scrollbar-track {
-  background: lightgrey;
-  
-  //  box-shadow: inset 0 0 0 0 rgba(0, 0, 0, 0);
-  outline: none;
   border-left: 4px solid var(--hover-background-color);
   border-right: 4px solid var(--hover-background-color);
+  background: lightgrey;
+  outline: none;
 }
 
 .slider::-webkit-scrollbar-thumb {
@@ -218,57 +234,70 @@
 }
 
 .block_questions {
-  // border: 6px solid var(--accent-color);
-  height: 300px;
   padding: 20px;
 
+  @include only-mobile {
+    padding: 5px;
+  }
+
   &-element {
-    padding: 10px;
     position: relative;
     border-top: 1px solid var(--primary-color);
     border-bottom: 1px solid var(--primary-color);
+    padding: 10px;
     margin-bottom: 10px;
     overflow: hidden;
-
-    transition:
-      max-height 0.3s ease,
-      opacity 0.3s ease;
   }
 
-  &-button {
-    position: absolute;
-    left: 97%;
-    top: 50%;
-    transform: translateY(-50%);
-    background: none;
-    border: none;
-    cursor: pointer;
-    font-size: 24px;
-    color: var(--text-color);
-
-    &.is-open {
-      transform: translateY(-50%);
-      font-size: 32px;
-      color: var(--text-color);
-      left: 97%;
-      top: 30%;
-    }
+  &-main {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    width: 100%;
+    margin-bottom: 15px;
   }
 
   &-title {
     font-size: 24px;
+
+    @include only-mobile {
+      width: 80%;
+      font-size: 18px;
+    }
+
+    @include on-tablet {
+      font-size: 20px;
+    }
+  }
+
+  &-button {
+    border: none;
+    background: none;
+    color: var(--text-color);
+    font-size: 24px;
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
   }
 
   &-text {
-    font-size: 16px;
     max-height: 0;
     opacity: 0;
     overflow: hidden;
-    color: var();
+    font-size: 14px;
 
     transition:
-      max-height 0.9s ease-in,
-      opacity 0.2s ease;
+      max-height 0.4s ease,
+      opacity 0.4s ease;
+
+    @include on-tablet {
+      font-size: 16px;
+    }
+
+    @include on-desktop {
+      font-size: 20px;
+    }
 
     &.is-open {
       max-height: 100px;

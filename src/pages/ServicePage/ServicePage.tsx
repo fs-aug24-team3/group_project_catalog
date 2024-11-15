@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import cn from 'classnames';
 import { BreadCrumbs } from '../../components/BreadCrumbs';
 
@@ -63,8 +63,15 @@ export const ServicePage = () => {
     },
   ];
 
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  }, []);
+
   return (
-    <div className={styles.container}>
+    <div>
       <div>
         <BreadCrumbs title={'pageTitle.service'} />
       </div>
@@ -199,15 +206,15 @@ export const ServicePage = () => {
                 [styles['is-open']]: isOpen,
               })}
             >
-              <p className={styles['block_questions-title']}>{title}</p>
-              <button
-                onClick={() => handleOpenText(key)}
-                className={cn(styles['block_questions-button'], {
-                  [styles['is-open']]: isOpen,
-                })}
-              >
-                {isOpen ? '-' : '+'}
-              </button>
+              <div className={styles['block_questions-main']}>
+                <p className={styles['block_questions-title']}>{title}</p>
+                <button
+                  onClick={() => handleOpenText(key)}
+                  className={styles['block_questions-button']}
+                >
+                  {isOpen ? '-' : '+'}
+                </button>
+              </div>
 
               <p
                 className={cn(styles['block_questions-text'], {
