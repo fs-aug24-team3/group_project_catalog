@@ -16,7 +16,7 @@ export const RightsPage = () => {
 
   return (
     <div className={styles.rights}>
-      <BreadCrumbs title={t('pageTitle.rights')} />
+      <BreadCrumbs title={'pageTitle.rights'} />
       <h1 className={styles['rights__main-title']}>{t('rights_page.title')}</h1>
       <h2 className={styles.rights__title}>{t('rights_page.title_privacy')}</h2>
       <p className={styles.rights__descriptions}>
