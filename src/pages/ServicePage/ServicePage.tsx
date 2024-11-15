@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import cn from 'classnames';
 import { BreadCrumbs } from '../../components/BreadCrumbs';
 
@@ -60,6 +60,13 @@ export const ServicePage = () => {
     },
   ];
 
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  }, []);
+
   return (
     <div>
       <div>
@@ -77,7 +84,6 @@ export const ServicePage = () => {
             <input
               type="tel"
               className={styles['consultation-block__phone-input']}
-              // placeholder="+XXX (XX) XXX XX XX"
               placeholder="Enter you phone number"
               value={phone}
               onChange={event => {
@@ -142,7 +148,9 @@ export const ServicePage = () => {
           </section>
           <section className={styles['service-block']}>
             <div className={styles['service-content']}>
-              <h2>What to Do in Case of a Breakdown</h2>
+              <h2 className={styles['service-title']}>
+                What to Do in Case of a Breakdown
+              </h2>
               <p className={styles['service-text']}>
                 If your device breaks down or stops working, don’t panic! Our
                 service centers are here to help. First, make sure your device
@@ -226,15 +234,15 @@ export const ServicePage = () => {
                 [styles['is-open']]: isOpen,
               })}
             >
-              <p className={styles['block_questions-title']}>{title}</p>
-              <button
-                onClick={() => handleOpenText(key)}
-                className={cn(styles['block_questions-button'], {
-                  [styles['is-open']]: isOpen,
-                })}
-              >
-                {isOpen ? '-' : '+'}
-              </button>
+              <div className={styles['block_questions-main']}>
+                <p className={styles['block_questions-title']}>{title}</p>
+                <button
+                  onClick={() => handleOpenText(key)}
+                  className={styles['block_questions-button']}
+                >
+                  {isOpen ? '-' : '+'}
+                </button>
+              </div>
 
               <p
                 className={cn(styles['block_questions-text'], {
