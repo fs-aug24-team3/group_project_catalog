@@ -1,10 +1,15 @@
-/* eslint-disable import/no-extraneous-dependencies */
 import {
   APIProvider,
   Map,
   AdvancedMarker,
   Pin,
 } from '@vis.gl/react-google-maps';
+import { BreadCrumbs } from '../../components/BreadCrumbs';
+import { useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../redux/store';
+
 import styles from './ContactsPage.module.scss';
 
 import Icon_map from '../../images/contacts/icons/icon-map.svg';
@@ -15,8 +20,8 @@ import Icon_call_number from '../../images/contacts/icons/icon-call-number.svg';
 import Store from '../../images/contacts/store.jpeg';
 
 const position = {
-  lat: 49.841647584938535,
-  lng: 24.028825942164726,
+  lat: 49.82722288389353,
+  lng: 24.035304951453163,
 };
 
 type Position = {
@@ -54,16 +59,13 @@ const locations: Position[] = [
   },
 ];
 
-const generateMapLink = (lat: number, lng: number) => {
-  return `https://www.google.com/maps?q=${lat},${lng}`;
-};
-
-import { BreadCrumbs } from '../../components/BreadCrumbs';
-import { useEffect } from 'react';
-import { useTranslation } from 'react-i18next';
-
 export const ContactsPage = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const theme = useSelector((state: RootState) => state.theme.theme);
+
+  const generateMapLink = (lat: number, lng: number) => {
+    return `https://www.google.com/maps?q=${lat},${lng}`;
+  };
 
   useEffect(() => {
     window.scrollTo({
@@ -188,8 +190,8 @@ export const ContactsPage = () => {
         <div className={styles['contacts__store-map']}>
           <APIProvider
             apiKey={'AIzaSyBJGJ18Oc2UEljLBZF_YFdT20q1fi7LIxA'}
-            language={'en'}
-            region={'EN'}
+            language={i18n.language}
+            region={i18n.language === 'en' ? 'EN' : 'UA'}
           >
             <div className={styles['contacts__map-container']}>
               <Map
@@ -198,14 +200,14 @@ export const ContactsPage = () => {
                   overflow: 'hidden',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  // colorScheme: ColorScheme.DARK,
                 }}
-                defaultZoom={11}
+                defaultZoom={11.5}
                 defaultCenter={position}
                 gestureHandling={'greedy'}
-                mapId={'3ecc4d44510af6c1'}
+                mapId={
+                  theme === 'light' ? '3ecc4d44510af6c1' : '4a4ba765546b0139'
+                }
               ></Map>
-
               {locations.map((location: Position) => (
                 <AdvancedMarker position={location.location} key={location.key}>
                   <Pin
